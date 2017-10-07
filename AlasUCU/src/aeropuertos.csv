@@ -1,0 +1,436 @@
+Airport ID;Name;City;Country;IATA/FAA;ICAO;Latitude;Longitude;Altitude;Timezone;DST;Tz database time zone
+21;Sault Ste Marie;Sault Sainte Marie;Canada;YAM;CYAM;46.485.001;-84.509.445;630;-5;A;America/Toronto
+22;Winnipeg St Andrews;Winnipeg;Canada;YAV;CYAV;50.056.389;-970.325;760;-6;A;America/Winnipeg
+23;Shearwater;Halifax;Canada;YAW;CYAW;44.639.721;-63.499.444;167;-4;A;America/Halifax
+24;St Anthony;St. Anthony;Canada;YAY;CYAY;51.391.944;-56.083.056;108;-3.5;A;America/St_Johns
+25;Tofino;Tofino;Canada;YAZ;CYAZ;49.082.222;-1.257.725;80;-8;A;America/Vancouver
+26;Kugaaruk;Pelly Bay;Canada;YBB;CYBB;68.534.444;-89.808.056;56;-7;A;America/Edmonton
+27;Baie Comeau;Baie Comeau;Canada;YBC;CYBC;491.325;-68.204.444;71;-5;A;America/Toronto
+28;Bagotville;Bagotville;Canada;YBG;CYBG;48.330.555;-70.996.391;522;-5;A;America/Toronto
+29;Baker Lake;Baker Lake;Canada;YBK;CYBK;64.298.889;-96.077.778;59;-6;A;America/Winnipeg
+30;Campbell River;Campbell River;Canada;YBL;CYBL;49.950.832;-125.270.833;346;-8;A;America/Vancouver
+31;Brandon Muni;Brandon;Canada;YBR;CYBR;49.91;-99.951.944;1343;-6;A;America/Winnipeg
+32;Cambridge Bay;Cambridge Bay;Canada;YCB;CYCB;69.108.055;-105.138.333;90;-7;A;America/Edmonton
+33;Nanaimo;Nanaimo;Canada;YCD;CYCD;49.052.333;-123.870.167;93;-8;A;America/Vancouver
+34;Castlegar;Castlegar;Canada;YCG;CYCG;49.296.389;-1.176.325;1624;-8;A;America/Vancouver
+35;Miramichi;Chatham;Canada;YCH;CYCH;47.007.778;-65.449.167;108;-4;A;America/Halifax
+36;Charlo;Charlo;Canada;YCL;CYCL;47.990.833;-66.330.278;132;-4;A;America/Halifax
+37;Kugluktuk;Coppermine;Canada;YCO;CYCO;67.816.667;-115.143.889;74;-7;A;America/Edmonton
+38;Coronation;Coronation;Canada;YCT;CYCT;52.075.001;-111.445.278;2595;-7;A;America/Edmonton
+39;Chilliwack;Chilliwack;Canada;YCW;CYCW;49.152.779;-12.193.889;32;-8;A;America/Vancouver
+40;Clyde River;Clyde River;Canada;YCY;CYCY;70.486.111;-68.516.667;87;-5;A;America/Toronto
+41;Fairmont Hot Springs;Coral Harbour;Canada;YZS;CYCZ;64.193.333;-83.359.444;2661;-5;A;America/Coral_Harbour
+42;Dawson City;Dawson;Canada;YDA;CYDA;64.043.056;-139.127.778;1215;-8;A;America/Vancouver
+43;Burwash;Burwash;Canada;YDB;CYDB;61.371.111;-139.040.556;2647;-8;A;America/Vancouver
+44;Princeton;Princeton;Canada;YDC;CYDC;49.468.056;-120.511.389;2298;-8;A;America/Vancouver
+45;Deer Lake;Deer Lake;Canada;YDF;CYDF;49.210.833;-57.391.388;72;-3.5;A;America/St_Johns
+46;Dease Lake;Dease Lake;Canada;YDL;CYDL;58.422.222;-130.032.222;2600;-8;A;America/Vancouver
+47;Dauphin Barker;Dauphin;Canada;YDN;CYDN;51.100.834;-1.000.525;999;-6;A;America/Winnipeg
+48;Dawson Creek;Dawson Creek;Canada;YDQ;CYDQ;55.742.333;-120.183;2148;-7;A;America/Dawson_Creek
+49;Edmonton Intl;Edmonton;Canada;YEG;CYEG;53.309.723;-113.579.722;2373;-7;A;America/Edmonton
+50;Arviat;Eskimo Point;Canada;YEK;CYEK;61.094.166;-94.070.833;32;-6;A;America/Winnipeg
+51;Estevan;Estevan;Canada;YEN;CYEN;49.210.278;-102.965.833;1905;-6;N;America/Regina
+52;Edson;Edson;Canada;YET;CYET;53.578.888;-116.465;3041;-7;A;America/Edmonton
+53;Eureka;Eureka;Canada;YEU;CYEU;79.994.722;-85.814.167;256;-6;A;America/Winnipeg
+54;Inuvik Mike Zubko;Inuvik;Canada;YEV;CYEV;68.304.167;-133.482.778;224;-7;A;America/Edmonton
+55;Iqaluit;Iqaluit;Canada;YFB;CYFB;6.375.639;-68.555.832;110;-5;A;America/Toronto
+56;Fredericton;Fredericton;Canada;YFC;CYFC;45.868.889;-66.537.222;68;-4;A;America/Halifax
+57;Forestville;Forestville;Canada;;CYFE;48.746.111;-69.097.222;293;-5;A;America/Toronto
+58;Flin Flon;Flin Flon;Canada;YFO;CYFO;54.678.055;-101.681.667;997;-6;A;America/Winnipeg
+59;Fort Resolution;Fort Resolution;Canada;YFR;CYFR;61.180.832;-113.689.722;526;-7;A;America/Edmonton
+60;Fort Simpson;Fort Simpson;Canada;YFS;CYFS;61.760.153;-121.236.525;555;-7;A;America/Edmonton
+61;Kingston;Kingston;Canada;YGK;CYGK;44.225.277;-76.596.944;305;-5;A;America/Toronto
+62;La Grande Riviere;La Grande Riviere;Canada;YGL;CYGL;53.625.278;-77.704.167;639;-5;A;America/Toronto
+63;Gaspe;Gaspe;Canada;YGP;CYGP;48.775.278;-64.478.611;108;-5;A;America/Toronto
+64;Geraldton Greenstone Regional;Geraldton;Canada;YGQ;CYGQ;49.778.332;-86.939.445;1144;-5;A;America/Toronto
+65;Iles De La Madeleine;Iles De La Madeleine;Canada;YGR;CYGR;47.424.721;-61.778.056;35;-5;A;America/Toronto
+66;Hudson Bay;Hudson Bay;Canada;YHB;CYHB;52.816.666;-10.231.139;1175;-6;N;America/Regina
+67;Dryden Rgnl;Dryden;Canada;YHD;CYHD;49.831.667;-92.744.167;1354;-6;A;America/Winnipeg
+68;Ulukhaktok Holman;Holman Island;Canada;YHI;CYHI;70.762.778;-117.806.111;117;-7;A;America/Edmonton
+69;Gjoa Haven;Gjoa Haven;Canada;YHK;CYHK;68.635.556;-95.849.722;152;-7;A;America/Edmonton
+70;Hamilton;Hamilton;Canada;YHM;CYHM;43.173.611;-79.935;780;-5;A;America/Toronto
+71;St Hubert;Montreal;Canada;YHU;CYHU;455.175;-73.416.944;90;-5;A;America/Toronto
+72;Hay River;Hay River;Canada;YHY;CYHY;60.839.722;-115.782.778;543;-7;A;America/Edmonton
+73;Halifax Intl;Halifax;Canada;YHZ;CYHZ;44.880.833;-6.350.861;477;-4;A;America/Halifax
+74;Atikokan Muni;Atikokan;Canada;YIB;CYIB;48.773.888;-91.638.611;1408;-5;A;America/Coral_Harbour
+75;Pond Inlet;Pond Inlet;Canada;YIO;CYIO;72.683.334;-77.966.667;181;-5;A;America/Toronto
+76;St Jean;St. Jean;Canada;YJN;CYJN;45.294.445;-73.281.111;136;-5;A;America/Toronto
+77;Stephenville;Stephenville;Canada;YJT;CYJT;48.544.167;-58.549.999;80;-3.5;A;America/St_Johns
+78;Kamloops;Kamloops;Canada;YKA;CYKA;50.702.222;-120.444.444;1133;-8;A;America/Vancouver
+79;Waterloo;Waterloo;Canada;YKF;CYKF;43.460.833;-80.378.611;1054;-5;A;America/Toronto
+80;Schefferville;Schefferville;Canada;YKL;CYKL;54.805.278;-66.805.278;1709;-5;A;America/Toronto
+81;Kindersley;Kindersley;Canada;YKY;CYKY;515.175;-109.180.833;2277;-6;N;America/Regina
+82;Buttonville Muni;Toronto;Canada;YKZ;CYKZ;43.862.221;-79.37;650;-5;A;America/Toronto
+83;Chapleau;Chapleau;Canada;YLD;CYLD;47.82;-83.346.667;1470;-5;A;America/Toronto
+84;Meadow Lake;Meadow Lake;Canada;YLJ;CYLJ;54.125.278;-108.522.778;1576;-6;N;America/Regina
+85;Lloydminster;Lloydminster;Canada;YLL;CYLL;53.309.166;-1.100.725;2193;-7;A;America/Edmonton
+86;Alert;Alert;Canada;YLT;CYLT;82.517.778;-62.280.556;100;-5;A;America/Toronto
+87;Kelowna;Kelowna;Canada;YLW;CYLW;49.956.112;-119.377.778;1409;-8;A;America/Vancouver
+88;Mayo;Mayo;Canada;YMA;CYMA;63.616.389;-135.868.333;1653;-8;A;America/Vancouver
+89;Moose Jaw Air Vice Marshal C M Mcewen;Moose Jaw;Canada;YMJ;CYMJ;50.330.278;-105.559.167;1892;-6;N;America/Regina
+90;Fort Mcmurray;Fort Mcmurray;Canada;YMM;CYMM;56.653.333;-111.221.944;1211;-7;A;America/Edmonton
+91;Moosonee;Moosonee;Canada;YMO;CYMO;51.291.111;-80.607.778;30;-5;A;America/Toronto
+92;Maniwaki;Maniwaki;Canada;YMW;CYMW;46.272.778;-75.990.556;656;-5;A;America/Toronto
+93;Montreal Intl Mirabel;Montreal;Canada;YMX;CYMX;45.681.944;-74.005.278;270;-5;A;America/Toronto
+94;Natashquan;Natashquan;Canada;YNA;CYNA;50.19;-61.789.167;39;-5;A;America/Toronto
+95;Gatineau;Gatineau;Canada;YND;CYND;45.521.694;-75.563.589;211;-5;A;America/Toronto
+96;Matagami;Matagami;Canada;YNM;CYNM;49.761.667;-77.802.778;918;-5;A;America/Toronto
+97;Old Crow;Old Crow;Canada;YOC;CYOC;67.570.556;-139.839.167;824;-8;A;America/Vancouver
+98;Cold Lake;Cold Lake;Canada;YOD;CYOD;54.404.999;-110.279.444;1775;-7;A;America/Edmonton
+99;High Level;High Level;Canada;YOJ;CYOJ;58.621.389;-117.164.722;1110;-7;A;America/Edmonton
+100;Ottawa Macdonald Cartier Intl;Ottawa;Canada;YOW;CYOW;453.225;-75.669.167;374;-5;A;America/Toronto
+101;Prince Albert Glass Field;Prince Albert;Canada;YPA;CYPA;53.214.167;-105.672.778;1405;-6;N;America/Regina
+102;Peace River;Peace River;Canada;YPE;CYPE;56.226.944;-117.447.222;1873;-7;A;America/Edmonton
+103;Southport;Portage-la-prairie;Canada;YPG;CYPG;49.903.056;-98.273.889;885;-6;A;America/Winnipeg
+104;Pitt Meadows;Pitt Meadows;Canada;;CYPK;4.921.611;-122.71;11;-8;A;America/Vancouver
+105;Pickle Lake;Pickle Lake;Canada;YPL;CYPL;51.446.388;-90.214.167;1267;-5;A;America/Coral_Harbour
+106;Port Menier;Port Menier;Canada;YPN;CYPN;49.836.389;-64.288.611;167;-5;A;America/Toronto
+107;Peterborough;Peterborough;Canada;YPQ;CYPQ;44.23;-78.363.333;628;-5;A;America/Toronto
+108;Prince Rupert;Prince Pupert;Canada;YPR;CYPR;5.428.611;-130.444.722;116;-8;A;America/Vancouver
+109;Fort Chipewyan;Fort Chipewyan;Canada;YPY;CYPY;58.767.223;-111.117.222;761;-7;A;America/Edmonton
+110;Muskoka;Muskoka;Canada;YQA;CYQA;44.974.722;-79.303.333;925;-5;A;America/Toronto
+111;Quebec Jean Lesage Intl;Quebec;Canada;YQB;CYQB;46.791.111;-71.393.333;244;-5;A;America/Toronto
+112;Red Deer Regional;Red Deer Industrial;Canada;YQF;CYQF;52.182.222;-113.894.444;2968;-7;A;America/Edmonton
+113;Windsor;Windsor;Canada;YQG;CYQG;42.275.556;-82.955.556;622;-5;A;America/Toronto
+114;Watson Lake;Watson Lake;Canada;YQH;CYQH;60.116.389;-1.288.225;2255;-8;A;America/Vancouver
+115;Kenora;Kenora;Canada;YQK;CYQK;49.788.334;-94.363.056;1332;-6;A;America/Winnipeg
+116;Lethbridge;Lethbridge;Canada;YQL;CYQL;49.630.278;-112.799.722;3047;-7;A;America/Edmonton
+117;Greater Moncton Intl;Moncton;Canada;YQM;CYQM;46.112.221;-64.678.611;232;-4;A;America/Halifax
+119;Comox;Comox;Canada;YQQ;CYQQ;49.710.833;-124.886.667;84;-8;A;America/Vancouver
+120;Regina Intl;Regina;Canada;YQR;CYQR;50.431.944;-104.665.833;1894;-6;N;America/Regina
+121;Thunder Bay;Thunder Bay;Canada;YQT;CYQT;48.371.944;-89.323.889;653;-5;A;America/Toronto
+122;Grande Prairie;Grande Prairie;Canada;YQU;CYQU;55.179.722;-118.885;2195;-7;A;America/Edmonton
+123;Yorkton Muni;Yorkton;Canada;YQV;CYQV;51.264.721;-102.461.667;1635;-6;N;America/Regina
+124;North Battleford;North Battleford;Canada;YQW;CYQW;52.769.167;-10.824.361;1799;-6;N;America/Regina
+125;Gander Intl;Gander;Canada;YQX;CYQX;48.936.944;-54.568.056;496;-3.5;A;America/St_Johns
+126;Sydney;Sydney;Canada;YQY;CYQY;46.161.388;-60.047.779;203;-4;A;America/Halifax
+127;Quesnel;Quesnel;Canada;YQZ;CYQZ;53.026.112;-122.510.278;1789;-8;A;America/Vancouver
+128;Resolute Bay;Resolute;Canada;YRB;CYRB;74.716.944;-94.969.444;215;-6;A;America/Winnipeg
+129;Riviere Du Loup;Riviere Du Loup;Canada;YRI;CYRI;47.764.444;-69.584.722;427;-5;A;America/Toronto
+130;Roberval;Roberval;Canada;YRJ;CYRJ;48.52;-72.265.556;586;-5;A;America/Toronto
+131;Rocky Mountain House;Rocky Mountain House;Canada;YRM;CYRM;52.429.722;-114.904.167;3244;-7;A;America/Edmonton
+132;Rankin Inlet;Rankin Inlet;Canada;YRT;CYRT;6.281.139;-92.115.833;94;-6;A;America/Winnipeg
+133;Sudbury;Sudbury;Canada;YSB;CYSB;46.625;-80.798.889;1141;-5;A;America/Toronto
+134;Sherbrooke;Sherbrooke;Canada;YSC;CYSC;45.438.611;-71.691.389;792;-5;A;America/Toronto
+135;Saint John;St. John;Canada;YSJ;CYSJ;45.316.111;-65.890.278;357;-4;A;America/Halifax
+136;Fort Smith;Fort Smith;Canada;YSM;CYSM;60.020.278;-111.961.944;671;-7;A;America/Edmonton
+137;Nanisivik;Nanisivik;Canada;YSR;CYSR;72.982.222;-84.613.611;2106;-5;A;America/Toronto
+138;Summerside;Summerside;Canada;YSU;CYSU;46.440.556;-63.833.611;56;-4;A;America/Halifax
+139;Sachs Harbour;Sachs Harbour;Canada;YSY;CYSY;71.993.889;-1.252.425;282;-7;A;America/Edmonton
+140;Cape Dorset;Cape Dorset;Canada;YTE;CYTE;64.23;-76.526.667;164;-5;A;America/Toronto
+141;Thompson;Thompson;Canada;YTH;CYTH;55.801.111;-97.864.166;729;-6;A;America/Winnipeg
+142;Trenton;Trenton;Canada;YTR;CYTR;44.118.889;-77.528.056;283;-5;A;America/Toronto
+143;Timmins;Timmins;Canada;YTS;CYTS;48.569.721;-81.376.667;967;-5;A;America/Toronto
+144;City Centre;Toronto;Canada;YTZ;CYTZ;43.627.499;-79.396.167;251;-5;A;America/Toronto
+145;Tuktoyaktuk;Tuktoyaktuk;Canada;YUB;CYUB;69.433.334;-133.026.389;15;-7;A;America/Edmonton
+146;Pierre Elliott Trudeau Intl;Montreal;Canada;YUL;CYUL;45.470.556;-73.740.833;118;-5;A;America/Toronto
+147;Repulse Bay;Repulse Bay;Canada;YUT;CYUT;66.521.389;-86.224.722;80;-6;A;America/Winnipeg
+148;Hall Beach;Hall Beach;Canada;YUX;CYUX;68.776.111;-81.243.611;27;-5;A;America/Toronto
+149;Rouyn Noranda;Rouyn;Canada;YUY;CYUY;48.206.111;-78.835.556;988;-5;A;America/Toronto
+150;La Ronge;La Ronge;Canada;YVC;CYVC;5.515.139;-105.261.944;1242;-6;N;America/Regina
+151;Vermilion;Vermillion;Canada;YVG;CYVG;53.355.833;-11.082.389;2025;-7;A;America/Edmonton
+152;Qikiqtarjuaq;Broughton Island;Canada;YVM;CYVM;67.545.833;-64.031.389;21;-5;A;America/Toronto
+153;Val D Or;Val D'or;Canada;YVO;CYVO;48.053.333;-77.782.778;1107;-5;A;America/Toronto
+154;Kuujjuaq;Quujjuaq;Canada;YVP;CYVP;58.096.111;-68.426.944;129;-5;A;America/Toronto
+155;Norman Wells;Norman Wells;Canada;YVQ;CYVQ;65.281.617;-126.798.219;238;-7;A;America/Edmonton
+156;Vancouver Intl;Vancouver;Canada;YVR;CYVR;49.193.889;-123.184.444;14;-8;A;America/Vancouver
+157;Buffalo Narrows;Buffalo Narrows;Canada;YVT;CYVT;55.841.944;-1.084.175;1444;-6;N;America/Regina
+158;Wiarton;Wiarton;Canada;YVV;CYVV;44.745.834;-81.107.222;729;-5;A;America/Toronto
+159;Petawawa;Petawawa;Canada;YWA;CYWA;45.952.221;-77.319.168;427;-5;A;America/Toronto
+160;Winnipeg Intl;Winnipeg;Canada;YWG;CYWG;49.910.036;-97.239.886;783;-6;A;America/Winnipeg
+161;Wabush;Wabush;Canada;YWK;CYWK;52.921.944;-66.864.444;1808;-4;A;America/Halifax
+162;Williams Lake;Williams Lake;Canada;YWL;CYWL;52.183.056;-122.054.167;3085;-8;A;America/Vancouver
+163;Wrigley;Wrigley;Canada;YWY;CYWY;63.209.444;-123.436.667;489;-7;A;America/Edmonton
+164;Canadian Rockies Intl;Cranbrook;Canada;YXC;CYXC;49.612.222;-115.781.944;3084;-7;A;America/Edmonton
+165;Edmonton City Centre;Edmonton;Canada;YXD;CYXD;535.725;-113.520.556;2200;-7;A;America/Edmonton
+166;Saskatoon J G Diefenbaker Intl;Saskatoon;Canada;YXE;CYXE;52.170.834;-106.699.722;1653;-6;N;America/Regina
+167;Medicine Hat;Medicine Hat;Canada;YXH;CYXH;5.001.889;-110.720.833;2352;-7;A;America/Edmonton
+168;Fort St John;Fort Saint John;Canada;YXJ;CYXJ;56.238.056;-120.740.278;2280;-7;A;America/Dawson_Creek
+169;Sioux Lookout;Sioux Lookout;Canada;YXL;CYXL;50.113.889;-91.905.278;1258;-6;A;America/Winnipeg
+170;Pangnirtung;Pangnirtung;Canada;YXP;CYXP;66.145;-65.713.611;75;-5;A;America/Toronto
+171;Timiskaming Rgnl;Earlton;Canada;YXR;CYXR;47.695;-79.848.889;798;-5;A;America/Toronto
+172;Prince George;Prince George;Canada;YXS;CYXS;53.889.444;-122.678.889;2267;-8;A;America/Vancouver
+173;Terrace;Terrace;Canada;YXT;CYXT;54.468.508;-128.576.219;713;-8;A;America/Vancouver
+174;London;London;Canada;YXU;CYXU;43.033.056;-81.151.111;912;-5;A;America/Toronto
+175;Abbotsford;Abbotsford;Canada;YXX;CYXX;49.025.278;-122.360.556;195;-8;A;America/Vancouver
+176;Whitehorse Intl;Whitehorse;Canada;YXY;CYXY;60.709.553;-135.067.269;2317;-8;A;America/Vancouver
+177;North Bay;North Bay;Canada;YYB;CYYB;46.363.611;-79.422.778;1215;-5;A;America/Toronto
+178;Calgary Intl;Calgary;Canada;YYC;CYYC;51.113.888;-114.020.278;3557;-7;A;America/Edmonton
+179;Smithers;Smithers;Canada;YYD;CYYD;54.824.722;-127.182.778;1712;-8;A;America/Vancouver
+180;Fort Nelson;Fort Nelson;Canada;YYE;CYYE;58.836.389;-122.596.944;1253;-8;A;America/Vancouver
+181;Penticton;Penticton;Canada;YYF;CYYF;49.463.056;-119.602.222;1129;-8;A;America/Vancouver
+182;Charlottetown;Charlottetown;Canada;YYG;CYYG;46.290.001;-63.121.111;160;-4;A;America/Halifax
+183;Taloyoak;Spence Bay;Canada;YYH;CYYH;69.546.667;-93.576.667;92;-7;A;America/Edmonton
+184;Victoria Intl;Victoria;Canada;YYJ;CYYJ;48.646.944;-123.425.833;63;-8;A;America/Vancouver
+185;Lynn Lake;Lynn Lake;Canada;YYL;CYYL;56.863.888;-10.107.611;1170;-6;A;America/Winnipeg
+186;Swift Current;Swift Current;Canada;YYN;CYYN;50.291.944;-107.690.556;2680;-6;N;America/Regina
+187;Churchill;Churchill;Canada;YYQ;CYYQ;58.739.167;-94.065;94;-6;A;America/Winnipeg
+188;Goose Bay;Goose Bay;Canada;YYR;CYYR;53.319.168;-60.425.833;160;-4;A;America/Halifax
+189;St Johns Intl;St. John's;Canada;YYT;CYYT;4.761.861;-52.751.945;461;-3.5;A;America/St_Johns
+190;Kapuskasing;Kapuskasing;Canada;YYU;CYYU;49.413.889;-824.675;743;-5;A;America/Toronto
+191;Armstrong;Armstrong;Canada;YYW;CYYW;50.290.279;-88.909.721;1058;-5;A;America/Toronto
+192;Mont Joli;Mont Joli;Canada;YYY;CYYY;48.608.612;-68.208.056;172;-5;A;America/Toronto
+193;Lester B Pearson Intl;Toronto;Canada;YYZ;CYYZ;43.677.223;-79.630.556;569;-5;A;America/Toronto
+194;Downsview;Toronto;Canada;YZD;CYZD;437.425;-79.465.556;652;-5;A;America/Toronto
+195;Gore Bay Manitoulin;Gore Bay;Canada;YZE;CYZE;45.885.277;-82.567.778;635;-5;A;America/Toronto
+196;Yellowknife;Yellowknife;Canada;YZF;CYZF;62.462.778;-114.440.278;675;-7;A;America/Edmonton
+197;Slave Lake;Slave Lake;Canada;YZH;CYZH;55.293.056;-114.777.222;1912;-7;A;America/Edmonton
+198;Sandspit;Sandspit;Canada;YZP;CYZP;53.254.333;-131.813.833;21;-8;A;America/Vancouver
+199;Chris Hadfield;Sarnia;Canada;YZR;CYZR;42.999.444;-82.308.889;594;-5;A;America/Toronto
+200;Port Hardy;Port Hardy;Canada;YZT;CYZT;50.680.556;-127.366.667;71;-8;A;America/Vancouver
+201;Whitecourt;Whitecourt;Canada;YZU;CYZU;5.414.389;-115.786.667;2567;-7;A;America/Edmonton
+202;Sept Iles;Sept-iles;Canada;YZV;CYZV;50.223.333;-66.265.556;180;-5;A;America/Toronto
+203;Teslin;Teslin;Canada;YZW;CYZW;60.172.779;-132.742.778;2313;-8;A;America/Vancouver
+204;Greenwood;Greenwood;Canada;YZX;CYZX;44.984.444;-64.916.944;92;-4;A;America/Halifax
+205;Faro;Faro;Canada;ZFA;CZFA;622.075;-133.375.833;2351;-8;A;America/Vancouver
+206;Fort Mcpherson;Fort Mcpherson;Canada;ZFM;CZFM;674.075;-134.860.556;116;-7;A;America/Edmonton
+6863;RK Heliplex;Panorama;Canada;;\N;502.735;-116.14;358;-7;A;America/Edmonton
+4094;Ekati;Ekati;Canada;YOA;CYOA;64.698.889;-110.614.722;1540;-7;A;America/Edmonton
+4106;Victoria Inner Harbour Airport;Victoria;Canada;YWH;CYWH;48.422.778;-1.233.875;0;-8;A;America/Vancouver
+4107;Vancouver Coal Harbour;Vancouver;Canada;CXH;CAQ3;49.289.722;-123.115.833;0;-8;A;America/Vancouver
+4236;Aklavik;Aklavik;Canada;LAK;CYKD;68.223.333;-135.005.833;23;-7;A;America/Edmonton
+4237;Deline;Deline;Canada;YWJ;CYWJ;651.833.333;-12.541.666.667;550;-7;A;America/Edmonton
+4238;Tulita;Tulita;Canada;ZFN;CZFN;640.833.333;-1.255.833.333;320;-7;A;America/Edmonton
+4239;Fort Good Hope;Fort Good Hope;Canada;YGH;CYGH;6.626.666.667;-128.65;215;-7;A;America/Edmonton
+4240;Inuvik Town;Inuvik;Canada;;\N;663.676;-1.337.594;200;-7;A;America/Edmonton
+4241;INAWR;Inuvik;Canada;;\N;683.676;-1.337.594;200;-7;A;America/Edmonton
+4244;Paulatuk;Paulatuk;Canada;YPC;CYPC;62.35;-1.243.333;50;-7;A;America/Edmonton
+4246;Nicholson Peninsula;Nicholson Peninsula;Canada;;YUCX;69.917;-128.95;1;-7;A;America/Edmonton
+5551;Wollaston Lake Airport;Wollaston Lake;Canada;ZWL;CZWL;581.069;-103.172;1360;-6;N;America/Regina
+5550;Churchill Falls Airport;Churchill Falls;Canada;ZUM;CZUM;535.619;-641.064;1442;-4;A;America/Halifax
+5549;Shamattawa Airport;Shamattawa;Canada;ZTM;CZTM;558.656;-920.814;289;-6;A;America/Winnipeg
+5548;Sandy Lake Airport;Sandy Lake;Canada;ZSJ;CZSJ;530.642;-933.444;951;-6;A;America/Winnipeg
+5547;Round Lake (Weagamow Lake) Airport;Round Lake;Canada;ZRJ;CZRJ;529.436;-913.128;974;-6;A;America/Winnipeg
+5546;Sachigo Lake Airport;Sachigo Lake;Canada;ZPB;CZPB;538.911;-921.964;876;-6;A;America/Winnipeg
+5545;Masset Airport;Masset;Canada;ZMT;CZMT;540.275;-132.125;25;-8;A;America/Vancouver
+5544;Muskrat Dam Airport;Muskrat Dam;Canada;MSA;CZMD;534.414;-917.628;911;-6;A;America/Winnipeg
+5543;Kashechewan Airport;Kashechewan;Canada;ZKE;CZKE;522.825;-816.778;35;-5;A;America/Toronto
+5542;Swan River Airport;Swan River;Canada;ZJN;CZJN;521.206;-101.236;1100;-6;A;America/Winnipeg
+5541;Gods River Airport;Gods River;Canada;ZGI;CZGI;548.397;-940.786;627;-6;A;America/Winnipeg
+5540;Fond-Du-Lac Airport;Fond-Du-Lac;Canada;ZFD;CZFD;593.344;-107.182;814;-6;N;America/Regina
+5539;Eastmain River Airport;Eastmain River;Canada;ZEM;CZEM;522.264;-785.225;24;-5;A;America/Toronto
+5538;Bathurst Airport;Bathurst;Canada;ZBF;CZBF;476.297;-657.389;193;-4;A;America/Halifax
+5537;Ilford Airport;Ilford;Canada;ILF;CZBD;560.614;-956.139;642;-6;A;America/Winnipeg
+5536;York Landing Airport;York Landing;Canada;ZAC;CZAC;560.894;-960.892;621;-6;A;America/Winnipeg
+5535;Salluit Airport;Salluit;Canada;YZG;CYZG;621.794;-756.672;743;-5;A;America/Toronto
+5534;Whale Cove Airport;Whale Cove;Canada;YXN;CYXN;62.24;-925.981;40;-6;A;America/Winnipeg
+5533;Webequie Airport;Webequie;Canada;YWP;CYWP;529.597;-873.689;685;-5;A;America/Toronto
+5532;Deer Lake Airport;Deer Lake;Canada;YVZ;CYVZ;526.558;-940.614;1092;-6;A;America/Winnipeg
+5531;Big Trout Lake Airport;Big Trout Lake;Canada;YTL;CYTL;538.178;-898.969;729;-6;A;America/Winnipeg
+5530;St. Theresa Point Airport;St. Theresa Point;Canada;YST;CYST;538.456;-948.519;773;-6;A;America/Winnipeg
+5529;Sanikiluaq Airport;Sanikiluaq;Canada;YSK;CYSK;565.378;-792.467;104;-5;A;\N
+5528;Stony Rapids Airport;Stony Rapids;Canada;YSF;CYSF;592.503;-105.841;805;-6;N;America/Regina
+5527;Red Lake Airport;Red Lake;Canada;YRL;CYRL;510.669;-937.931;1265;-6;A;America/Winnipeg
+5526;Rae Lakes Airport;Gamätç;Canada;YRA;CYRA;641.161;-117.31;723;-7;A;America/Edmonton
+5525;Nakina Airport;Nakina;Canada;YQN;CYQN;50.182.777;-86.696.388;1057;-5;A;America/Toronto
+5524;The Pas Airport;The Pas;Canada;YQD;CYQD;539.714;-101.091;887;-6;A;America/Winnipeg
+5523;Powell River Airport;Powell River;Canada;YPW;CYPW;498.342;-124.5;425;-8;A;America/Vancouver
+5522;Peawanuck Airport;Peawanuck;Canada;YPO;CYPO;549.881;-854.433;173;-5;A;America/Toronto
+5521;Pikangikum Airport;Pikangikum;Canada;YPM;CYPM;518.197;-939.733;1114;-6;A;America/Winnipeg
+5520;Inukjuak Airport;Inukjuak;Canada;YPH;CYPH;584.719;-780.769;83;-5;A;America/Toronto
+5519;Oxford House Airport;Oxford House;Canada;YOH;CYOH;549.333;-952.789;663;-6;A;America/Winnipeg
+5518;Points North Landing Airport;Points North Landing;Canada;YNL;CYNL;582.767;-104.082;1605;-6;N;America/Regina
+5517;Norway House Airport;Norway House;Canada;YNE;CYNE;539.583;-978.442;734;-6;A;America/Winnipeg
+5516;Wemindji Airport;Wemindji;Canada;YNC;CYNC;530.106;-788.311;66;-5;A;America/Toronto
+5515;Umiujaq Airport;Umiujaq;Canada;YUD;CYMU;565.361;-765.183;250;-5;A;America/Toronto
+5514;Chapais Airport;Chibougamau;Canada;YMT;CYMT;497.719;-745.281;1270;-5;A;America/Toronto
+5513;Mary's Harbour Airport;Mary's Harbour;Canada;YMH;CYMH;523.028;-558.472;38;-3.5;A;America/St_Johns
+5512;Kangiqsualujjuaq (Georges River) Airport;Kangiqsualujjuaq;Canada;XGR;CYLU;587.114;-659.928;215;-5;A;America/Toronto
+5511;Lutselk'e Airport;Lutselk'e;Canada;YSG;CYLK;624.183;-110.682;596;-7;A;America/Edmonton
+5510;Lansdowne House Airport;Lansdowne House;Canada;YLH;CYLH;521.956;-879.342;834;-5;A;America/Toronto
+5509;Kimmirut Airport;Kimmirut;Canada;YLC;CYLC;62.85;-698.833;175;-5;A;America/Toronto
+5508;Aupaluk Airport;Aupaluk;Canada;YPJ;CYLA;592.967;-695.997;119;-5;A;America/Toronto
+5507;Waskaganish Airport;Waskaganish;Canada;YKQ;CYKQ;514.733;-787.583;80;-5;A;America/Toronto
+5506;Akulivik Airport;Akulivik;Canada;AKV;CYKO;608.186;-781.486;75;-5;A;America/Toronto
+5505;Island Lake Airport;Island Lake;Canada;YIV;CYIV;538.572;-946.536;770;-6;A;America/Winnipeg
+5504;Ivujivik Airport;Ivujivik;Canada;YIK;CYIK;624.173;-779.253;126;-5;A;America/Toronto
+5503;Chevery Airport;Chevery;Canada;YHR;CYHR;504.689;-596.367;39;-4;A;America/Blanc-Sablon
+5502;Hopedale Airport;Hopedale;Canada;YHO;CYHO;554.483;-602.286;39;-4;A;America/Halifax
+5501;Nemiscau Airport;Nemiscau;Canada;YNS;CYHH;516.911;-761.356;802;-5;A;America/Toronto
+5500;Vancouver Harbour Water Airport;Vancouver;Canada;YHC;CYHC;492.944;-123.111;0;-8;A;America/Vancouver
+5499;Quaqtaq Airport;Quaqtaq;Canada;YQC;CYHA;610.464;-696.178;103;-5;A;America/Toronto
+5498;Grise Fiord Airport;Grise Fiord;Canada;YGZ;CYGZ;764.261;-829.092;146;-5;A;America/Toronto
+5497;Gillam Airport;Gillam;Canada;YGX;CYGX;563.575;-947.106;476;-6;A;America/Winnipeg
+5496;Kuujjuarapik Airport;Kuujjuarapik;Canada;YGW;CYGW;552.819;-777.653;34;-5;A;America/Toronto
+5495;Igloolik Airport;Igloolik;Canada;YGT;CYGT;693.647;-818.161;174;-5;A;America/Toronto
+5494;Gods Lake Narrows Airport;Gods Lake Narrows;Canada;YGO;CYGO;545.589;-944.914;617;-6;A;America/Winnipeg
+5493;Texada Gillies Bay Airport;Texada;Canada;YGB;CYGB;496.942;-124.518;326;-8;A;America/Vancouver
+5492;Makkovik Airport;Makkovik;Canada;YMN;CYFT;550.769;-591.864;234;-4;A;America/Halifax
+5491;Fort Hope Airport;Fort Hope;Canada;YFH;CYFH;515.619;-879.078;899;-5;A;America/Toronto
+5490;Fort Albany Airport;Fort Albany;Canada;YFA;CYFA;522.014;-816.969;48;-5;A;America/Toronto
+5489;Fort Severn Airport;Fort Severn;Canada;YER;CYER;560.189;-876.761;48;-5;A;America/Toronto
+5488;Nain Airport;Nain;Canada;YDP;CYDP;565.492;-616.803;22;-4;A;America/Halifax
+5487;Chesterfield Inlet Airport;Chesterfield Inlet;Canada;YCS;CYCS;633.469;-907.311;32;-6;A;America/Winnipeg
+5486;Cartwright Airport;Cartwright;Canada;YRF;CYCA;536.828;-570.419;40;-4;A;America/Halifax
+5485;Lourdes De Blanc Sablon Airport;Lourdes-De-Blanc-Sablon;Canada;YBX;CYBX;514.436;-571.853;121;-4;A;America/Blanc-Sablon
+5484;Uranium City Airport;Uranium City;Canada;YBE;CYBE;595.614;-108.481;1044;-6;N;America/Regina
+5483;Lac Du Bonnet Airport;Lac Du Bonnet;Canada;;CYAX;502.944;-96.01;850;-6;A;America/Winnipeg
+5482;Attawapiskat Airport;Attawapiskat;Canada;YAT;CYAT;529.275;-824.319;31;-5;A;America/Toronto
+5481;Kangirsuk Airport;Kangirsuk;Canada;YKG;CYAS;600.272;-699.992;403;-5;A;America/Toronto
+5480;Kasabonika Airport;Kasabonika;Canada;XKS;CYAQ;535.247;-886.428;672;-5;A;America/Toronto
+5479;Fort Frances Municipal Airport;Fort Frances;Canada;YAG;CYAG;486.542;-934.397;1125;-6;A;America/Winnipeg
+5478;Cat Lake Airport;Cat Lake;Canada;YAC;CYAC;517.272;-918.244;1344;-6;A;America/Winnipeg
+5474;La Tabatiäre Airport;La Tabatiäre;Canada;ZLT;CTU5;508.308;-589.756;102;-4;A;America/Blanc-Sablon
+5473;Tàte-Ö-la-Baleine Airport;Tàte-Ö-la-Baleine;Canada;ZTB;CTB6;506.744;-593.836;107;-4;A;America/Blanc-Sablon
+5472;Chisasibi Airport;Chisasibi;Canada;YKU;CSU2;538.056;-789.169;43;-5;A;America/Toronto
+5471;Poplar Hill Airport;Poplar Hill;Canada;YHP;CPV7;521.133;-942.556;1095;-6;A;America/Winnipeg
+5470;Ogoki Post Airport;Ogoki Post;Canada;YOG;CNT3;516.586;-859.017;594;-5;A;America/Toronto
+5469;Kingfisher Lake Airport;Kingfisher Lake;Canada;KIF;CNM5;530.125;-898.553;866;-5;A;America/Toronto
+5468;Bearskin Lake Airport;Bearskin Lake;Canada;XBE;CNE3;539.656;-910.272;800;-6;A;America/Winnipeg
+5467;North Spirit Lake Airport;North Spirit Lake;Canada;YNO;CKQ3;52.49;-929.711;1082;-6;A;America/Winnipeg
+5466;Wunnumin Lake Airport;Wunnumin Lake;Canada;WNN;CKL3;528.939;-892.892;819;-5;A;America/Toronto
+5465;Wapekeka Airport;Angling Lake;Canada;YAX;CKB6;538.492;-895.794;712;-6;A;America/Winnipeg
+5464;Summer Beaver Airport;Summer Beaver;Canada;SUR;CJV7;527.086;-885.419;832;-5;A;America/Toronto
+5463;Whatç Airport;Whatç;Canada;YLE;CEM3;631.317;-117.246;882;-7;A;America/Edmonton
+5462;Colville Lake Airport;Colville Lake;Canada;YCK;CEB3;670.333;-126.083;850;-7;A;America/Edmonton
+5461;Rigolet Airport;Rigolet;Canada;YRG;CCZ2;541.797;-584.575;180;-4;A;America/Halifax
+5460;Port Hope Simpson Airport;Port Hope Simpson;Canada;YHA;CCP4;525.281;-562.861;347;-3.5;A;America/St_Johns
+5459;St. Lewis (Fox Harbour) Airport;St. Lewis;Canada;YFX;CCK4;523.728;-556.739;74;-3.5;A;America/St_Johns
+5458;Williams Harbour Airport;Williams Harbour;Canada;YWM;CCA6;525.669;-557.847;70;-3.5;A;America/St_Johns
+5457;Anahim Lake Airport;Anahim Lake;Canada;YAA;CAJ4;524.525;-125.303;3635;-8;A;America/Vancouver
+5456;Whistler/Green Lake Water Aerodrome;Whistler;Canada;YWS;CAE5;501.436;-122.949;2100;-8;A;America/Vancouver
+6789;St Augustin Airport;St-Augustin;Canada;YIF;CYIF;512.117;-586.583;20;-4;A;America/Blanc-Sablon
+6775;Bonaventure Airport;Bonaventure;Canada;YVB;CYVB;480.711;-654.603;123;-5;A;America/Toronto
+6738;Bella Coola Airport;Bella Coola;Canada;QBC;CYBD;523.875;-126.596;117;-8;A;America/Vancouver
+6728;Tasiujaq Airport;Tasiujaq;Canada;YTQ;CYTQ;586.678;-699.558;122;-5;A;America/Toronto
+6727;Puvirnituq Airport;Puvirnituq;Canada;YPX;CYPX;600.506;-772.869;74;-5;A;America/Toronto
+7012;Seal Cove Seaplane Base;Prince Rupert;Canada;ZSW;CZSW;543.333;-130.283;0;-8;A;America/Vancouver
+7022;Berens River;Berens River;Canada;YBV;CYBV;52.358.889;-97.018.333;728;-6;A;America/Winnipeg
+7024;Seaplane Base;Port Simpson;Canada;YPI;CYPI;54.566.667;-130.433.333;0;-8;A;America/Vancouver
+7060;Riviere Rouge - Mont-Tremblant International Inc. Airport;Mont-Tremblant;Canada;YTM;CYFJ;46.409.444;-74.78;827;-5;A;America/Toronto
+7250;Fox Harbour Airport;Fox Harbour;Canada;;\N;45.87;-63.461.111;62;-4;A;America/Halifax
+7251;Natuashish Airport;Natuashish;Canada;;CNH2;55.913.889;-61.184.444;33;-4;A;America/Halifax
+7252;Postville Airport;Postville;Canada;YSO;CCD4;54.910.278;-59.785.278;223;-4;A;America/Halifax
+7253;Kangiqsujuaq - Wakeham Bay Airport;Kangiqsujuaq;Canada;YWB;CYKG;61.588.611;-71.929.444;501;-5;A;America/Toronto
+7254;Alma Airport;Alma;Canada;YTF;CYTF;48.508.611;-71.641.389;449;-5;A;America/Toronto
+7255;Havre Saint-Pierre Airport;Havre-Saint-Pierre;Canada;YGV;CYGV;50.281.944;-63.611.389;124;-5;A;America/Toronto
+7256;Rimouski Airport;Rimouski;Canada;YXK;CYXK;48.478.056;-68.496.944;82;-5;A;America/Toronto
+7259;Tadoule Lake Airport;Tadoule Lake;Canada;XTL;CYBQ;58.706.111;-98.512.222;923;-6;A;America/Winnipeg
+7260;Lac Brochet Airport;Lac Brochet;Canada;XLB;CZWH;58.614.167;-101.468.889;1212;-6;A;America/Winnipeg
+7261;South Indian Lake Airport;South Indian Lake;Canada;XSI;CZSN;56.792.778;-98.907.222;951;-6;A;America/Winnipeg
+7262;Brochet Airport;Brochet;Canada;YBT;CYBT;57.889.444;-101.679.167;1131;-6;A;America/Winnipeg
+7263;Little Grand Rapids Airport;Little Grand Rapids;Canada;ZGR;CZGR;52.045;-95.466.111;1008;-6;A;America/Winnipeg
+7264;Cross Lake - Charlie Sinclair Memorial Airport;Cross Lake;Canada;YCR;CYCR;54.610.833;-97.760.278;707;-6;A;America/Winnipeg
+7265;Red Sucker Lake Airport;Red Sucker Lake;Canada;YRS;CYRS;54.167.222;-93.557.222;729;-6;A;America/Winnipeg
+7266;Rainbow Lake Airport;Rainbow Lake;Canada;YOP;CYOP;58.491.389;-119.407.778;1756;-7;A;America/Edmonton
+7267;Bonnyville Airport;Bonnyville;Canada;YBY;CYBF;54.304.722;-110.741.111;1839;-7;A;America/Edmonton
+7268;Nanaimo Harbour Water Airport;Nanaimo;Canada;ZNA;CAC8;49.183.333;-123.95;0;-8;A;America/Vancouver
+7269;Ganges Water Aerodrome;Ganges;Canada;;CAX6;48.85;-123.5;0;-8;A;America/Vancouver
+7270;Bedwell Harbour Water Aerdrome;Bedwell Harbour;Canada;;\N;48.75;-123.233.333;0;-8;A;America/Vancouver
+7271;Qualicum Beach Airport;Qualicum Beach;Canada;XQU;\N;49.337.222;-124.393.889;191;-8;A;America/Vancouver
+7272;Fort St. James - Perison Airport;Fort St. James;Canada;YJM;CYJM;54.397.222;-124.262.778;2364;-8;A;America/Vancouver
+7273;Boundary Bay Airport;Boundary Bay;Canada;YDT;CZBB;49.073.889;-1.230.075;6;-8;A;America/Vancouver
+7274;Langley Regional Airport;Langley Township;Canada;;CYNJ;49.101.111;-122.630.556;34;-8;A;America/Vancouver
+7275;Bella Bella Airport;Bella Bella;Canada;ZEL;CYJQ;52.139.722;-128.063.611;162;-8;A;America/Vancouver
+7276;Sechelt Aerodrome;Sechelt-Gibsons;Canada;YHS;\N;49.460.556;-123.718.611;250;-8;A;America/Vancouver
+7277;Wekweeti Airport;Wekweeti;Canada;;CFJ2;64.190.833;-114.076.667;1206;-7;A;America/Edmonton
+7405;Victoria Cruise Pier;Victoria;Canada;;\N;48.429.144;-123.367.023;0;-8;A;America/Vancouver
+7462;Central Railway Station;Montreal;Canada;YMY;\N;45.499.722;-73.566.111;0;-5;A;America/Toronto
+7463;Union Station;Toronto;Canada;YBZ;\N;43.645.278;-79.380.556;0;-5;A;America/Toronto
+7521;Yarmouth Airport;Yarmouth;Canada;YQI;CYQI;438.269;-660.881;141;-4;A;America/Halifax
+7644;Fraser Railroad Station;Fraser BC;Canada;;\N;59.715.517;-135.046.692;2000;-8;U;America/Vancouver
+7645;Carcross;Carcross YT;Canada;;\N;6.017.463;-134.698.088;2100;-8;U;America/Vancouver
+7762;Nanaimo Train Station;Nanaimo Station British Columbia;Canada;;\N;49.163.978;-123.942.502;92;-8;A;America/Vancouver
+7763;Victoria Rail Station British Columbia;Victoria Station British Columbia;Canada;;\N;48.428.339;-123.370.618;75;-8;A;America/Vancouver
+7764;Vancouver Cruise Terminal;Vancouver BC;Canada;;\N;49.289.012;-123.111.463;0;-8;A;America/Vancouver
+7779;Niagara Falls Station;Niagara Falls;Canada;;NIAG;43.108.802;-7.906.361;0;-5;A;America/New_York
+7780;Burlington Airpark;Burlington;Canada;;CZBA;434.425;-79.850.833;602;-5;A;America/Toronto
+7806;Kings County Municipal Airport;Waterville;Canada;;CCW3;450.519;-646.517;119;-4;A;America/Halifax
+7820;Brampton Airport;Brampton;Canada;;CNC3;437.603;-79.875;935;-5;A;America/Toronto
+7844;Toronto Coach Terminal;Toronto;Canada;;TRTO;43.655.996;-7.938.416;0;-5;A;America/Toronto
+7845;Montreal Central Bus Station;Montreal;Canada;;MTRL;4.551.527.887;-73.561.427.593;0;-5;A;America/Toronto
+7902;Oshawa Airport;Oshawa;Canada;YOO;CYOO;439.228;-78.895;459;-5;A;America/Toronto
+7968;Train Station;Ottawa;Canada;XDS;\N;454.164;-756.517;374;-5;A;America/Toronto
+7969;Train Station;Belleville;Canada;XVV;\N;441.793;-773.747;315;-5;A;America/Toronto
+7970;Train Station;Edmonton;Canada;XZL;\N;535.789;-1.135.307;2208;-7;A;America/Edmonton
+7973;Train Station;Churchill;Canada;XAD;\N;5.876.775;-9.417.425;10;-6;A;America/Winnipeg
+7974;Train Station;Winnipeg;Canada;XEF;\N;498.889;-971.342;751;-6;A;America/Winnipeg
+7975;Kingston VIA Station;Kingston;Canada;;\N;442.572;-7.653.715;282;-5;A;America/Toronto
+7987;Mackenzie Airport;Mackenzie British Columbia;Canada;YZY;CYZY;5.529.944;-12.308.333;2264;-8;A;America/Vancouver
+8031;Calgary Springbank Airport;Calgary;Canada;YBW;CYBW;511.031;-114.374;3939;-7;A;America/Edmonton
+8032;Golden Airport;Golden;Canada;YGE;CYGE;512.992;-116.982;2575;-7;A;America/Edmonton
+8033;Revelstoke Airport;Revelstoke;Canada;YRV;CYRV;509.667;-118.183;1459;-8;A;America/Vancouver
+8066;Pacific Station;Vancouver;Canada;;\N;492.739;-1.230.986;0;-8;A;America/Vancouver
+8071;Kingston Train Station;Kingston;Canada;XEG;KGST;44.256.944;-76.536.943;282;-5;A;America/Toronto
+8072;Dorval Railway Station;Dorval;Canada;XAX;\N;45.448.611;-7.374.111;0;-5;A;America/Toronto
+8073;Brockville Megabus Stop;Brockville;Canada;;BRKM;446.003;-757.039;0;-5;A;America/Toronto
+8074;Brockville VIA Station;Brockville;Canada;;BRKV;445.919;-75.693.343;0;-5;A;America/Toronto
+8147;Pembroke Airport;Pembroke;Canada;YTA;CYTA;45.864.399;-77.251.701;529;-5;A;America/Toronto
+8149;Suffield Heliport;Suffield;Canada;YSD;CYSD;502.666.701;-111.182.999;2525;-7;A;America/Edmonton
+8150;Field 21;Wainwright;Canada;;\N;52.830.601;-111.100.998;2260;-7;A;America/Edmonton
+8151;Field 21;Wainwright;Canada;;\N;52.830.601;-111.100.998;2260;-7;A;America/Edmonton
+8175;Big Bay Water Aerodrome;Big Bay;Canada;YRR;\N;50.4;-125.133.333;0;-8;A;America/Vancouver
+8177;Cornwall Regional Airport;Cornwall;Canada;YCC;CYCC;45.092.778;-74.567.778;175;-5;A;America/Toronto
+8216;La Romaine Airport;La Romaine;Canada;;CTT5;50.257.222;-60.669.167;90;-4;A;America/Blanc-Sablon
+8217;Kegaska Airport;Kegaska;Canada;ZKG;CTK6;50.195.833;-61.265.833;32;-4;A;America/Blanc-Sablon
+8218;Black Tickle Airport;Black Tickle;Canada;YBI;CCE4;53.47;-557.875;57;-4;A;America/Halifax
+8223;Trail Airport;Trail;Canada;YZZ;CAD4;49.055.556;-117.609.167;1427;-8;A;America/Vancouver
+8224;Victoria Airport Water Aerodrome;Patricia Bay;Canada;;CAP5;48.65;-123.45;0;-8;A;America/Vancouver
+8225;Arctic Bay Airport;Arctic Bay;Canada;YAB;CJX7;73.006.389;-85.047.222;72;-6;A;America/Winnipeg
+8226;Hope Bay Aerodrome;Hope Bay;Canada;;CHB3;68.163.889;-106.614.444;125;-7;A;America/Edmonton
+8355;Keewaywin;Keewaywin;Canada;KEW;CPV8;52.991.111;-92.836.389;988;-6;A;America/Winnipeg
+8356;Marathon;Marathon;Canada;YSP;CYSP;48.755.278;-86.344.444;1035;-5;A;America/Toronto
+8357;Rene Fontaine;Hearst;Canada;YHF;CYHF;49.713.889;-83.686.944;826;-5;A;America/Toronto
+8358;Hornepayne;Hornepayne;Canada;YHN;CYHN;49.193.056;-84.758.889;1099;-5;A;America/Toronto
+8359;Kirkland Lake;Kirkland Lake;Canada;YKX;CYKX;48.210.278;-79.981.389;1157;-5;A;America/Toronto
+8360;Manitouwadge;Manitouwadge;Canada;YMG;CYMG;49.083.889;-85.860.556;1198;-5;A;America/Toronto
+8361;Wawa;Wawa;Canada;YXZ;CYXZ;47.966.944;-84.786.389;944;-5;A;America/Toronto
+8362;Manitoulin East;Manitowaning;Canada;YEM;CYEM;458.425;-818.575;869;-5;A;America/Toronto
+8363;Slate Falls;Slate Falls;Canada;;CKD9;51.13;-91.665.556;1355;-6;A;America/Winnipeg
+8364;Collingwood;Collingwood;Canada;;CNY3;44.449.167;-80.158.333;730;-5;A;America/Toronto
+8365;Brantford;Brantford;Canada;YFD;CYFD;43.131.389;-803.425;815;-5;A;America/Toronto
+8403;One Hundred Mile House Airport;One Hundred Mile House;Canada;;CAV3;513.833;-1.211.825;3055;-8;A;America/Vancouver
+8404;South Cariboo Regional Airport;108 Mile Ranch;Canada;ZML;CZML;514.412;-1.211.958;3129;-8;A;America/Vancouver
+8423;Gimli Industrial Park Airport;Gimli;Canada;YGM;CYGM;50.628.056;-97.043.333;753;-6;A;America/Winnipeg
+8424;Matheson Island Airport;Matheson Island;Canada;;\N;51.732.222;-96.934.444;725;-6;A;America/Winnipeg
+8425;Matheson Island Airport;Matheson Island;Canada;;\N;51.732.222;-96.934.444;725;-6;A;America/Winnipeg
+8426;Matheson Island Airport;Matheson Island;Canada;;CJT2;51.732.222;-96.934.444;725;-6;A;America/Winnipeg
+8471;High River Regional Airport;High River;Canada;;\N;503.333;-113.833;3431;-7;A;America/Edmonton
+8477;Bob Quinn Lake;Bob Quinn Lake;Canada;YBO;CBW4;56.58;-130.5;50;-8;U;America/Vancouver
+8598;All Airports;Montreal;Canada;YMQ;\N;45.508.611;-73.553.889;53;-5;A;America/Toronto
+8599;All Airports;Toronto;Canada;YTO;\N;43.653.056;-79.383.056;302;-5;A;America/Toronto
+8663;Trois Rivieres Airport;Trois Rivieres;Canada;YRQ;CYRQ;46.351.667;-72.680.556;199;-5;A;America/Toronto
+8697;Bogande Airport;Bogande;Canada;XBG;\N;48.329.498;-70.995.697;531;-5;A;America/Toronto
+8730;Yarmouth Ferry Terminal;Yarmouth NS;Canada;;\N;43.833.227;-66.122.653;0;-4;A;America/Halifax
+8963;Bromont Airport;Bromont;Canada;ZBM;CZBM;45.290.833;-72.741.944;374;-5;A;America/Toronto
+8836;CNC4;Guelph;Canada;;\N;43.563.889;-80.196.111;1100;-5;A;America/Toronto
+8837;CNC4;Geulph;Canada;;\N;43.563.889;-80.196.111;1100;-5;A;America/Toronto
+8904;Albian Aerodrome;Wood Buffalo;Canada;JHL;\N;57.223.889;-111.418.889;1048;-7;A;America/Edmonton
+9050;Burlington GO Station;Burlington;Canada;;\N;433.408.282;-798.093.881;243;-5;A;America/Toronto
+9051;Niagra Falls Railway Station;Niagra Falls;Canada;;\N;431.088;-790.634;521;-5;A;America/New_York
+9074;Lagoon Cove water aerodrome;Lagoon Cove;Canada;;\N;50.6;-1.263.167;0;-8;A;America/Vancouver
+9077;Echo Bay water aerodrome;Echo Bay;Canada;;\N;50.45;-126.29;0;-8;A;America/Vancouver
+9078;Kingcome water aerodrome;Kingcome;Canada;;\N;50.58;-128.11;0;-8;A;America/Vancouver
+9084;Fort McMurray - Mildred Lake Airport;Fort McMurray;Canada;NML;\N;57.055.599;-111.573.997;1046;-7;A;America/Edmonton
+9088;Cochrane;Cochrane;Canada;YCN;CYCN;49.106.667;-81.015.278;852;-5;A;America/Toronto
+9111;Billings field;Essex;Canada;;\N;42.199;-82.465;650;-5;U;America/Toronto
+9194;Toronto Union Station;Toronto;Canada;;\N;43.645.278;-79.380.556;249;-5;A;America/Toronto
+9195;Windsor Station;Windsor;Canada;;\N;423.254;-830.092;623;-5;A;America/Toronto
+9223;Tobermory Dock;Tobermory;Canada;;\N;452.578.121;-816.637.838;1335;-5;A;America/Toronto
+9224;South Baymouth Docks;South Baymouth;Canada;;\N;455.564.479;-820.071.535;1335;-5;A;America/Toronto
+9231;York Mills GO Bus Terminal;York Mills;Canada;;\N;43.745;-79.406.389;449;-5;A;America/Toronto
+9236;Lake Simcoe;Barrie-Orillia;Canada;YLS;CYLS;44.487.778;-79.559.444;972;-5;A;America/Toronto
+9237;Huronia;Midland;Canada;YEE;CYEE;44.684.722;-79.929.167;773;-5;A;America/Toronto
+9238;Markham;Markham;Canada;NU8;CNU8;43.935.278;-79.263.333;807;-5;A;America/Toronto
+9239;Stanhope;Haliburton;Canada;ND4;CND4;45.110.833;-78.64;1066;-5;A;America/Toronto
+9240;Lindsay;Lindsay;Canada;NF4;CNF4;44.364.722;-78.783.889;895;-5;A;America/Toronto
+9241;Niagara District;Saint Catherines;Canada;YCM;CYSN;43.191.667;-79.171.111;321;-5;A;America/Toronto
+9243;Edenvale;Edenvale;Canada;;CNV8;44.438.889;-79.965.278;718;-5;A;America/Toronto
+9244;Orillia;Orillia;Canada;;CNJ4;44.683.333;-79.316.667;725;-5;A;America/Toronto
+9245;Holland Landing;Holland Landing;Canada;;CLA4;44.089.444;-79.495;855;-5;A;America/Toronto
+9246;Kent;Chatham;Canada;XCM;CNZ3;42.306.111;-82.081.667;645;-5;A;America/Toronto
+9247;Parry Sound;Parry Sound;Canada;YPD;CNK4;45.253.889;-79.827.778;830;-5;A;America/Toronto
+9248;Saugeen;Hanover;Canada;;CYHS;44.158.056;-81.063.333;940;-5;A;America/Toronto
+9299;Lincolnville GO Station;Lincolnville;Canada;;\N;43.995.278;-79.233.333;873;-5;A;America/Toronto
+9343;London Railway Station;London;Canada;;\N;429.819;-812.464;0;-5;A;America/Toronto
+9345;Kitchener Bus Terminal;Kitchener;Canada;;\N;4.344.968;-8.049.222;1083;-5;A;America/Toronto
+9346;Gare du Palais;Quebec;Canada;;\N;468.174;-712.139;13;-5;A;America/Toronto
+9366;Kettle Falls Lodge;Minaki;Canada;;\N;50.349.812;-94.583.456;180;-6;A;America/Winnipeg
+9430;Olds Didsbury Airport;Didsbury;Canada;;\N;51.710.833;-114.106.111;3360;-7;A;America/Edmonton
+9431;Sundre Airport;Sundre;Canada;;\N;51.774.722;-114.680.833;3663;-7;A;America/Edmonton
+9491;Phantom Lake;Phantom Lake;Canada;;\N;49.859.473;-123.494.509;3386;-8;A;America/Vancouver
+9535;Ganges Water Aerodrome;Ganges;Canada;YGG;\N;48.85;-123.5;0;-8;A;America/Vancouver
+9536;Pender Harbour Water Aerodrome;Pender Harbour;Canada;YPT;\N;49.616.667;-124.016.667;0;-8;A;America/Vancouver
+9537;Mansons Landing Water Aerodrome;Mansons Landing;Canada;YMU;\N;50.066.667;-124.983.333;0;-8;A;America/Vancouver
+9538;Port McNeill Airport;Port McNeill;Canada;YMP;\N;50.575.556;-127.028.611;225;-8;A;America/Vancouver
+9539;Sullivan Bay Water Aerodrome;Sullivan Bay;Canada;YTG;\N;50.883.333;-126.833.333;0;-8;A;America/Vancouver
