@@ -1,8 +1,11 @@
 package UCUGrafos;
 
 
+import Clases.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -11,7 +14,7 @@ import java.util.logging.Logger;
 
 public class UtilGrafos {
 
-    public static Double[][] obtenerMatrizCostos(Map<Comparable, TVertice> vertices) {
+    public static Double[][] obtenerMatrizCostos(Map<Comparable, TVertice<Aeropuerto,Vuelo>> vertices, Date pFechaOrigen) {
         int cantidadVertices = vertices.size();
         Double[][] matrizCostos = new Double[cantidadVertices][cantidadVertices];
 
@@ -40,8 +43,23 @@ public class UtilGrafos {
                 if (!elemVerticeI.getEtiqueta().equals(elemVerticeJ.getEtiqueta())) {
                     TVertice verticeI = (TVertice) elemVerticeI;
                     TVertice verticeJ = (TVertice) elemVerticeJ;
-                    Double costoAdyacencia = verticeI.obtenerCostoAdyacencia(verticeJ);
-                    matrizCostos[i][j] = costoAdyacencia;
+                    //Double costoAdyacencia = verticeI.obtenerCostoAdyacencia(verticeJ);
+                    
+                    IAdyacencia abcccc = verticeI.buscarAdyacencia(verticeJ);
+                    Object lista = abcccc.getRelaciones();
+                    LinkedList<Vuelo> lista2 = (LinkedList<Vuelo>)lista;
+                    double costoMinimo = Double.MAX_VALUE;
+                    
+                    for(Vuelo objVueloActual : lista2){
+                        if(objVueloActual.getFechaPartida().compareTo(pFechaOrigen) < 0){
+                            if(objVueloActual.getCosto() < costoMinimo){
+                                costoMinimo = objVueloActual.getCosto();
+                            }
+                        }
+                    }
+                    
+                    //matrizCostos[i][j] = costoAdyacencia;
+                    matrizCostos[i][j] = costoMinimo;
                 }
                 j++;
             }

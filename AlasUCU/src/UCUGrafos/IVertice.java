@@ -3,36 +3,31 @@ package UCUGrafos;
 
 import java.util.LinkedList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author Ernesto
+ * 
+ * @author Lithium582
+ * @param <V> Tipo de dato del Vértice
+ * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los vértices)
  */
-public interface IVertice {
+public interface IVertice<V,A> {
 
-    TAdyacencia buscarAdyacencia(TVertice verticeDestino);
+    IAdyacencia<V,A> buscarAdyacencia(IVertice<V,A> verticeDestino);
 
-    TAdyacencia buscarAdyacencia(Comparable etiquetaDestino);
+    IAdyacencia<V,A> buscarAdyacencia(Comparable etiquetaDestino);
 
     boolean eliminarAdyacencia(Comparable nomVerticeDestino);
 
-    LinkedList<TAdyacencia> getAdyacentes();
+    LinkedList<IAdyacencia<V,A>> getAdyacentes();
 
-    Object getDatos();
+    V getDatos();
 
     Comparable getEtiqueta();
 
     boolean getVisitado();
 
-    boolean insertarAdyacencia(Double costo, TVertice verticeDestino);
-
-   
-    TVertice primerAdyacente();
+    boolean insertarAdyacencia(IVertice<V,A> pVerticeDestino, LinkedList<A> pListaRelaciones);
+    
+    IVertice<V,A> primerAdyacente();
 
     void setVisitado(boolean valor);
 

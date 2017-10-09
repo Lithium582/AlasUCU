@@ -4,12 +4,18 @@ package UCUGrafos;
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class TVertice implements IVertice{
+/**
+ * 
+ * @author Lithium582
+ * @param <V> Tipo de dato del Vértice
+ * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los vértices)
+ */
+public class TVertice<V,A> implements IVertice<V,A>{
 
     private Comparable etiqueta;
-    private LinkedList<TAdyacencia> adyacentes;
+    private LinkedList<IAdyacencia<V,A>> adyacentes;
     private boolean visitado;
-    private Object datos;
+    private V datos;
 
     @Override
     public Comparable getEtiqueta() {
@@ -17,47 +23,50 @@ public class TVertice implements IVertice{
     }
 
     @Override
-    public LinkedList<TAdyacencia> getAdyacentes() {
+    public LinkedList<IAdyacencia<V,A>> getAdyacentes() {
         return adyacentes;
     }
 
-    public TVertice(Comparable unaEtiqueta) {
-        this.etiqueta = unaEtiqueta;
+    public TVertice(V pDato, Comparable pEtiqueta) {
+        this.etiqueta = pEtiqueta;
+        this.datos = pDato;
         adyacentes = new LinkedList();
         visitado = false;
-    }
-
-    @Override
-    public void setVisitado(boolean valor) {
-        this.visitado = valor;
     }
 
     @Override
     public boolean getVisitado() {
         return this.visitado;
     }
+    
+    @Override
+    public void setVisitado(boolean valor) {
+        this.visitado = valor;
+    }
 
     @Override
-    public TAdyacencia buscarAdyacencia(TVertice verticeDestino) {
+    public IAdyacencia buscarAdyacencia(IVertice verticeDestino) {
         if (verticeDestino != null) {
             return buscarAdyacencia(verticeDestino.getEtiqueta());
         }
         return null;
     }
 
-
-    public Double obtenerCostoAdyacencia(TVertice verticeDestino) {
-        TAdyacencia ady = buscarAdyacencia(verticeDestino);
+/*
+    public Double obtenerCostoAdyacencia(IVertice verticeDestino) {
+        IAdyacencia ady = buscarAdyacencia(verticeDestino);
         if (ady != null) {
             return ady.getCosto();
         }
+        
         return Double.MAX_VALUE;
     }
+*/
 
     @Override
-    public boolean insertarAdyacencia(Double costo, TVertice verticeDestino) {
-        if (buscarAdyacencia(verticeDestino) == null) {
-            TAdyacencia ady = new TAdyacencia(costo, verticeDestino);
+    public boolean insertarAdyacencia(IVertice<V,A> pVerticeDestino, LinkedList<A> pListaRelaciones) {
+        if (buscarAdyacencia(pVerticeDestino.getEtiqueta()) == null) {
+            IAdyacencia ady = new TAdyacencia(pVerticeDestino,pListaRelaciones);
             return adyacentes.add(ady);
         }
         return false;
@@ -65,7 +74,7 @@ public class TVertice implements IVertice{
 
     @Override
     public boolean eliminarAdyacencia(Comparable nomVerticeDestino) {
-        TAdyacencia ady = buscarAdyacencia(nomVerticeDestino);
+        IAdyacencia ady = buscarAdyacencia(nomVerticeDestino);
         if (ady != null) {
             adyacentes.remove(ady);
             return true;
@@ -74,9 +83,9 @@ public class TVertice implements IVertice{
     }
 
     @Override
-    public TVertice primerAdyacente() {
+    public IVertice<V,A> primerAdyacente() {
         if (this.adyacentes.getFirst() != null) {
-            return this.adyacentes.getFirst().getDestino();
+            return this.adyacentes.getFirst().getVertice();
         }
         return null;
     }
@@ -84,9 +93,9 @@ public class TVertice implements IVertice{
     
 
     @Override
-    public TAdyacencia buscarAdyacencia(Comparable etiquetaDestino) {
-        for (TAdyacencia adyacencia : adyacentes) {
-            if (adyacencia.getDestino().getEtiqueta().compareTo(etiquetaDestino) == 0) {
+    public IAdyacencia buscarAdyacencia(Comparable etiquetaDestino) {
+        for (IAdyacencia adyacencia : adyacentes) {
+            if (adyacencia.getVertice().getEtiqueta().compareTo(etiquetaDestino) == 0) {
                 return adyacencia;
             }
         }
@@ -94,11 +103,7 @@ public class TVertice implements IVertice{
     }
 
     @Override
-    public Object getDatos() {
-        return datos; 
+    public V getDatos() {
+        return datos;
     }
-
-    
-
-
 }

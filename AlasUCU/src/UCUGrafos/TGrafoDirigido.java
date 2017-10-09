@@ -7,21 +7,34 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class TGrafoDirigido implements IGrafoDirigido {
+/**
+ * 
+ * @author Lithium582
+ * @param <V> Tipo de dato del Vértice
+ * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los vértices)
+ */
+public class TGrafoDirigido<V,A> implements IGrafoDirigido {
 
-    private Map<Comparable, TVertice> vertices; // vertices del grafo.-
-    Double[][] pinkFloyd;
+    private Map<Comparable, TVertice<V,A>> vertices; //Vértices del grafo, con el tipo del Vértice y de sus Adyacencias
+    Double[][] pinkFloyd; //No sé si esto tiene sentido
     
-    public TGrafoDirigido(Collection<TVertice> vertices, Collection<TArista> aristas) {
+    public TGrafoDirigido(){
         this.vertices = new HashMap<>();
         this.pinkFloyd = null;
+    }
+    
+    public TGrafoDirigido(Collection<TVertice> vertices, Collection<TAdyacencia> aristas) {
+        this.vertices = new HashMap<>();
+        this.pinkFloyd = null;
+        String a = "";
         
         for (TVertice vertice : vertices) {
             insertarVertice(vertice.getEtiqueta());
         }
         
-        for (TArista arista : aristas) {
-            insertarArista(arista);
+        for (TAdyacencia adyacencia : aristas) {
+            //insertarArista(arista);
+            insertarAdyacencia(adyacencia);
         }
     }
 
@@ -158,7 +171,7 @@ public class TGrafoDirigido implements IGrafoDirigido {
     /**
      * @return the vertices
      */
-    public Map<Comparable, TVertice> getVertices() {
+    public Map<Comparable, TVertice<V,A>> getVertices() {
         return vertices;
     }
 
