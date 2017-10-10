@@ -23,18 +23,24 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
         this.pinkFloyd = null;
     }
     
-    public TGrafoDirigido(Collection<TVertice> vertices, Collection<TAdyacencia> aristas) {
+    public TGrafoDirigido(Collection<TVertice<V,A>> vertices, Collection<TAdyacencia<V,A>> adyacencias) {
         this.vertices = new HashMap<>();
         this.pinkFloyd = null;
         String a = "";
         
-        for (TVertice vertice : vertices) {
-            insertarVertice(vertice.getEtiqueta());
+        for (TVertice<V,A> vertice : vertices) {
+            insertarVertice(vertice.getEtiqueta(), vertice.getDatos());
         }
         
-        for (TAdyacencia adyacencia : aristas) {
+        for (TAdyacencia<V,A> adyacencia : adyacencias) {
             //insertarArista(arista);
-            insertarAdyacencia(adyacencia);
+            //insertarAdyacencia(adyacencia);
+            
+            TVertice vertOrigen = buscarVertice(adyacencia.getEtiqueta());
+            TVertice vertDestino = buscarVertice(adyacencia.getVertice().getEtiqueta());
+            if ((vertOrigen != null) && (vertDestino != null)) {
+                vertOrigen.insertarAdyacencia(vertDestino, adyacencia.getRelaciones());
+            }
         }
     }
 
@@ -120,7 +126,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
      *
      * @return True si se pudo insertar la adyacencia, false en caso contrario
      */
-    public boolean insertarArista(TArista arista) {
+    /*public boolean insertarArista(TArista arista) {
         if ((arista.getEtiquetaOrigen()!= null) && (arista.getEtiquetaDestino() != null)) {
             TVertice vertOrigen = buscarVertice(arista.getEtiquetaOrigen());
             TVertice vertDestino = buscarVertice(arista.getEtiquetaDestino());
@@ -129,7 +135,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
             }
         }
         return false;
-    }
+    }*/
  
     /**
      * Metodo encargado de insertar un vertice en el grafo.
@@ -140,9 +146,9 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
      * @param unaEtiqueta Etiqueta del v�rtice a ingresar.
      * @return True si se pudo insertar el vertice, false en caso contrario
      */
-    public boolean insertarVertice(Comparable unaEtiqueta) {
+    public boolean insertarVertice(Comparable unaEtiqueta, V pObjeto) {
         if ((unaEtiqueta != null) && (!existeVertice(unaEtiqueta))) {
-            TVertice vert = new TVertice(unaEtiqueta);
+            TVertice<V,A> vert = new TVertice<V,A>(pObjeto, unaEtiqueta);
             getVertices().put(unaEtiqueta, vert);
             return getVertices().containsKey(unaEtiqueta);
         }
@@ -165,8 +171,6 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
         TreeMap<Comparable, TVertice> mapOrdenado = new TreeMap<>(this.getVertices());
         return mapOrdenado.keySet().toArray();
     }
-    
- 
 
     /**
      * @return the vertices
@@ -203,20 +207,20 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
      * @return una matriz
      */
     @Override
-    public Double[][] floyd() {
+    public double[][] floyd(double[][] pC) {
         //Matriz de Costos (por eso se llama C)
-        Double[][] C = UtilGrafos.obtenerMatrizCostos(this.vertices);
+        //Double[][] C = UtilGrafos.obtenerMatrizCostos(this.vertices);
         
-        int cantVertices = C.length;
+        int cantVertices = pC.length;
         //Matriz de Floyd (por eso se llama A)
-        Double[][] A = new Double[cantVertices][cantVertices];
+        double[][] A = new double[cantVertices][cantVertices];
         
         //Matriz de vértices anteriores
-        Double[][] P = new Double[cantVertices][cantVertices];
+        double[][] P = new double[cantVertices][cantVertices];
         
         for (int i = 0; i < cantVertices; i++){
             for (int j = 0; j < cantVertices; j++){
-                A[i][j] = C[i][j];
+                A[i][j] = pC[i][j];
                 P[i][j] = 0D;
             }
         }
@@ -240,11 +244,11 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
     }
 
     @Override
-    public Comparable obtenerExcentricidad(Comparable etiquetaVertice) {
+    public Comparable obtenerExcentricidad(Comparable etiquetaVertice, double[][] pFloyd) {
         //Double[][] matrizA = this.floyd();
-        if(this.pinkFloyd == null){
-            this.pinkFloyd = this.floyd();
-        }
+        //if(this.pinkFloyd == null){
+            //this.pinkFloyd = this.floyd();
+        //}
         
         Set<Comparable> etiquetasVertices = vertices.keySet();
         Object[] VerticesIArr = etiquetasVertices.toArray();

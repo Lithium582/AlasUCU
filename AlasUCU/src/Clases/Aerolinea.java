@@ -24,7 +24,6 @@ public class Aerolinea {
     private TGrafoDirigido<Aeropuerto,Vuelo> _grafo;
     // </editor-fold>
     
-    
     private Aerolinea(){
         this._grafo = new TGrafoDirigido();
     }
@@ -37,6 +36,20 @@ public class Aerolinea {
         return instancia;
     }
     
+    public double[][] obtenerFloyd(Date pFechaDesde){
+        double[][] matrizCostos = this.obtenerMatrizCostos(pFechaDesde);
+        double[][] matrizFloyd = this._grafo.floyd(matrizCostos);
+        
+        return matrizFloyd;
+    }
+    
+    public double[][] obtenerExcentricidad(Date pFechaDesde, Comparable pEtiqueta){
+        double[][] matrizCostos = this.obtenerMatrizCostos(pFechaDesde);
+        double[][] matrizFloyd = this._grafo.floyd(matrizCostos);
+        Comparable excentricidad = this._grafo.obtenerExcentricidad(pEtiqueta,matrizFloyd);
+        return matrizFloyd;
+    }
+    
     /**
      * Método auxiliar que, dada una string con formato de fecha, la convierte
      * en un dato de tipo Date.
@@ -45,7 +58,7 @@ public class Aerolinea {
      * @return Fecha en formato Date.
     *
      */
-    public Date FormatoFecha(String pFecha) throws ParseException {
+    private Date FormatoFecha(String pFecha) throws ParseException {
         try {
             SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             Date date = dt.parse(pFecha);
@@ -76,9 +89,10 @@ public class Aerolinea {
         return strRetorno;
     }
     
-    public Double[][] obtenerMatrizCostos(Map<Comparable, TVertice<Aeropuerto,Vuelo>> vertices, Date pFechaOrigen) {
+    private double[][] obtenerMatrizCostos(Date pFechaOrigen) {
+        Map<Comparable, TVertice<Aeropuerto,Vuelo>> vertices = this._grafo.getVertices();
         int cantidadVertices = vertices.size();
-        Double[][] matrizCostos = new Double[cantidadVertices][cantidadVertices];
+        double[][] matrizCostos = new double[cantidadVertices][cantidadVertices];
 
         for (int i = 0; i < matrizCostos.length; i++) {
             for (int j = 0; j < matrizCostos.length; j++) {
@@ -129,5 +143,6 @@ public class Aerolinea {
         }
         return matrizCostos;
     }
+    
     
 }

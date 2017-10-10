@@ -1,10 +1,14 @@
 package UCUGrafos;
 
-
 import java.util.Map;
 
-
-public interface IGrafoDirigido {
+/**
+ * 
+ * @author Lithium582
+ * @param <V> Tipo de dato del Vértice
+ * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los vértices)
+ */
+public interface IGrafoDirigido<V,A> {
 
     
     /**
@@ -33,7 +37,7 @@ public interface IGrafoDirigido {
      *
      * @return True si existe la arista, false en caso contrario
      */
-    boolean existeArista(Comparable etiquetaOrigen, Comparable etiquetaDestino);
+    //boolean existeArista(Comparable etiquetaOrigen, Comparable etiquetaDestino);
 
     /**
      * Metodo encargado de verificar la existencia de un vertice dentro del
@@ -51,7 +55,7 @@ public interface IGrafoDirigido {
      *ejecuta el algoritmo de Floyd en el grafo, para hallar los caminos mínimos entre todos los pares de vértices. 
 	  * @return una matriz de n x n (n = cantidad de vértices del grafo) con los costos de los caminos mínimos. 
      */
-	Double [][] floyd();
+    double [][] floyd(double[][] pC);
 
     /**
      * Metododouble encargado de insertar una arista en el grafo (con un cierto
@@ -65,7 +69,7 @@ public interface IGrafoDirigido {
      * @param etiquetaOrigen
      * @return True si se pudo insertar la arista, false en caso contrario
      */
-    boolean insertarArista(TArista arista);
+    //boolean insertarArista(TArista arista);
 
     /**
      * Metodo encargado de insertar un vertice en el grafo.
@@ -78,7 +82,7 @@ public interface IGrafoDirigido {
      */
     boolean insertarVertice(TVertice vertice);
 
-    Comparable obtenerExcentricidad(Comparable etiquetaVertice);
+    Comparable obtenerExcentricidad(Comparable etiquetaVertice, double[][] pFloyd);
 
    /**
      *ejecuta el algoritmo de Warshall para halla la cerradura transitiva del grafo. 
@@ -86,5 +90,5 @@ public interface IGrafoDirigido {
      */
     boolean[][] warshall();
     
-    public Map<Comparable, TVertice> getVertices(); 
+    public Map<Comparable, TVertice<V,A>> getVertices(); 
 }
