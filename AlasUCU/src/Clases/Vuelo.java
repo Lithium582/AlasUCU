@@ -17,26 +17,23 @@ public class Vuelo implements IVuelo {
     private final Comparable<Integer> ID;
     private final Comparable<String> origen;
     private final Comparable<String> destino;
+    private Comparable<String> aerolinea;
     private double costo;
-    private Date fechaPartida;
-    private Date fechaLlegada;
 
     /**
      *
      * @param pOrigen
      * @param pDestino
      * @param pCosto
-     * @param pFechaPartida
-     * @param pFechaLlegada
+     * @param pAerolinea
      */
-    public Vuelo(Comparable<String> pOrigen, Comparable<String> pDestino, double pCosto, Date pFechaPartida, Date pFechaLlegada) {
+    public Vuelo(Comparable<String> pOrigen, Comparable<String> pDestino, double pCosto, Comparable<String> pAerolinea) {
         this.ID = idVuelo++;
         
         this.origen = pOrigen;
         this.destino = pDestino;
         this.costo = pCosto;
-        this.fechaPartida = pFechaPartida;
-        this.fechaLlegada = pFechaLlegada;
+        this.aerolinea = pAerolinea;
     }
 
     /**
@@ -77,47 +74,21 @@ public class Vuelo implements IVuelo {
     
     /**
      *
-     * @return
-     */
-    @Override
-    public Date getFechaPartida(){
-        return this.fechaPartida;
-    }
-    
-    /**
-     *
-     * @param nuevaFecha
-     */
-    @Override
-    public void setFechaPartida(Date nuevaFecha){
-        this.fechaPartida = nuevaFecha;
-    }
-    
-    /**
-     *
-     * @return
-     */
-    @Override
-    public Date getFechaLlegada(){
-        return this.fechaLlegada;
-    }
-    
-    /**
-     *
-     * @param nuevaFecha
-     */
-    @Override
-    public void setFechaLlegada(Date nuevaFecha){
-        this.fechaLlegada = nuevaFecha;
-    }
-    
-    /**
-     *
      * @param nuevoCosto
      */
     @Override
     public void setCosto(float pNuevoCosto){
         this.costo = pNuevoCosto;
+    }
+    
+    @Override
+    public Comparable<String> getAerolinea() {
+        return this.aerolinea;
+    }
+    
+    @Override
+    public void setAerolinea(Comparable<String> pNuevaAerolinea){
+        this.aerolinea = pNuevaAerolinea;
     }
     
     @Override

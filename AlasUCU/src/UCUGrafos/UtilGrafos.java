@@ -1,6 +1,5 @@
 package UCUGrafos;
 
-
 import Clases.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,61 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UtilGrafos {
-
-    public static Double[][] obtenerMatrizCostos(Map<Comparable, TVertice<Aeropuerto,Vuelo>> vertices, Date pFechaOrigen) {
-        int cantidadVertices = vertices.size();
-        Double[][] matrizCostos = new Double[cantidadVertices][cantidadVertices];
-
-        for (int i = 0; i < matrizCostos.length; i++) {
-            for (int j = 0; j < matrizCostos.length; j++) {
-                if (i == j) {
-                    matrizCostos[i][j] = -1d;
-                } else {
-                    matrizCostos[i][j] = Double.MAX_VALUE;
-                }
-            }
-        }
-
-        int i = 0;
-
-        Set<Comparable> etiquetasVertices = vertices.keySet();
-        Object[] VerticesIArr = etiquetasVertices.toArray();
-        Object[] VerticesJArr = etiquetasVertices.toArray();
-
-        while (i < cantidadVertices) {
-            int j = 0;
-            while (j < cantidadVertices) {
-                TVertice elemVerticeI = vertices.get(VerticesIArr[i]);
-                TVertice elemVerticeJ = vertices.get(VerticesJArr[j]);
-
-                if (!elemVerticeI.getEtiqueta().equals(elemVerticeJ.getEtiqueta())) {
-                    TVertice verticeI = (TVertice) elemVerticeI;
-                    TVertice verticeJ = (TVertice) elemVerticeJ;
-                    //Double costoAdyacencia = verticeI.obtenerCostoAdyacencia(verticeJ);
-                    
-                    IAdyacencia abcccc = verticeI.buscarAdyacencia(verticeJ);
-                    Object lista = abcccc.getRelaciones();
-                    LinkedList<Vuelo> lista2 = (LinkedList<Vuelo>)lista;
-                    double costoMinimo = Double.MAX_VALUE;
-                    
-                    for(Vuelo objVueloActual : lista2){
-                        if(objVueloActual.getFechaPartida().compareTo(pFechaOrigen) < 0){
-                            if(objVueloActual.getCosto() < costoMinimo){
-                                costoMinimo = objVueloActual.getCosto();
-                            }
-                        }
-                    }
-                    
-                    //matrizCostos[i][j] = costoAdyacencia;
-                    matrizCostos[i][j] = costoMinimo;
-                }
-                j++;
-            }
-            i++;
-        }
-        return matrizCostos;
-    }
-
     public static void imprimirMatriz(Comparable[][] matriz, Map<Comparable, TVertice> vertices) {
         Object[] etiquetas = vertices.keySet().toArray();
         System.out.print("  ");
@@ -214,35 +158,5 @@ public class UtilGrafos {
             }
         }
         return texto;
-    }
-
-    public static <T extends IGrafoDirigido> T cargarGrafo(String nomArchVert, String nomArchAdy, 
-            boolean ignoreHeader, Class t  ) {
-
-        String[] vertices = ManejadorArchivosGenerico.leerArchivo(nomArchVert, ignoreHeader);
-        String[] aristas = ManejadorArchivosGenerico.leerArchivo(nomArchAdy, ignoreHeader);
-
-        List<TVertice> verticesList = new ArrayList<TVertice>(vertices.length);
-        List<TArista> aristasList = new ArrayList<TArista>(aristas.length);
-
-        for (String verticeString : vertices) {
-            if ((verticeString != null) && (verticeString.trim() != "")) {
-                verticeString = verticeString.split(",")[0];
-                verticesList.add(new TVertice(verticeString));
-            }
-        }
-        for (String aristaString : aristas) {
-            if ((aristaString != null) && (aristaString.trim() != "")) {
-                String[] datos = aristaString.split(",");
-                aristasList.add(new TArista(datos[0], datos[1], Double.parseDouble(datos[2])));
-            }
-        }
-        try {
-            t.getConstructor(Collection.class, Collection.class);
-            return (T) (t.getConstructor(Collection.class, Collection.class).newInstance(verticesList, aristasList));
-        } catch (Exception ex) {
-            Logger.getLogger(UtilGrafos.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        return null;
     }
 }

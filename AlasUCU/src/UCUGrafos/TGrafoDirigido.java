@@ -13,9 +13,9 @@ import java.util.TreeMap;
  * @param <V> Tipo de dato del Vértice
  * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los vértices)
  */
-public class TGrafoDirigido<V,A> implements IGrafoDirigido {
+public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
 
-    private Map<Comparable, TVertice<V,A>> vertices; //Vértices del grafo, con el tipo del Vértice y de sus Adyacencias
+    private Map<Comparable, IVertice<V,A>> vertices; //Vértices del grafo, con el tipo del Vértice y de sus Adyacencias
     Double[][] pinkFloyd; //No sé si esto tiene sentido
     
     public TGrafoDirigido(){
@@ -23,24 +23,22 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
         this.pinkFloyd = null;
     }
     
-    public TGrafoDirigido(Collection<TVertice<V,A>> vertices, Collection<TAdyacencia<V,A>> adyacencias) {
+    public TGrafoDirigido(Collection<IVertice<V,A>> vertices, Collection<IArista<A>> aristas) {
         this.vertices = new HashMap<>();
         this.pinkFloyd = null;
         String a = "";
         
-        for (TVertice<V,A> vertice : vertices) {
-            insertarVertice(vertice.getEtiqueta(), vertice.getDatos());
+        this.cargarGrafo(vertices,aristas);
+    }
+    
+    @Override
+    public void cargarGrafo(Collection<IVertice<V,A>> vertices, Collection<IArista<A>> aristas){
+        for (IVertice<V,A> vertice : vertices) {
+            insertarVertice(vertice);
         }
         
-        for (TAdyacencia<V,A> adyacencia : adyacencias) {
-            //insertarArista(arista);
-            //insertarAdyacencia(adyacencia);
-            
-            TVertice vertOrigen = buscarVertice(adyacencia.getEtiqueta());
-            TVertice vertDestino = buscarVertice(adyacencia.getVertice().getEtiqueta());
-            if ((vertOrigen != null) && (vertDestino != null)) {
-                vertOrigen.insertarAdyacencia(vertDestino, adyacencia.getRelaciones());
-            }
+        for (IArista<A> arista : aristas) {
+            insertarArista(arista);
         }
     }
 
@@ -52,7 +50,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
      */
     public boolean eliminarArista(Comparable nomVerticeOrigen, Comparable nomVerticeDestino) {
         if ((nomVerticeOrigen != null) && (nomVerticeDestino != null)) {
-            TVertice vertOrigen = buscarVertice(nomVerticeOrigen);
+            IVertice vertOrigen = buscarVertice(nomVerticeOrigen);
             if (vertOrigen != null) {
                 return vertOrigen.eliminarAdyacencia(nomVerticeDestino);
             }
@@ -81,8 +79,8 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
      * @return True si existe la adyacencia, false en caso contrario
      */
     public boolean existeArista(Comparable etiquetaOrigen, Comparable etiquetaDestino) {
-        TVertice vertOrigen = buscarVertice(etiquetaOrigen);
-        TVertice vertDestino = buscarVertice(etiquetaDestino);
+        IVertice vertOrigen = buscarVertice(etiquetaOrigen);
+        IVertice vertDestino = buscarVertice(etiquetaDestino);
         if ((vertOrigen != null) && (vertDestino != null)) {
             return vertOrigen.buscarAdyacencia(vertDestino) != null;
         }
@@ -111,7 +109,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
      * @param unaEtiqueta Etiqueta del v�rtice a buscar.-
      * @return El vertice encontrado. En caso de no existir, retorna nulo.
      */
-    private TVertice buscarVertice(Comparable unaEtiqueta) {
+    private IVertice buscarVertice(Comparable unaEtiqueta) {
         return getVertices().get(unaEtiqueta);
     }
 
@@ -126,16 +124,16 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
      *
      * @return True si se pudo insertar la adyacencia, false en caso contrario
      */
-    /*public boolean insertarArista(TArista arista) {
+    public boolean insertarArista(IArista arista) {
         if ((arista.getEtiquetaOrigen()!= null) && (arista.getEtiquetaDestino() != null)) {
-            TVertice vertOrigen = buscarVertice(arista.getEtiquetaOrigen());
-            TVertice vertDestino = buscarVertice(arista.getEtiquetaDestino());
+            IVertice vertOrigen = buscarVertice(arista.getEtiquetaOrigen());
+            IVertice vertDestino = buscarVertice(arista.getEtiquetaDestino());
             if ((vertOrigen != null) && (vertDestino != null)) {
-                return vertOrigen.insertarAdyacencia(arista.getCosto(), vertDestino);
+                return vertOrigen.insertarAdyacencia(vertDestino,arista.getRelaciones());
             }
         }
         return false;
-    }*/
+    }
  
     /**
      * Metodo encargado de insertar un vertice en el grafo.
@@ -154,9 +152,9 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
         }
         return false;
     }
+    
     @Override
- 
- public boolean insertarVertice(TVertice vertice) {
+    public boolean insertarVertice(IVertice vertice) {
      Comparable unaEtiqueta = vertice.getEtiqueta();
      if ((unaEtiqueta != null) && (!existeVertice(unaEtiqueta))) {
             getVertices().put(unaEtiqueta, vertice);
@@ -168,18 +166,18 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
       
     
     public Object[] getEtiquetasOrdenado() {
-        TreeMap<Comparable, TVertice> mapOrdenado = new TreeMap<>(this.getVertices());
+        TreeMap<Comparable, IVertice> mapOrdenado = new TreeMap<>(this.getVertices());
         return mapOrdenado.keySet().toArray();
     }
 
     /**
      * @return the vertices
      */
-    public Map<Comparable, TVertice<V,A>> getVertices() {
+    public Map<Comparable, IVertice<V,A>> getVertices() {
         return vertices;
     }
 
-    @Override
+    /*@Override
     public Comparable centroDelGrafo() {
         Set<Comparable> etiquetasVertices = vertices.keySet();
         Object[] VerticesIArr = etiquetasVertices.toArray();
@@ -200,7 +198,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido {
         
         return etiquetaMasGrande;
         
-    }
+    }*/
 
     /**
      * Método Pink Floyd

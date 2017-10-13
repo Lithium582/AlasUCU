@@ -10,13 +10,13 @@ import UCUGrafos.*;
  *
  * @author Lithium582
  */
-public class AlasUCU {
+public class Main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TGrafoDirigido gd = (TGrafoDirigido) UtilGrafos.cargarGrafo("src/aeropuertos_1.txt","src/conexiones_1.txt",
+        /*TGrafoDirigido gd = (TGrafoDirigido) UtilGrafos.cargarGrafo("src/aeropuertos_1.txt","src/conexiones_1.txt",
                 false, TGrafoDirigido.class);
 
         Object[] etiquetasarray = gd.getEtiquetasOrdenado();
@@ -29,7 +29,7 @@ public class AlasUCU {
             System.out.println("excentricidad de " + etiquetasarray[i] + " : " + gd.obtenerExcentricidad((Comparable) etiquetasarray[i]));
         }
         System.out.println();
-        System.out.println("Centro del grafo: " + gd.centroDelGrafo());
+        System.out.println("Centro del grafo: " + gd.centroDelGrafo());*/
     }
     
 }

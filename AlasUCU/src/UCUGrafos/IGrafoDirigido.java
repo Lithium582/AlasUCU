@@ -1,5 +1,6 @@
 package UCUGrafos;
 
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -14,7 +15,7 @@ public interface IGrafoDirigido<V,A> {
     /**
      * @return Etiqueta del centro del grafo
      */
-    Comparable centroDelGrafo();
+    //Comparable centroDelGrafo();
 
     /**
      * Metodo encargado de eliminar una arista dada por un origen y destino.
@@ -80,8 +81,10 @@ public interface IGrafoDirigido<V,A> {
      * @param unaEtiqueta Etiqueta del vertice a ingresar.
      * @return True si se pudo insertar el vertice, false en caso contrario
      */
-    boolean insertarVertice(TVertice vertice);
+    boolean insertarVertice(IVertice vertice);
 
+    void cargarGrafo(Collection<IVertice<V,A>> vertices, Collection<IArista<A>> aristas);
+    
     Comparable obtenerExcentricidad(Comparable etiquetaVertice, double[][] pFloyd);
 
    /**
@@ -90,5 +93,5 @@ public interface IGrafoDirigido<V,A> {
      */
     boolean[][] warshall();
     
-    public Map<Comparable, TVertice<V,A>> getVertices(); 
+    public Map<Comparable, IVertice<V,A>> getVertices(); 
 }

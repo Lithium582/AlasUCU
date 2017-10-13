@@ -42,26 +42,15 @@ public interface IVuelo {
     public void setCosto(float pCosto);
     
     /**
-     * Nos devuelve la fecha en que parte el vuelo.
-     * @return Fecha de partida.
+     * Retorna la aerolínea encargada del vuelo
+     * @return Aerolínea
      */
-    public Date getFechaPartida();
+    public Comparable<String> getAerolinea();
     
     /**
-     * Nos permite asignarle una nueva fecha de partida al vuelo.
-     * @param nuevaFecha Nueva fecha de partida.
+     * Nos permite asignarle una nueva aerolínea al viaje
+     * @param pAerolinea ID de la nueva Aerolínea
      */
-    public void setFechaPartida(Date nuevaFecha);
+    public void setAerolinea(Comparable<String> pAerolinea);
     
-    /**
-     * Retorna la fecha en que llega el vuelo a destino
-     * @return Fecha de llegada
-     */
-    public Date getFechaLlegada();
-    
-    /**
-     * Asigna una nueva fecha de llegada al vuelo
-     * @param nuevaFecha Nueva fecha de llegada
-     */
-    public void setFechaLlegada(Date nuevaFecha);
 }

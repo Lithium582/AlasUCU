@@ -6,7 +6,7 @@ import java.util.Collection;
 public class PruebaGrafo {
 
     public static void main(String[] args) {
-        TGrafoDirigido gd = (TGrafoDirigido) UtilGrafos.cargarGrafo("src/tdagrafos/aeropuertos_1.txt","src/tdagrafos/conexiones_1.txt",
+        /*TGrafoDirigido gd = (TGrafoDirigido) UtilGrafos.cargarGrafo("src/tdagrafos/aeropuertos_1.txt","src/tdagrafos/conexiones_1.txt",
                 false, TGrafoDirigido.class);
 
         Object[] etiquetasarray = gd.getEtiquetasOrdenado();
@@ -19,7 +19,7 @@ public class PruebaGrafo {
             System.out.println("excentricidad de " + etiquetasarray[i] + " : " + gd.obtenerExcentricidad((Comparable) etiquetasarray[i]));
         }
         System.out.println();
-        System.out.println("Centro del grafo: " + gd.centroDelGrafo());
+        System.out.println("Centro del grafo: " + gd.centroDelGrafo());*/
        
        
     }
