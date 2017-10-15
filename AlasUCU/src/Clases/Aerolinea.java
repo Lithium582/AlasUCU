@@ -6,7 +6,7 @@
 package Clases;
 
 /**
- * La aeolínea beía tá bolando!
+ * Aeolínea beía tá bolano!
  * @author Lithium582
  */
 public class Aerolinea {

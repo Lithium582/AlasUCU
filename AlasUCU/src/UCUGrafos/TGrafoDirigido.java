@@ -128,6 +128,12 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
         if ((arista.getEtiquetaOrigen()!= null) && (arista.getEtiquetaDestino() != null)) {
             IVertice vertOrigen = buscarVertice(arista.getEtiquetaOrigen());
             IVertice vertDestino = buscarVertice(arista.getEtiquetaDestino());
+            
+            System.out.println("PUTO EL QUE LEE");
+            if(arista.getEtiquetaOrigen().equals("04G")){
+                String aaa = "AAA";
+            }
+            
             if ((vertOrigen != null) && (vertDestino != null)) {
                 return vertOrigen.insertarAdyacencia(vertDestino,arista.getRelaciones());
             }
@@ -162,8 +168,6 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
         }
         return false;
     }
-
-      
     
     public Object[] getEtiquetasOrdenado() {
         TreeMap<Comparable, IVertice> mapOrdenado = new TreeMap<>(this.getVertices());
@@ -176,29 +180,6 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
     public Map<Comparable, IVertice<V,A>> getVertices() {
         return vertices;
     }
-
-    /*@Override
-    public Comparable centroDelGrafo() {
-        Set<Comparable> etiquetasVertices = vertices.keySet();
-        Object[] VerticesIArr = etiquetasVertices.toArray();
-        Comparable maxValue = -1D;
-        Comparable currentValue = -1;
-        String etiquetaMasGrande = "";
-        
-        maxValue = this.obtenerExcentricidad(String.valueOf(VerticesIArr[0]));
-        
-        for(int x = 1; x < VerticesIArr.length; x++){
-            currentValue = this.obtenerExcentricidad(String.valueOf(VerticesIArr[x]));
-            
-            if(currentValue.compareTo(maxValue) < 0){
-                maxValue = currentValue;
-                etiquetaMasGrande = String.valueOf(VerticesIArr[x]);
-            }
-        }
-        
-        return etiquetaMasGrande;
-        
-    }*/
 
     /**
      * Método Pink Floyd
@@ -274,10 +255,95 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
     }
 
     @Override
-    public boolean[][] warshall() {
+    public boolean contieneCiclos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public boolean insertarArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, Comparable costo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
+  //Be pe efe sin par·metros
+    @Override
+    public Collection<Comparable> bpf() {
+        Set<Comparable> clavesVertices = this.vertices.keySet();
+        IVertice verticeActual = null;
+        //Diamante ?
+        Collection<Comparable> verticesVisitados = new LinkedList<>();
+      
+        for(Comparable c : clavesVertices){
+            verticeActual = this.vertices.get(c);
+            if(!(verticeActual.getVisitado())){
+                verticeActual.bpf(verticesVisitados);
+            }
+            
+        }
+        
+        return verticesVisitados;
+    }
+
+    @Override
+    public Collection<Comparable> bpf(Comparable etiquetaOrigen) {
+        IVertice verticeActual = null;
+        Collection<Comparable> verticesVisitados = new LinkedList<Comparable>();
+        
+        verticeActual = this.vertices.get(etiquetaOrigen);
+        verticeActual.bpf(verticesVisitados);
+        
+        return verticesVisitados;
+    }
     
+    @Override
+    public Collection<Comparable> bpf(TVertice verticeOrigen) {
+        Collection<Comparable> verticesVisitados = new LinkedList<Comparable>();
+        verticeOrigen.bpf(verticesVisitados);
+        
+        return verticesVisitados;
+    }
+    
+    @Override
+    public TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino){
+        IVertice verticeOrigen = this.buscarVertice(etiquetaOrigen);
+        TCaminos caminos = null;
+        TCamino caminoPrevio = new TCamino(verticeOrigen);
+        
+        if(verticeOrigen != null){
+            caminos = new TCaminos();
+            caminos = verticeOrigen.todosLosCaminos(etiquetaDestino, caminoPrevio, caminos);
+        }
+        
+        return caminos;
+    }
+    
+    @Override
+    public boolean tieneCiclo(TCamino camino) {
+        return false;
+    }
+    
+    @Override
+    public boolean tieneCiclo() {
+        TCamino camino = null;
+        boolean esCiclo = false;
+        
+        for(IVertice vertice : this.vertices.values()){
+            if(!vertice.getVisitado()){
+                camino = new TCamino(vertice);
+                esCiclo = vertice.tieneCiclo(camino);
+            }
+            
+            if(esCiclo){
+                return esCiclo;
+            }
+        }
+        
+        return esCiclo;
+    }
+
+    /** ----------------------------------------------------- **/
+    
+    @Override
+    public boolean tieneCiclo(Comparable etiquetaOrigen) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -1,25 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import UCUGrafos.*;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
 /**
- *
+ * No, no me equivoqué. Es Ala porque es una sola ?)
  * @author Lithium582
  */
-//No, no me equivoqué. Es Ala porque es una sola ?)
 public class AlaUCU {
     
     // <editor-fold defaultstate="extended" desc="Atributos">
@@ -30,6 +23,7 @@ public class AlaUCU {
     
     private AlaUCU(){
         this._grafo = new TGrafoDirigido();
+        this._aerolineas = new LinkedList<Aerolinea>();
     }
     
     public static AlaUCU getInstancia(){
@@ -112,29 +106,24 @@ public class AlaUCU {
             }
         }
 
-        int i = 0;
-
         Set<Comparable> etiquetasVertices = vertices.keySet();
-        int tamano = etiquetasVertices.size();
-        //Comparable[] prueba1 = new Comparable[etiquetasVertices.size()];
-        Comparable[] VerticesIArr = etiquetasVertices.toArray(new Comparable[tamano]);
-        Comparable[] VerticesJArr = etiquetasVertices.toArray(new Comparable[tamano]);
+        Comparable[] VerticesIArr = etiquetasVertices.toArray(new Comparable[cantidadVertices]);
+        Comparable[] VerticesJArr = etiquetasVertices.toArray(new Comparable[cantidadVertices]);
 
-        while (i < cantidadVertices) {
-            int j = 0;
-            while (j < cantidadVertices) {
-                IVertice VerticeI = vertices.get(VerticesIArr[i]);
+        //Recorre 
+        for (int i = 0; i < cantidadVertices; i++){
+            IVertice VerticeI = vertices.get(VerticesIArr[i]);
+            
+            for (int j = 0; j < cantidadVertices; j++){
                 IVertice VerticeJ = vertices.get(VerticesJArr[j]);
 
                 if (!VerticeI.getEtiqueta().equals(VerticeJ.getEtiqueta())) {
-                    //Double costoAdyacencia = verticeI.obtenerCostoAdyacencia(verticeJ);
+                    IAdyacencia<Aeropuerto,Vuelo> objAdyacencia = VerticeI.buscarAdyacencia(VerticeJ);
                     
-                    IAdyacencia<Aeropuerto,Vuelo> abcccc = VerticeI.buscarAdyacencia(VerticeJ);
-                    //Object lista = abcccc.getRelaciones();
-                    LinkedList<Vuelo> lista2 = abcccc.getRelaciones();
+                    LinkedList<Vuelo> vuelos = objAdyacencia.getRelaciones();
                     double costoMinimo = Double.MAX_VALUE;
                     
-                    for(Vuelo objVueloActual : lista2){
+                    for(Vuelo objVueloActual : vuelos){
                         if(objVueloActual.getAerolinea().compareTo(pAerolinea.toString()) > 0){
                             if(objVueloActual.getCosto() < costoMinimo){
                                 costoMinimo = objVueloActual.getCosto();
@@ -142,12 +131,9 @@ public class AlaUCU {
                         }
                     }
                     
-                    //matrizCostos[i][j] = costoAdyacencia;
                     matrizCostos[i][j] = costoMinimo;
                 }
-                j++;
             }
-            i++;
         }
         return matrizCostos;
     }
@@ -162,7 +148,7 @@ public class AlaUCU {
      * @param pArchivoVuelos Nombre del archivo de vuelos
      * @param pArchivoAerolineas Nombre del archivo de aerolíneas
      */
-    public void cargarGrafo(String pArchivoAeropuertos, String pArchivoVuelos, String pArchivoAerolineas) {
+    public void cargarGrafo(String pArchivoAeropuertos, String pArchivoAerolineas, String pArchivoVuelos) {
         //Leemos los archivos, obteniendo así todos los vértices y aristas.
         String[] arrayAeropuertos = ManejadorArchivosGenerico.leerArchivo(pArchivoAeropuertos, false);
         String[] arrayVuelos = ManejadorArchivosGenerico.leerArchivo(pArchivoVuelos, false);
@@ -200,6 +186,12 @@ public class AlaUCU {
                     && (line[2].trim().length() == 3)) {
                 String aerolinea = line[0].trim();
                 String origen = line[1].trim();
+                
+                System.out.println("PUTO EL QUE LEE");
+                if(origen.equals("04G")){
+                    String aaaaaa = "BBBB";
+                }
+                
                 String destino = line[2].trim();
                 double costo = Double.parseDouble(line[3].trim());
                 //Creamos un vuelo a partir de la informacion
@@ -207,9 +199,18 @@ public class AlaUCU {
                 //TArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, LinkedList<E> pRelaciones)
                 TArista<IVuelo> nuevaArista = new TArista(origen, destino, nuevoVuelo);
                 lasAristas.add(nuevaArista);
+                String aaaaaaa = "BBBB";
             }
         }
         
         this._grafo.cargarGrafo(losVertices, lasAristas);
+    }
+    
+    public Collection<Comparable> bpf(Comparable etiquetaOrigen){
+        return this._grafo.bpf(etiquetaOrigen);
+    }
+    
+    public TCaminos todosLosCaminos(Comparable pEtiquetaOrigen, Comparable pEtiquetaDestino){
+        return this._grafo.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino);
     }
 }

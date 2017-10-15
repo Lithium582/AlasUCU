@@ -1,6 +1,7 @@
 package UCUGrafos;
 
 
+import java.util.Collection;
 import java.util.LinkedList;
 
 /**
@@ -31,6 +32,12 @@ public interface IVertice<V,A> {
 
     void setVisitado(boolean valor);
 
+    void bpf(Collection<Comparable> visitados);
     
+    boolean tieneCiclo(TCamino camino);
+    
+    boolean tieneCiclo(LinkedList<Comparable> camino);
+    
+    TCaminos todosLosCaminos(Comparable etiquetaDestino, TCamino caminoPrevio, TCaminos losCaminos);
     
 }

@@ -23,8 +23,11 @@ public class TArista<E> implements IArista<E> {
     public TArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, E pRelacion) {
         this.etiquetaOrigen = etiquetaOrigen;
         this.etiquetaDestino = etiquetaDestino;
-        LinkedList<E> listaRelaciones = new LinkedList<>();
-        listaRelaciones.add(pRelacion);
+        /*LinkedList<E> listaRelaciones = new LinkedList<>();
+        listaRelaciones.add(pRelacion);*/
+        
+        relaciones = new LinkedList<E>();
+        relaciones.add(pRelacion);
     }
     
     @Override

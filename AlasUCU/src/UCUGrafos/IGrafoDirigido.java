@@ -57,21 +57,7 @@ public interface IGrafoDirigido<V,A> {
 	  * @return una matriz de n x n (n = cantidad de vértices del grafo) con los costos de los caminos mínimos. 
      */
     double [][] floyd(double[][] pC);
-
-    /**
-     * Metododouble encargado de insertar una arista en el grafo (con un cierto
-     * costo), dado su vertice origen y destino.- Para que la arista sea
-     * valida, se deben cumplir los siguientes casos: 1) Las etiquetas pasadas
-     * por parametros son validas.- 2) Los vertices (origen y destino) existen
-     * dentro del grafo.- 3) No es posible ingresar una arista ya existente
-     * (miso origen y mismo destino, aunque el costo sea diferente).- 4) El
-     * costo debe ser mayor que 0.
-     *
-     * @param etiquetaOrigen
-     * @return True si se pudo insertar la arista, false en caso contrario
-     */
-    //boolean insertarArista(TArista arista);
-
+    
     /**
      * Metodo encargado de insertar un vertice en el grafo.
      *
@@ -87,11 +73,23 @@ public interface IGrafoDirigido<V,A> {
     
     Comparable obtenerExcentricidad(Comparable etiquetaVertice, double[][] pFloyd);
 
-   /**
-     *ejecuta el algoritmo de Warshall para halla la cerradura transitiva del grafo. 
-	  * @return una matriz de n x n (n = cantidad de vértices del grafo) en la que sus celdas indican si hay (TRUE) o no (FALSE) conectividad entre cada par de vértices. 
-     */
-    boolean[][] warshall();
+    boolean contieneCiclos();
+    
+    boolean insertarArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, Comparable costo);
+    
+    Collection<Comparable> bpf();
+    
+    Collection<Comparable> bpf(Comparable etiquetaOrigen);
+    
+    Collection<Comparable> bpf(TVertice verticeOrigen);
+    
+    TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino);
+    
+    boolean tieneCiclo(TCamino camino);
+    
+    boolean tieneCiclo();
+    
+    boolean tieneCiclo(Comparable etiquetaOrigen);
     
     public Map<Comparable, IVertice<V,A>> getVertices(); 
 }
