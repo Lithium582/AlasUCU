@@ -1,5 +1,6 @@
 package UCUGrafos;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -29,6 +30,35 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
         String a = "";
         
         this.cargarGrafo(vertices,aristas);
+    }
+    
+    @Override
+    public int obtenerPosicionEnElHashMap(Comparable pComp){
+        int i = 0;
+        for(Comparable comp : this.getVertices().keySet()){
+            if(comp.equals(pComp)){
+                return i;
+            }
+            
+            i++;
+        }
+        
+        return -1;
+    }
+    
+    @Override
+    public Comparable obtenerEtiquetaPorPosicion(int pPosicion){
+        int i = 0;
+        for(Comparable comp : this.getVertices().keySet()){
+            if(i == pPosicion){
+                return this.getVertices().get(comp).getDatos().toString();
+                //return comp;
+            }
+            
+            i++;
+        }
+        
+        return null;
     }
     
     @Override
@@ -65,10 +95,13 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
      *
      */
     public boolean eliminarVertice(Comparable nombreVertice) {
-        if (nombreVertice != null) {
-            getVertices().remove(nombreVertice);
-            return getVertices().containsKey(nombreVertice);
+        IVertice<V,A> verticeBuscado = this.getVertices().get(nombreVertice);
+        
+        if (verticeBuscado != null) {
+            verticeBuscado.setActivo(false);
+            return true;
         }
+        
         return false;
     }
 
@@ -129,11 +162,6 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
             IVertice vertOrigen = buscarVertice(arista.getEtiquetaOrigen());
             IVertice vertDestino = buscarVertice(arista.getEtiquetaDestino());
             
-            System.out.println("PUTO EL QUE LEE");
-            if(arista.getEtiquetaOrigen().equals("04G")){
-                String aaa = "AAA";
-            }
-            
             if ((vertOrigen != null) && (vertDestino != null)) {
                 return vertOrigen.insertarAdyacencia(vertDestino,arista.getRelaciones());
             }
@@ -186,7 +214,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
      * @return una matriz
      */
     @Override
-    public double[][] floyd(double[][] pC) {
+    public double[][] floyd(Double[][] pC) {
         //Matriz de Costos (por eso se llama C)
         //Double[][] C = UtilGrafos.obtenerMatrizCostos(this.vertices);
         
@@ -218,8 +246,51 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
                 }
             }
         }
-        //No podemos retornar P (llora)
+        //No podemos retornar P (*llora*)
         return A;
+    }
+    
+    @Override
+    public ArrayList<Double[][]> floydPink(Double[][] pC) {
+        //Matriz de Costos (por eso se llama C)
+        //Double[][] C = UtilGrafos.obtenerMatrizCostos(this.vertices);
+        
+        int cantVertices = pC.length;
+        //Matriz de Floyd (por eso se llama A)
+        Double[][] A = new Double[cantVertices][cantVertices];
+        
+        //Matriz de vértices anteriores
+        Double[][] P = new Double[cantVertices][cantVertices];
+        
+        for (int i = 0; i < cantVertices; i++){
+            for (int j = 0; j < cantVertices; j++){
+                A[i][j] = pC[i][j];
+                P[i][j] = -1D;
+            }
+        }
+        
+        for(int i = 0; i < cantVertices; i++){
+            A[i][i] = 0D;
+            P[i][i] = 0D;
+        }
+        
+        for(int k = 0; k < cantVertices; k++){
+            for(int i = 0; i < cantVertices; i++){
+                for(int j = 0; j < cantVertices; j++){
+                    if((A[i][k] + A[k][j]) < A[i][j]){
+                        A[i][j] = (A[i][k] + A[k][j]);
+                        P[i][j] = Double.parseDouble(String.valueOf(k));
+                    }
+                }
+            }
+        }
+
+        //Ahora si podemos retornar P (*llora igual*)
+        ArrayList<Double[][]> arrayRetorno = new ArrayList();
+        arrayRetorno.add(A);
+        arrayRetorno.add(P);
+        
+        return arrayRetorno;
     }
 
     @Override
@@ -289,6 +360,10 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
         Collection<Comparable> verticesVisitados = new LinkedList<Comparable>();
         
         verticeActual = this.vertices.get(etiquetaOrigen);
+        if(verticeActual == null){
+            return null;
+        }
+        
         verticeActual.bpf(verticesVisitados);
         
         return verticesVisitados;
@@ -305,10 +380,11 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
     @Override
     public TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino){
         IVertice verticeOrigen = this.buscarVertice(etiquetaOrigen);
+        IVertice verticeDestino = buscarVertice(etiquetaOrigen);
+        
         TCaminos caminos = null;
         TCamino caminoPrevio = new TCamino(verticeOrigen);
-        
-        if(verticeOrigen != null){
+        if (verticeOrigen != null && verticeDestino != null) {
             caminos = new TCaminos();
             caminos = verticeOrigen.todosLosCaminos(etiquetaDestino, caminoPrevio, caminos);
         }
@@ -319,6 +395,13 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
     @Override
     public boolean tieneCiclo(TCamino camino) {
         return false;
+    }
+    
+    @Override
+    public void desvisitarVertices() {
+        for (IVertice<V,A> vertice : this.vertices.values()) {
+            vertice.setVisitado(false);
+        }
     }
     
     @Override

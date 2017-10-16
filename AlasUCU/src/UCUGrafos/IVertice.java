@@ -18,6 +18,10 @@ public interface IVertice<V,A> {
 
     boolean eliminarAdyacencia(Comparable nomVerticeDestino);
 
+    boolean getActivo();
+    
+    void setActivo(boolean pActivo);
+    
     LinkedList<IAdyacencia<V,A>> getAdyacentes();
 
     V getDatos();

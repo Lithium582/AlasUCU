@@ -4,7 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import UCUGrafos.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
@@ -38,15 +40,19 @@ public class AlaUCU {
         return _aerolineas;
     }
     
+    public IGrafoDirigido<Aeropuerto,IVuelo> getGrafo(){
+        return this._grafo;
+    }
+    
     public double[][] obtenerFloyd(Comparable<String> pAerolinea){
-        double[][] matrizCostos = this.obtenerMatrizCostos(pAerolinea);
+        Double[][] matrizCostos = this.obtenerMatrizCostos(pAerolinea);
         double[][] matrizFloyd = this._grafo.floyd(matrizCostos);
         
         return matrizFloyd;
     }
     
     public Comparable obtenerExcentricidad(Comparable<String> pAerolinea, Comparable pEtiqueta){
-        double[][] matrizCostos = this.obtenerMatrizCostos(pAerolinea);
+        Double[][] matrizCostos = this.obtenerMatrizCostos(pAerolinea);
         double[][] matrizFloyd = this._grafo.floyd(matrizCostos);
         Comparable excentricidad = this._grafo.obtenerExcentricidad(pEtiqueta,matrizFloyd);
         return excentricidad;
@@ -91,15 +97,15 @@ public class AlaUCU {
         return strRetorno;
     }
     
-    private double[][] obtenerMatrizCostos(Comparable<String> pAerolinea) {
+    private Double[][] obtenerMatrizCostos(Comparable<String> pAerolinea) {
         Map<Comparable, IVertice<Aeropuerto,IVuelo>> vertices = this._grafo.getVertices();
         int cantidadVertices = vertices.size();
-        double[][] matrizCostos = new double[cantidadVertices][cantidadVertices];
+        Double[][] matrizCostos = new Double[cantidadVertices][cantidadVertices];
 
         for (int i = 0; i < matrizCostos.length; i++) {
             for (int j = 0; j < matrizCostos.length; j++) {
                 if (i == j) {
-                    matrizCostos[i][j] = -1;
+                    matrizCostos[i][j] = -1D;
                 } else {
                     matrizCostos[i][j] = Double.MAX_VALUE;
                 }
@@ -110,7 +116,7 @@ public class AlaUCU {
         Comparable[] VerticesIArr = etiquetasVertices.toArray(new Comparable[cantidadVertices]);
         Comparable[] VerticesJArr = etiquetasVertices.toArray(new Comparable[cantidadVertices]);
 
-        //Recorre 
+        //Recorre
         for (int i = 0; i < cantidadVertices; i++){
             IVertice VerticeI = vertices.get(VerticesIArr[i]);
             
@@ -119,14 +125,17 @@ public class AlaUCU {
 
                 if (!VerticeI.getEtiqueta().equals(VerticeJ.getEtiqueta())) {
                     IAdyacencia<Aeropuerto,Vuelo> objAdyacencia = VerticeI.buscarAdyacencia(VerticeJ);
-                    
-                    LinkedList<Vuelo> vuelos = objAdyacencia.getRelaciones();
                     double costoMinimo = Double.MAX_VALUE;
                     
-                    for(Vuelo objVueloActual : vuelos){
-                        if(objVueloActual.getAerolinea().compareTo(pAerolinea.toString()) > 0){
-                            if(objVueloActual.getCosto() < costoMinimo){
-                                costoMinimo = objVueloActual.getCosto();
+                    if(objAdyacencia != null){
+                        LinkedList<Vuelo> vuelos = objAdyacencia.getRelaciones();
+                        
+                        for(Vuelo objVueloActual : vuelos){
+                            //if(objVueloActual.getAerolinea().compareTo(pAerolinea.toString()) > 0){
+                            if(objVueloActual.getAerolinea().equals(pAerolinea.toString())){
+                                if(objVueloActual.getCosto() < costoMinimo){
+                                    costoMinimo = objVueloActual.getCosto();
+                                }
                             }
                         }
                     }
@@ -187,11 +196,6 @@ public class AlaUCU {
                 String aerolinea = line[0].trim();
                 String origen = line[1].trim();
                 
-                System.out.println("PUTO EL QUE LEE");
-                if(origen.equals("04G")){
-                    String aaaaaa = "BBBB";
-                }
-                
                 String destino = line[2].trim();
                 double costo = Double.parseDouble(line[3].trim());
                 //Creamos un vuelo a partir de la informacion
@@ -212,5 +216,80 @@ public class AlaUCU {
     
     public TCaminos todosLosCaminos(Comparable pEtiquetaOrigen, Comparable pEtiquetaDestino){
         return this._grafo.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino);
+    }
+    
+    public LinkedList<String> obtenerTodosLosCaminos(Comparable pEtiquetaOrigen, Comparable pEtiquetaDestino){
+        TCaminos<Aeropuerto,Vuelo> todosLosCaminos = this._grafo.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino);
+        LinkedList<String> caminosResultado = new LinkedList<String>();
+        int i = 0;
+        
+        for(TCamino<Aeropuerto,Vuelo> camino : todosLosCaminos.getCaminos()){
+            String caminoSTR = camino.getOrigen().getEtiqueta().toString();
+            Map<Comparable,String> vuelosPorAerolinea = null;
+            //Interno
+            Map<Comparable,Double> vuelosPorAerolinea2 = null;
+            
+            for(IAdyacencia<Aeropuerto,Vuelo> adyacencia : camino.getOtrasAdyacencias()){
+                caminoSTR += " - " + adyacencia.getEtiqueta();
+                vuelosPorAerolinea2 = new HashMap<>();
+                
+                for(IVuelo objVuelo : adyacencia.getRelaciones()){
+                    Double costo = vuelosPorAerolinea2.get(objVuelo.getAerolinea());
+                    
+                    //No se habían registrado vuelos de la aerolínea hasta el momento
+                    if(costo == null){
+                        vuelosPorAerolinea2.put(objVuelo.getAerolinea(),objVuelo.getCosto());
+                    } else{
+                        if(costo.compareTo(objVuelo.getCosto()) > 0){
+                            vuelosPorAerolinea2.replace(pEtiquetaOrigen, costo);
+                        }
+                    }
+                }
+                
+                if(vuelosPorAerolinea.size() == 0){
+                    for(Comparable c : vuelosPorAerolinea2.keySet()){
+                        caminoSTR += "(" +  vuelosPorAerolinea2.get(c).toString() + ")";
+                        vuelosPorAerolinea.put(c, caminoSTR);
+                    }
+                    //vuelosPorAerolinea = vuelosPorAerolinea2;
+                } else{
+                    //Si no hay vuelos registrados entre dos ciudades, el camino no es viable
+                    //Retorno null
+                    if(vuelosPorAerolinea2.size() > 0){
+                        for(Comparable c : vuelosPorAerolinea.keySet()){
+                            //String
+                        }
+                    } else {
+                        return null;
+                    }
+
+                }
+                
+            }
+            
+            //Jugar con el map al final
+            caminosResultado.add(caminoSTR);
+            i++;
+        }
+        
+        return caminosResultado;
+    }
+    
+    public ArrayList<Double[][]> obtenerMatrices(String pEtiqueta){
+        Double[][] matrizCostos = this.obtenerMatrizCostos(pEtiqueta);
+        
+        //UtilGrafos.imprimirMatrizCsv(matrizCostos, this._grafo.getVertices());
+        
+        ArrayList<Double[][]> arrayRetorno = this._grafo.floydPink(matrizCostos);
+        
+        return arrayRetorno;
+    }
+    
+    public int obtenerPosicionEnElHashMap(Comparable pComp){
+        return this._grafo.obtenerPosicionEnElHashMap(pComp);
+    }
+    
+    public Comparable obtenerEtiquetaPorPosicion(int pPosicion){
+        return this._grafo.obtenerEtiquetaPorPosicion(pPosicion);
     }
 }

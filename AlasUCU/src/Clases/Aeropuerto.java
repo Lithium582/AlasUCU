@@ -66,4 +66,10 @@ public class Aeropuerto {
         this.ciudad = "Javaland";
         this.pais = "Hawaii";
     }
+    
+    
+    @Override
+    public String toString(){
+        return this.nombre;
+    }
 }

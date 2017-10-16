@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UtilGrafos {
-    public static void imprimirMatriz(Comparable[][] matriz, Map<Comparable, TVertice> vertices) {
+    public static void imprimirMatriz(Comparable[][] matriz, Map<Comparable, IVertice<Aeropuerto,IVuelo>> vertices) {
         Object[] etiquetas = vertices.keySet().toArray();
         System.out.print("  ");
         for (int i = 0; i < matriz.length; i++) {
@@ -32,18 +32,18 @@ public class UtilGrafos {
         }
     }
     
-    public static void imprimirMatrizCsv(Comparable[][] matriz, Map<Comparable, TVertice> vertices) {
+    public static void imprimirMatrizCsv(Comparable[][] matriz, Map<Comparable, IVertice<Aeropuerto,IVuelo>> vertices) {
         Object[] etiquetas = vertices.keySet().toArray();
-        System.out.print("Vertice/Vertice,");
+        System.out.print("Vertice/Vertice;");
         for (int i = 0; i < matriz.length; i++) {
             System.out.print(etiquetas[i]);
             if (i != matriz.length - 1) {
-                System.out.print(",");
+                System.out.print(";");
             }
         }
         System.out.println();
         for (int i = 0; i < matriz.length; i++) {
-            System.out.print(etiquetas[i] + ", ");
+            System.out.print(etiquetas[i] + "; ");
             for (int j = 0; j < matriz.length; j++) {
                 if (matriz[i][j].compareTo(Double.MAX_VALUE) == 0) {
                     System.out.print(" INF ");
@@ -51,7 +51,7 @@ public class UtilGrafos {
                     System.out.print(matriz[i][j]);
                 }
                 if (j != matriz.length - 1) {
-                    System.out.print(",");
+                    System.out.print(";");
                 }
             }
             System.out.println();

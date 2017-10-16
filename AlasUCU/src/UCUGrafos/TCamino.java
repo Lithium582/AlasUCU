@@ -1,5 +1,6 @@
 package UCUGrafos;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -7,18 +8,19 @@ import java.util.LinkedList;
  * @author Lithium582
  */
 public class TCamino<V,A> {
-    public IVertice<V,A> origen;
-    public LinkedList<Comparable> otrosVertices; //Lista de Etiquetas de los vértices
-    public LinkedList<IAdyacencia<V,A>> otrasAdyacencias; //Lista de la adyacencia que conecta el vértice anterior en la lista con el actual
+    private IVertice<V,A> origen;
+    //public LinkedList<Comparable> otrosVertices; //Lista de Etiquetas de los vértices
+    private ArrayList<Comparable> otrosVertices;
+    private LinkedList<IAdyacencia<V,A>> otrasAdyacencias; //Lista de la adyacencia que conecta el vértice anterior en la lista con el actual
     /*
         La primera adyacencia conecta al origen con el primer vértice, y así sucesivamente
     */
     
-    public IVertice getOrigen(){
+    public IVertice<V,A> getOrigen(){
         return this.origen;
     }
     
-    public LinkedList<Comparable> getOtrosVertices(){
+    public ArrayList<Comparable> getOtrosVertices(){
         return this.otrosVertices;
     }
     
@@ -28,7 +30,7 @@ public class TCamino<V,A> {
     
     public TCamino(IVertice<V,A> v){
         this.origen = v;
-        this.otrosVertices = new LinkedList<Comparable>();
+        this.otrosVertices = new ArrayList<Comparable>();
         this.otrasAdyacencias = new LinkedList<IAdyacencia<V,A>>();
     }
     
@@ -65,15 +67,17 @@ public class TCamino<V,A> {
     
     public boolean eliminarUltimaAdyacencia(){
         boolean res = false;
-        res = otrosVertices.removeLast() != null;
+        int cantidad = otrosVertices.size();
+        res = otrosVertices.remove(cantidad) != null;
         res = res && (otrasAdyacencias.removeLast() != null);
         
         return res;
     }
     
     public void imprimirEtiquetas(){
-        System.out.println("Origen: \n");
-        System.out.println(origen.getEtiqueta());
+        System.out.println( "\n" + origen.getEtiqueta());
+        
+        ArrayList<Double[][]> nuevo = new ArrayList();
         
         for(Comparable comp : otrosVertices){
             System.out.println(comp.toString());
@@ -81,8 +85,7 @@ public class TCamino<V,A> {
     }
     
     public String imprimirEtiquetasStr(){
-        String resultado = "Verificar que no duplique el origen";
-        resultado += "\n" + origen.getEtiqueta();
+        String resultado = "\n" + origen.getEtiqueta();
         
         for(Comparable comp : otrosVertices){
             resultado += ", " + comp.toString();

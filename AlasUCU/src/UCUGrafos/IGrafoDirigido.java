@@ -1,5 +1,6 @@
 package UCUGrafos;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
@@ -56,7 +57,13 @@ public interface IGrafoDirigido<V,A> {
      *ejecuta el algoritmo de Floyd en el grafo, para hallar los caminos mínimos entre todos los pares de vértices. 
 	  * @return una matriz de n x n (n = cantidad de vértices del grafo) con los costos de los caminos mínimos. 
      */
-    double [][] floyd(double[][] pC);
+    double [][] floyd(Double[][] pC);
+    
+    int obtenerPosicionEnElHashMap(Comparable pComp);
+    
+    Comparable obtenerEtiquetaPorPosicion(int pPosicion);
+    
+    ArrayList<Double[][]> floydPink(Double[][] pC);
     
     /**
      * Metodo encargado de insertar un vertice en el grafo.
@@ -91,5 +98,7 @@ public interface IGrafoDirigido<V,A> {
     
     boolean tieneCiclo(Comparable etiquetaOrigen);
     
-    public Map<Comparable, IVertice<V,A>> getVertices(); 
+    public Map<Comparable, IVertice<V,A>> getVertices();
+    
+    void desvisitarVertices();
 }

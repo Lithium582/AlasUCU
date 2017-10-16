@@ -15,6 +15,7 @@ public class TVertice<V,A> implements IVertice<V,A>{
     private Comparable etiqueta;
     private LinkedList<IAdyacencia<V,A>> adyacentes;
     private boolean visitado;
+    private boolean esActivo;
     private V datos;
 
     @Override
@@ -43,7 +44,17 @@ public class TVertice<V,A> implements IVertice<V,A>{
     public void setVisitado(boolean valor) {
         this.visitado = valor;
     }
-
+    
+    @Override
+    public boolean getActivo(){
+        return this.esActivo;
+    }
+    
+    @Override
+    public void setActivo(boolean pActivo){
+        this.esActivo = pActivo;
+    }
+    
     @Override
     public IAdyacencia buscarAdyacencia(IVertice verticeDestino) {
         if (verticeDestino != null) {
@@ -127,11 +138,6 @@ public class TVertice<V,A> implements IVertice<V,A>{
             
             boolean visit = destino.getVisitado();
             if(!destino.getVisitado()){
-                
-                System.out.println("Puto el que lee");
-                if(destino.getEtiqueta().equals("06A")){
-                    String aaa = "a";
-                }
                 
                 if(destino.getEtiqueta().compareTo(etiquetaDestino) == 0){
                     TCamino copia = caminoPrevio.copiar();
