@@ -7,16 +7,17 @@ import java.util.LinkedList;
  *
  * @author Lithium582
  */
-public class TCamino<V,A> {
-    private IVertice<V,A> origen;
+public class TCamino {
+    private IVertice origen;
     //public LinkedList<Comparable> otrosVertices; //Lista de Etiquetas de los vértices
     private ArrayList<Comparable> otrosVertices;
-    private LinkedList<IAdyacencia<V,A>> otrasAdyacencias; //Lista de la adyacencia que conecta el vértice anterior en la lista con el actual
+    private LinkedList<IAdyacencia> otrasAdyacencias; //Lista de la adyacencia que conecta el vértice anterior en la lista con el actual
+    private Double costoTotal;
     /*
         La primera adyacencia conecta al origen con el primer vértice, y así sucesivamente
     */
     
-    public IVertice<V,A> getOrigen(){
+    public IVertice getOrigen(){
         return this.origen;
     }
     
@@ -24,17 +25,18 @@ public class TCamino<V,A> {
         return this.otrosVertices;
     }
     
-    public LinkedList<IAdyacencia<V,A>> getOtrasAdyacencias(){
+    public LinkedList<IAdyacencia> getOtrasAdyacencias(){
         return this.otrasAdyacencias;
     }
     
-    public TCamino(IVertice<V,A> v){
+    public TCamino(IVertice v){
         this.origen = v;
         this.otrosVertices = new ArrayList<Comparable>();
-        this.otrasAdyacencias = new LinkedList<IAdyacencia<V,A>>();
+        this.otrasAdyacencias = new LinkedList<IAdyacencia>();
+        this.costoTotal = 0D;
     }
     
-    public boolean agregarAdyacencia(IAdyacencia pObjAdyacencia){
+    public boolean agregarAdyacencia(IAdyacencia pObjAdyacencia, Double pCosto){
         boolean resultado = false;
         if(pObjAdyacencia.getVertice() != null){
             Comparable etiquetaDestino = pObjAdyacencia.getEtiqueta();
@@ -45,6 +47,8 @@ public class TCamino<V,A> {
             if(resultado){
                 resultado = resultado && otrasAdyacencias.add(pObjAdyacencia);
             }
+            
+            this.costoTotal += pCosto;
         }
         
         return resultado;
@@ -82,6 +86,12 @@ public class TCamino<V,A> {
         for(Comparable comp : otrosVertices){
             System.out.println(comp.toString());
         }
+        
+        System.out.println(this.costoTotal);
+    }
+    
+    public Double getCosto(){
+        return this.costoTotal;
     }
     
     public String imprimirEtiquetasStr(){
@@ -95,11 +105,12 @@ public class TCamino<V,A> {
     }
     
     public TCamino copiar(){
-        IVertice<V,A> origenCopia = new TVertice(this.origen.getDatos(), this.origen.getEtiqueta());
+        IVertice origenCopia = new TVertice(this.origen.getDatos(), this.origen.getEtiqueta());
         TCamino copia = new TCamino(origenCopia);
         origenCopia.getAdyacentes().addAll(this.origen.getAdyacentes());
         copia.getOtrosVertices().addAll(this.getOtrosVertices());
         copia.getOtrasAdyacencias().addAll(this.getOtrasAdyacencias());
+        copia.costoTotal = this.costoTotal;
         
         return copia;
     }

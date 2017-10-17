@@ -1,5 +1,6 @@
 package UCUGrafos;
 
+import Clases.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -14,9 +15,9 @@ import java.util.TreeMap;
  * @param <V> Tipo de dato del Vértice
  * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los vértices)
  */
-public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
+public class TGrafoDirigido implements IGrafoDirigido {
 
-    private Map<Comparable, IVertice<V,A>> vertices; //Vértices del grafo, con el tipo del Vértice y de sus Adyacencias
+    private Map<Comparable, IVertice> vertices; //Vértices del grafo, con el tipo del Vértice y de sus Adyacencias
     Double[][] pinkFloyd; //No sé si esto tiene sentido
     
     public TGrafoDirigido(){
@@ -24,7 +25,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
         this.pinkFloyd = null;
     }
     
-    public TGrafoDirigido(Collection<IVertice<V,A>> vertices, Collection<IArista<A>> aristas) {
+    public TGrafoDirigido(Collection<IVertice> vertices, Collection<IArista> aristas) {
         this.vertices = new HashMap<>();
         this.pinkFloyd = null;
         String a = "";
@@ -62,12 +63,12 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
     }
     
     @Override
-    public void cargarGrafo(Collection<IVertice<V,A>> vertices, Collection<IArista<A>> aristas){
-        for (IVertice<V,A> vertice : vertices) {
+    public void cargarGrafo(Collection<IVertice> vertices, Collection<IArista> aristas){
+        for (IVertice vertice : vertices) {
             insertarVertice(vertice);
         }
         
-        for (IArista<A> arista : aristas) {
+        for (IArista arista : aristas) {
             insertarArista(arista);
         }
     }
@@ -95,7 +96,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
      *
      */
     public boolean eliminarVertice(Comparable nombreVertice) {
-        IVertice<V,A> verticeBuscado = this.getVertices().get(nombreVertice);
+        IVertice verticeBuscado = this.getVertices().get(nombreVertice);
         
         if (verticeBuscado != null) {
             verticeBuscado.setActivo(false);
@@ -178,9 +179,9 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
      * @param unaEtiqueta Etiqueta del v�rtice a ingresar.
      * @return True si se pudo insertar el vertice, false en caso contrario
      */
-    public boolean insertarVertice(Comparable unaEtiqueta, V pObjeto) {
+    public boolean insertarVertice(Comparable unaEtiqueta, Aeropuerto pObjeto) {
         if ((unaEtiqueta != null) && (!existeVertice(unaEtiqueta))) {
-            TVertice<V,A> vert = new TVertice<V,A>(pObjeto, unaEtiqueta);
+            IVertice vert = new TVertice(pObjeto, unaEtiqueta);
             getVertices().put(unaEtiqueta, vert);
             return getVertices().containsKey(unaEtiqueta);
         }
@@ -205,7 +206,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
     /**
      * @return the vertices
      */
-    public Map<Comparable, IVertice<V,A>> getVertices() {
+    public Map<Comparable, IVertice> getVertices() {
         return vertices;
     }
 
@@ -378,7 +379,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
     }
     
     @Override
-    public TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino){
+    public TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, int pCantidadEscalas, Comparable pAerolinea){
         IVertice verticeOrigen = this.buscarVertice(etiquetaOrigen);
         IVertice verticeDestino = buscarVertice(etiquetaOrigen);
         
@@ -386,7 +387,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
         TCamino caminoPrevio = new TCamino(verticeOrigen);
         if (verticeOrigen != null && verticeDestino != null) {
             caminos = new TCaminos();
-            caminos = verticeOrigen.todosLosCaminos(etiquetaDestino, caminoPrevio, caminos);
+            caminos = verticeOrigen.todosLosCaminos(etiquetaDestino, caminoPrevio, caminos, pCantidadEscalas,pAerolinea);
         }
         
         return caminos;
@@ -399,7 +400,7 @@ public class TGrafoDirigido<V,A> implements IGrafoDirigido<V,A> {
     
     @Override
     public void desvisitarVertices() {
-        for (IVertice<V,A> vertice : this.vertices.values()) {
+        for (IVertice vertice : this.vertices.values()) {
             vertice.setVisitado(false);
         }
     }

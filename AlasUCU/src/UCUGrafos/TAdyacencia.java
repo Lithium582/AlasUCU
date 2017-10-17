@@ -1,5 +1,6 @@
 package UCUGrafos;
 
+import Clases.*;
 import java.util.LinkedList;
 
 /**
@@ -9,10 +10,10 @@ import java.util.LinkedList;
  * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los vértices)
  */
 
-public class TAdyacencia<V,A> implements IAdyacencia<V,A> {
+public class TAdyacencia implements IAdyacencia {
 
     private final IVertice vertice;
-    private LinkedList<A> relaciones;
+    private LinkedList<IVuelo> relaciones;
     
     @Override
     public Comparable getEtiqueta() {
@@ -20,17 +21,17 @@ public class TAdyacencia<V,A> implements IAdyacencia<V,A> {
     }
     
     @Override
-    public LinkedList<A> getRelaciones(){
+    public LinkedList<IVuelo> getRelaciones(){
         return this.relaciones;
     }
 
     @Override
-    public IVertice<V,A> getVertice() {
+    public IVertice getVertice() {
         return vertice;
     }
     
     @Override
-    public boolean agregarRelacion(A pRelacion){
+    public boolean agregarRelacion(IVuelo pRelacion){
         boolean b = this.relaciones.contains(pRelacion);
         
         if(b){ //Si lo contiene, retorno false
@@ -42,7 +43,7 @@ public class TAdyacencia<V,A> implements IAdyacencia<V,A> {
         return b; //Retorno true si la adición funcionó
     }
 
-    public TAdyacencia(IVertice<V,A> pVertice, LinkedList<A> pRelaciones) {
+    public TAdyacencia(IVertice pVertice, LinkedList<IVuelo> pRelaciones) {
         this.vertice = pVertice;
         this.relaciones = pRelaciones;
     }

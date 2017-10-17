@@ -1,5 +1,6 @@
 package UCUGrafos;
 
+import Clases.*;
 import java.util.LinkedList;
 
 /*
@@ -11,11 +12,10 @@ import java.util.LinkedList;
 /**
  * 
  * @author Lithium582
- * @param <E>
  */
-public interface IArista<E> {
+public interface IArista {
 
-    LinkedList<E> getRelaciones();
+    LinkedList<IVuelo> getRelaciones();
 
     Comparable getEtiquetaDestino();
 
@@ -25,5 +25,5 @@ public interface IArista<E> {
 
     void setEtiquetaOrigen(Comparable etiquetaOrigen);
 
-    void setRelaciones(LinkedList<E> pRelaciones);
+    void setRelaciones(LinkedList<IVuelo> pRelaciones);
 }

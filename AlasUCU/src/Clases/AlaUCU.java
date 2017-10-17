@@ -19,7 +19,7 @@ public class AlaUCU {
     
     // <editor-fold defaultstate="extended" desc="Atributos">
     private static AlaUCU _instancia;
-    private IGrafoDirigido<Aeropuerto,IVuelo> _grafo;
+    private IGrafoDirigido _grafo;
     private LinkedList<Aerolinea> _aerolineas;
     // </editor-fold>
     
@@ -40,7 +40,7 @@ public class AlaUCU {
         return _aerolineas;
     }
     
-    public IGrafoDirigido<Aeropuerto,IVuelo> getGrafo(){
+    public IGrafoDirigido getGrafo(){
         return this._grafo;
     }
     
@@ -98,7 +98,7 @@ public class AlaUCU {
     }
     
     private Double[][] obtenerMatrizCostos(Comparable<String> pAerolinea) {
-        Map<Comparable, IVertice<Aeropuerto,IVuelo>> vertices = this._grafo.getVertices();
+        Map<Comparable, IVertice> vertices = this._grafo.getVertices();
         int cantidadVertices = vertices.size();
         Double[][] matrizCostos = new Double[cantidadVertices][cantidadVertices];
 
@@ -124,13 +124,13 @@ public class AlaUCU {
                 IVertice VerticeJ = vertices.get(VerticesJArr[j]);
 
                 if (!VerticeI.getEtiqueta().equals(VerticeJ.getEtiqueta())) {
-                    IAdyacencia<Aeropuerto,Vuelo> objAdyacencia = VerticeI.buscarAdyacencia(VerticeJ);
+                    IAdyacencia objAdyacencia = VerticeI.buscarAdyacencia(VerticeJ);
                     double costoMinimo = Double.MAX_VALUE;
                     
                     if(objAdyacencia != null){
-                        LinkedList<Vuelo> vuelos = objAdyacencia.getRelaciones();
+                        LinkedList<IVuelo> vuelos = objAdyacencia.getRelaciones();
                         
-                        for(Vuelo objVueloActual : vuelos){
+                        for(IVuelo objVueloActual : vuelos){
                             //if(objVueloActual.getAerolinea().compareTo(pAerolinea.toString()) > 0){
                             if(objVueloActual.getAerolinea().equals(pAerolinea.toString())){
                                 if(objVueloActual.getCosto() < costoMinimo){
@@ -163,8 +163,8 @@ public class AlaUCU {
         String[] arrayVuelos = ManejadorArchivosGenerico.leerArchivo(pArchivoVuelos, false);
         String[] aeroArray = ManejadorArchivosGenerico.leerArchivo(pArchivoAerolineas, false);
 
-        Collection<IVertice<Aeropuerto, IVuelo>> losVertices = new LinkedList<IVertice<Aeropuerto, IVuelo>>();
-        Collection<IArista<IVuelo>> lasAristas = new LinkedList<IArista<IVuelo>>();
+        Collection<IVertice> losVertices = new LinkedList<IVertice>();
+        Collection<IArista> lasAristas = new LinkedList<IArista>();
 
         for (String actual : aeroArray) {
             String[] lineaArchivo = actual.split(",");
@@ -183,7 +183,7 @@ public class AlaUCU {
                 //Creamos el aeropuerto a partir de la info obtenida
                 Aeropuerto nuevoAeropuerto = new Aeropuerto(ID, name);
                 //Lo insertamos en la coleccion
-                losVertices.add(new TVertice<>(nuevoAeropuerto, ID));
+                losVertices.add(new TVertice(nuevoAeropuerto, ID));
             }
         }
 
@@ -193,17 +193,16 @@ public class AlaUCU {
             String[] line = actual.split(",");
             if ((line[0].trim().length() == 2) && (line[1].trim().length() == 3)
                     && (line[2].trim().length() == 3)) {
-                String aerolinea = line[0].trim();
-                String origen = line[1].trim();
+                Comparable<String> aerolinea = line[0].trim();
+                Comparable<String> origen = line[1].trim();
                 
                 String destino = line[2].trim();
                 double costo = Double.parseDouble(line[3].trim());
                 //Creamos un vuelo a partir de la informacion
                 IVuelo nuevoVuelo = new Vuelo(origen, destino,costo, aerolinea);
                 //TArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, LinkedList<E> pRelaciones)
-                TArista<IVuelo> nuevaArista = new TArista(origen, destino, nuevoVuelo);
+                TArista nuevaArista = new TArista(origen, destino, nuevoVuelo);
                 lasAristas.add(nuevaArista);
-                String aaaaaaa = "BBBB";
             }
         }
         
@@ -214,22 +213,22 @@ public class AlaUCU {
         return this._grafo.bpf(etiquetaOrigen);
     }
     
-    public TCaminos todosLosCaminos(Comparable pEtiquetaOrigen, Comparable pEtiquetaDestino){
-        return this._grafo.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino);
+    public TCaminos todosLosCaminos(Comparable pEtiquetaOrigen, Comparable pEtiquetaDestino, int pCantidadEscalas, Comparable pAerolinea){
+        return this._grafo.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino,pCantidadEscalas,pAerolinea);
     }
     
-    public LinkedList<String> obtenerTodosLosCaminos(Comparable pEtiquetaOrigen, Comparable pEtiquetaDestino){
-        TCaminos<Aeropuerto,Vuelo> todosLosCaminos = this._grafo.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino);
+    public LinkedList<String> obtenerTodosLosCaminos(Comparable pEtiquetaOrigen, Comparable pEtiquetaDestino, int pCantidadEscalas, Comparable pAerolinea){
+        TCaminos todosLosCaminos = this._grafo.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino,pCantidadEscalas,pAerolinea);
         LinkedList<String> caminosResultado = new LinkedList<String>();
         int i = 0;
         
-        for(TCamino<Aeropuerto,Vuelo> camino : todosLosCaminos.getCaminos()){
+        for(TCamino camino : todosLosCaminos.getCaminos()){
             String caminoSTR = camino.getOrigen().getEtiqueta().toString();
             Map<Comparable,String> vuelosPorAerolinea = null;
             //Interno
             Map<Comparable,Double> vuelosPorAerolinea2 = null;
             
-            for(IAdyacencia<Aeropuerto,Vuelo> adyacencia : camino.getOtrasAdyacencias()){
+            for(IAdyacencia adyacencia : camino.getOtrasAdyacencias()){
                 caminoSTR += " - " + adyacencia.getEtiqueta();
                 vuelosPorAerolinea2 = new HashMap<>();
                 

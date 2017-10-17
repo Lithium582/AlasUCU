@@ -1,5 +1,6 @@
 package UCUGrafos;
 
+import Clases.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -7,10 +8,8 @@ import java.util.Map;
 /**
  * 
  * @author Lithium582
- * @param <V> Tipo de dato del Vértice
- * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los vértices)
  */
-public interface IGrafoDirigido<V,A> {
+public interface IGrafoDirigido {
 
     
     /**
@@ -76,7 +75,7 @@ public interface IGrafoDirigido<V,A> {
      */
     boolean insertarVertice(IVertice vertice);
 
-    void cargarGrafo(Collection<IVertice<V,A>> vertices, Collection<IArista<A>> aristas);
+    void cargarGrafo(Collection<IVertice> vertices, Collection<IArista> aristas);
     
     Comparable obtenerExcentricidad(Comparable etiquetaVertice, double[][] pFloyd);
 
@@ -90,7 +89,7 @@ public interface IGrafoDirigido<V,A> {
     
     Collection<Comparable> bpf(TVertice verticeOrigen);
     
-    TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino);
+    TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, int pCantidadEscalas, Comparable pAerolinea);
     
     boolean tieneCiclo(TCamino camino);
     
@@ -98,7 +97,7 @@ public interface IGrafoDirigido<V,A> {
     
     boolean tieneCiclo(Comparable etiquetaOrigen);
     
-    public Map<Comparable, IVertice<V,A>> getVertices();
+    public Map<Comparable, IVertice> getVertices();
     
     void desvisitarVertices();
 }

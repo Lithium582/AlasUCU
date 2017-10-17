@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UtilGrafos {
-    public static void imprimirMatriz(Comparable[][] matriz, Map<Comparable, IVertice<Aeropuerto,IVuelo>> vertices) {
+    public static void imprimirMatriz(Comparable[][] matriz, Map<Comparable, IVertice> vertices) {
         Object[] etiquetas = vertices.keySet().toArray();
         System.out.print("  ");
         for (int i = 0; i < matriz.length; i++) {
@@ -32,7 +32,7 @@ public class UtilGrafos {
         }
     }
     
-    public static void imprimirMatrizCsv(Comparable[][] matriz, Map<Comparable, IVertice<Aeropuerto,IVuelo>> vertices) {
+    public static void imprimirMatrizCsv(Comparable[][] matriz, Map<Comparable, IVertice> vertices) {
         Object[] etiquetas = vertices.keySet().toArray();
         System.out.print("Vertice/Vertice;");
         for (int i = 0; i < matriz.length; i++) {

@@ -5,21 +5,39 @@
  */
 package UCUGrafos;
 
+import Clases.*;
 import java.util.LinkedList;
 
 /**
  *
  * @author Lithium582
  */
-public class TCaminos<V,A> {
-    private final LinkedList<TCamino<V,A>> caminos;
+public class TCaminos {
+    private final LinkedList<TCamino> caminos;
+    private TCamino caminoMasCorto;
     
-    public LinkedList<TCamino<V,A>> getCaminos(){
+    public LinkedList<TCamino> getCaminos(){
         return this.caminos;
     }
     
     public TCaminos(){
-        this.caminos = new LinkedList<TCamino<V,A>>();
+        this.caminos = new LinkedList<TCamino>();
+        this.caminoMasCorto = null;
+    }
+    
+    public void agregarCamino(TCamino pCamino) {
+        this.caminos.add(pCamino);
+        if(this.caminoMasCorto == null) {
+            this.caminoMasCorto = pCamino;
+        } else {
+            if(pCamino.getCosto() < this.caminoMasCorto.getCosto()) {
+                this.caminoMasCorto = pCamino;
+            }
+        }
+    }
+    
+    public TCamino getCaminoMasCorto(){
+        return this.caminoMasCorto;
     }
     
     public void imprimir(){

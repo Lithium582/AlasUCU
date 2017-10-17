@@ -1,25 +1,24 @@
 package UCUGrafos;
 
+import Clases.*;
 import java.util.LinkedList;
 
 /**
  * 
  * @author Lithium582
- * @param <V> Tipo de dato del Vértice
- * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los vértices)
  */
-public interface IAdyacencia<V,A> {
+public interface IAdyacencia {
     /**
      * Retorna el vértice al que apunta la adyacencia
      * @return 
      */
-    IVertice<V,A> getVertice();
+    IVertice getVertice();
     
     /**
      * Retorna las relaciones que representa la adyacencia
      * @return 
      */
-    LinkedList<A> getRelaciones();
+    LinkedList<IVuelo> getRelaciones();
     
     /**
      * Retorna la etiqueta del vértice al que apunta la adyacencia
@@ -31,6 +30,6 @@ public interface IAdyacencia<V,A> {
      * Agrega una relación a la lista de relaciones de la adyacencia
      * @param pRelacion 
      */
-    boolean agregarRelacion(A pRelacion);
+    boolean agregarRelacion(IVuelo pRelacion);
     
 }

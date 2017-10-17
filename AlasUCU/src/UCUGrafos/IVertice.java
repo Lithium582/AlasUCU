@@ -1,20 +1,18 @@
 package UCUGrafos;
 
-
+import Clases.*;
 import java.util.Collection;
 import java.util.LinkedList;
 
 /**
  * 
  * @author Lithium582
- * @param <V> Tipo de dato del Vértice
- * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los vértices)
  */
-public interface IVertice<V,A> {
+public interface IVertice {
 
-    IAdyacencia<V,A> buscarAdyacencia(IVertice<V,A> verticeDestino);
+    IAdyacencia buscarAdyacencia(IVertice verticeDestino);
 
-    IAdyacencia<V,A> buscarAdyacencia(Comparable etiquetaDestino);
+    IAdyacencia buscarAdyacencia(Comparable etiquetaDestino);
 
     boolean eliminarAdyacencia(Comparable nomVerticeDestino);
 
@@ -22,17 +20,17 @@ public interface IVertice<V,A> {
     
     void setActivo(boolean pActivo);
     
-    LinkedList<IAdyacencia<V,A>> getAdyacentes();
+    LinkedList<IAdyacencia> getAdyacentes();
 
-    V getDatos();
+    Aeropuerto getDatos();
 
     Comparable getEtiqueta();
 
     boolean getVisitado();
 
-    boolean insertarAdyacencia(IVertice<V,A> pVerticeDestino, LinkedList<A> pListaRelaciones);
+    boolean insertarAdyacencia(IVertice pVerticeDestino, LinkedList<IVuelo> pListaRelaciones);
     
-    IVertice<V,A> primerAdyacente();
+    IVertice primerAdyacente();
 
     void setVisitado(boolean valor);
 
@@ -42,6 +40,6 @@ public interface IVertice<V,A> {
     
     boolean tieneCiclo(LinkedList<Comparable> camino);
     
-    TCaminos todosLosCaminos(Comparable etiquetaDestino, TCamino caminoPrevio, TCaminos losCaminos);
+    TCaminos todosLosCaminos(Comparable etiquetaDestino, TCamino caminoPrevio, TCaminos losCaminos, int pCantidadEscalas, Comparable pAerolinea);
     
 }

@@ -1,14 +1,15 @@
 package UCUGrafos;
 
+import Clases.*;
 import java.util.LinkedList;
 
-public class TArista<E> implements IArista<E> {
+public class TArista implements IArista {
 
     protected Comparable etiquetaOrigen;
     protected Comparable etiquetaDestino;
-    protected LinkedList<E> relaciones;
+    protected LinkedList<IVuelo> relaciones;
 
-    public TArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, LinkedList<E> pRelaciones) {
+    public TArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, LinkedList<IVuelo> pRelaciones) {
         this.etiquetaOrigen = etiquetaOrigen;
         this.etiquetaDestino = etiquetaDestino;
         this.relaciones = pRelaciones;
@@ -20,13 +21,13 @@ public class TArista<E> implements IArista<E> {
      * @param aDestinationTag
      * @param aRelationship
      */
-    public TArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, E pRelacion) {
+    public TArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, IVuelo pRelacion) {
         this.etiquetaOrigen = etiquetaOrigen;
         this.etiquetaDestino = etiquetaDestino;
         /*LinkedList<E> listaRelaciones = new LinkedList<>();
         listaRelaciones.add(pRelacion);*/
         
-        relaciones = new LinkedList<E>();
+        relaciones = new LinkedList<IVuelo>();
         relaciones.add(pRelacion);
     }
     
@@ -51,12 +52,12 @@ public class TArista<E> implements IArista<E> {
     }
 
     @Override
-    public LinkedList<E> getRelaciones() {
+    public LinkedList<IVuelo> getRelaciones() {
         return relaciones;
     }
 
     @Override
-    public void setRelaciones(LinkedList<E> pRelaciones) {
+    public void setRelaciones(LinkedList<IVuelo> pRelaciones) {
         this.relaciones = pRelaciones;
     }
 

@@ -24,20 +24,42 @@ public class Main {
         AlaUCU alita = AlaUCU.getInstancia();
 
         String direccionArchivoAeropuertosSiEsLargoAProposito = "src/Archivos/Aeropuertos.csv";
-        String direccionArchivoAeroLineasNoTanLargp = "src/Archivos/Aerolineas.csv";
-        String direccionArchivoVuelosCorto = "src/Archivos/vuelos_test.csv";
+        String direccionArchivoAeroLineasNoTanLargo = "src/Archivos/Aerolineas.csv";
+        String direccionArchivoVuelosCorto = "src/Archivos/vuelos_produccion.csv";
 
-        alita.cargarGrafo(direccionArchivoAeropuertosSiEsLargoAProposito, direccionArchivoAeroLineasNoTanLargp, direccionArchivoVuelosCorto);
+        alita.cargarGrafo(direccionArchivoAeropuertosSiEsLargoAProposito, direccionArchivoAeroLineasNoTanLargo, direccionArchivoVuelosCorto);
 
-        Collection<Comparable> unaListaDePrueba = alita.bpf("LAX");
+        /*Collection<Comparable> unaListaDePrueba = alita.bpf("LAX");
 
-        /*for(Comparable comp : unaListaDePrueba){
+        for(Comparable comp : unaListaDePrueba){
             System.out.println(comp.toString());
         }*/
-        TCaminos muchosCaminitos = alita.todosLosCaminos("04G", "09J");
+        
+        TCaminos muchosCaminitos = alita.todosLosCaminos("LAX", "SLC", 4, "AA");
+        /*TCaminos muchosCaminitos2 = alita.todosLosCaminos("LAX", "SLC", 4, "WN");
+        TCaminos muchosCaminitos3 = alita.todosLosCaminos("LAX", "SLC", 4, "7H");
+        TCaminos muchosCaminitos4 = alita.todosLosCaminos("LAX", "SLC", 4, "AS");
+        TCaminos muchosCaminitos5 = alita.todosLosCaminos("LAX", "SLC", 4, "US");
+        TCaminos muchosCaminitos6 = alita.todosLosCaminos("LAX", "SLC", 4, "UA");
+        TCaminos muchosCaminitos7 = alita.todosLosCaminos("LAX", "SLC", 4, "KL");
+        TCaminos muchosCaminitos8 = alita.todosLosCaminos("LAX", "SLC", 4, "DL");
+        TCaminos muchosCaminitos9 = alita.todosLosCaminos("LAX", "SLC", 4, "AM");*/
+        
+        
+        //TCaminos muchosCaminitos = alita.todosLosCaminos("04G", "09J", 2,"BB");
 
         muchosCaminitos.imprimir();
-        int a = 0;
+        System.out.println(muchosCaminitos.getCaminos().size());
+        muchosCaminitos.getCaminoMasCorto().imprimirEtiquetas();
+        /*System.out.println(muchosCaminitos2.getCaminos().size());
+        System.out.println(muchosCaminitos3.getCaminos().size());
+        System.out.println(muchosCaminitos4.getCaminos().size());
+        System.out.println(muchosCaminitos5.getCaminos().size());
+        System.out.println(muchosCaminitos6.getCaminos().size());
+        System.out.println(muchosCaminitos7.getCaminos().size());
+        System.out.println(muchosCaminitos8.getCaminos().size());
+        System.out.println(muchosCaminitos9.getCaminos().size());*/
+        /*int a = 0;
 
         int posicion1 = alita.obtenerPosicionEnElHashMap("04G");
         int posicion2 = alita.obtenerPosicionEnElHashMap("09J");
@@ -81,7 +103,7 @@ public class Main {
             int holu = 23;
         } else{
             System.out.println("Holu. No estaría habiendo ningún recorrido por esa aerolínea. SORRY, Mildis ::");
-        }
+        }*/
 
     }
 
