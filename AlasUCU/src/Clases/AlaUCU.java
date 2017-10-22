@@ -28,6 +28,10 @@ public class AlaUCU {
         this._aerolineas = new LinkedList<Aerolinea>();
     }
     
+    /**
+     *
+     * @return
+     */
     public static AlaUCU getInstancia(){
         if(_instancia == null){
             _instancia = new AlaUCU();
@@ -36,26 +40,79 @@ public class AlaUCU {
         return _instancia;
     }
     
+    /**
+     *
+     * @return
+     */
     public LinkedList<Aerolinea> getAerolineas(){
         return _aerolineas;
     }
     
+    /**
+     *
+     * @return
+     */
     public IGrafoDirigido getGrafo(){
         return this._grafo;
     }
     
-    public double[][] obtenerFloyd(Comparable<String> pAerolinea){
-        Double[][] matrizCostos = this.obtenerMatrizCostos(pAerolinea);
-        double[][] matrizFloyd = this._grafo.floyd(matrizCostos);
+    public Aerolinea buscarAerolinea(Comparable<String> pCodigo){
+        for(Aerolinea aeroObjeto : this._aerolineas){
+            if(aeroObjeto.getID().equals(pCodigo)){
+                return aeroObjeto;
+            }
+        }
         
-        return matrizFloyd;
+        return null;
     }
     
-    public Comparable obtenerExcentricidad(Comparable<String> pAerolinea, Comparable pEtiqueta){
-        Double[][] matrizCostos = this.obtenerMatrizCostos(pAerolinea);
-        double[][] matrizFloyd = this._grafo.floyd(matrizCostos);
-        Comparable excentricidad = this._grafo.obtenerExcentricidad(pEtiqueta,matrizFloyd);
-        return excentricidad;
+    public boolean nuevaAerolinea(Aerolinea pObjAerolinea){
+        if(buscarAerolinea(pObjAerolinea.getID()) != null){
+            return false;
+        } else {
+            this._aerolineas.add(pObjAerolinea);
+            
+            return true;
+        }
+    }
+    
+    public boolean nuevoAeropuerto(Aeropuerto pObjAeropuerto){
+        if(this.buscarAeropuerto(pObjAeropuerto.getID()) != null){
+            return false;
+        } else {
+            this._grafo.insertarVertice(new TVertice(pObjAeropuerto,pObjAeropuerto.getID()));
+            
+            return true;
+        }
+    }
+    
+    public boolean nuevaArista(IArista pObjArista){
+        return this._grafo.insertarArista(pObjArista);
+    }
+    
+    public LinkedList<IVuelo> buscarVuelos(Comparable<String> pAeropuertoOrigen, Comparable<String> pAeropuertoDestino){
+        IVertice aeropuertoBuscado = this._grafo.buscarVertice(pAeropuertoOrigen);
+        IAdyacencia objAdyacente = aeropuertoBuscado.buscarAdyacencia(pAeropuertoDestino);
+        
+        if(objAdyacente != null){
+            LinkedList<IVuelo> listaRetorno = objAdyacente.getRelaciones();
+            return listaRetorno;
+        }
+        
+        return null;
+    }
+    
+    public Aeropuerto buscarAeropuerto(Comparable pCodigo){
+        IVertice objVertice = this._grafo.buscarVertice(pCodigo);
+        if(objVertice != null){
+            return objVertice.getDatos();
+        }
+        return null;
+    }
+    
+    public boolean eliminarAeropuerto(Comparable pCodigo){
+        boolean aeroEliminado = this._grafo.eliminarVertice(pCodigo);
+        return aeroEliminado;
     }
     
     /**
@@ -209,14 +266,35 @@ public class AlaUCU {
         this._grafo.cargarGrafo(losVertices, lasAristas);
     }
     
+    /**
+     *
+     * @param etiquetaOrigen
+     * @return
+     */
     public Collection<Comparable> bpf(Comparable etiquetaOrigen){
         return this._grafo.bpf(etiquetaOrigen);
     }
     
+    /**
+     *
+     * @param pEtiquetaOrigen
+     * @param pEtiquetaDestino
+     * @param pCantidadEscalas
+     * @param pAerolinea
+     * @return
+     */
     public TCaminos todosLosCaminos(Comparable pEtiquetaOrigen, Comparable pEtiquetaDestino, int pCantidadEscalas, Comparable pAerolinea){
         return this._grafo.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino,pCantidadEscalas,pAerolinea);
     }
     
+    /**
+     *
+     * @param pEtiquetaOrigen
+     * @param pEtiquetaDestino
+     * @param pCantidadEscalas
+     * @param pAerolinea
+     * @return
+     */
     public LinkedList<String> obtenerTodosLosCaminos(Comparable pEtiquetaOrigen, Comparable pEtiquetaDestino, int pCantidadEscalas, Comparable pAerolinea){
         TCaminos todosLosCaminos = this._grafo.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino,pCantidadEscalas,pAerolinea);
         LinkedList<String> caminosResultado = new LinkedList<String>();
@@ -274,20 +352,20 @@ public class AlaUCU {
         return caminosResultado;
     }
     
-    public ArrayList<Double[][]> obtenerMatrices(String pEtiqueta){
-        Double[][] matrizCostos = this.obtenerMatrizCostos(pEtiqueta);
-        
-        //UtilGrafos.imprimirMatrizCsv(matrizCostos, this._grafo.getVertices());
-        
-        ArrayList<Double[][]> arrayRetorno = this._grafo.floydPink(matrizCostos);
-        
-        return arrayRetorno;
-    }
-    
+    /**
+     *
+     * @param pComp
+     * @return
+     */
     public int obtenerPosicionEnElHashMap(Comparable pComp){
         return this._grafo.obtenerPosicionEnElHashMap(pComp);
     }
     
+    /**
+     *
+     * @param pPosicion
+     * @return
+     */
     public Comparable obtenerEtiquetaPorPosicion(int pPosicion){
         return this._grafo.obtenerEtiquetaPorPosicion(pPosicion);
     }

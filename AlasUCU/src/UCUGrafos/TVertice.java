@@ -7,9 +7,6 @@ import java.util.LinkedList;
 /**
  *
  * @author Lithium582
- * @param <V> Tipo de dato del Vértice
- * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los
- * vértices)
  */
 public class TVertice implements IVertice {
 
@@ -19,43 +16,78 @@ public class TVertice implements IVertice {
     private boolean esActivo;
     private Aeropuerto datos;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Comparable getEtiqueta() {
         return etiqueta;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public LinkedList<IAdyacencia> getAdyacentes() {
         return adyacentes;
     }
 
+    /**
+     *
+     * @param pDato
+     * @param pEtiqueta
+     */
     public TVertice(Aeropuerto pDato, Comparable pEtiqueta) {
         this.etiqueta = pEtiqueta;
         this.datos = pDato;
-        adyacentes = new LinkedList();
-        visitado = false;
+        this.adyacentes = new LinkedList();
+        this.visitado = false;
+        this.esActivo = true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean getVisitado() {
         return this.visitado;
     }
 
+    /**
+     *
+     * @param valor
+     */
     @Override
     public void setVisitado(boolean valor) {
         this.visitado = valor;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean getActivo() {
         return this.esActivo;
     }
 
+    /**
+     *
+     * @param pActivo
+     */
     @Override
     public void setActivo(boolean pActivo) {
         this.esActivo = pActivo;
     }
 
+    /**
+     *
+     * @param verticeDestino
+     * @return
+     */
     @Override
     public IAdyacencia buscarAdyacencia(IVertice verticeDestino) {
         if (verticeDestino != null) {
@@ -64,6 +96,12 @@ public class TVertice implements IVertice {
         return null;
     }
 
+    /**
+     *
+     * @param pVerticeDestino
+     * @param pListaRelaciones
+     * @return
+     */
     @Override
     public boolean insertarAdyacencia(IVertice pVerticeDestino, LinkedList<IVuelo> pListaRelaciones) {
         IAdyacencia objAdyacenciaBuscada = this.buscarAdyacencia(pVerticeDestino.getEtiqueta());
@@ -76,6 +114,11 @@ public class TVertice implements IVertice {
         //return false;
     }
 
+    /**
+     *
+     * @param nomVerticeDestino
+     * @return
+     */
     @Override
     public boolean eliminarAdyacencia(Comparable nomVerticeDestino) {
         IAdyacencia ady = buscarAdyacencia(nomVerticeDestino);
@@ -86,6 +129,10 @@ public class TVertice implements IVertice {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public IVertice primerAdyacente() {
         if (this.adyacentes.getFirst() != null) {
@@ -94,6 +141,11 @@ public class TVertice implements IVertice {
         return null;
     }
 
+    /**
+     *
+     * @param etiquetaDestino
+     * @return
+     */
     @Override
     public IAdyacencia buscarAdyacencia(Comparable etiquetaDestino) {
         for (IAdyacencia adyacencia : adyacentes) {
@@ -104,11 +156,19 @@ public class TVertice implements IVertice {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Aeropuerto getDatos() {
         return datos;
     }
 
+    /**
+     *
+     * @param visitados
+     */
     @Override
     public void bpf(Collection<Comparable> visitados) {
         visitado = true;
@@ -129,6 +189,9 @@ public class TVertice implements IVertice {
      * @param etiquetaDestino
      * @param caminoPrevio
      * @param losCaminos
+     * @param pCantidadEscalas
+     * @param pAerolinea
+     * @return 
      */
     @Override
     public TCaminos todosLosCaminos(Comparable etiquetaDestino, TCamino caminoPrevio, TCaminos losCaminos, int pCantidadEscalas, Comparable pAerolinea) {
@@ -170,6 +233,11 @@ public class TVertice implements IVertice {
         return losCaminos;
     }
 
+    /**
+     *
+     * @param camino
+     * @return
+     */
     @Override
     public boolean tieneCiclo(TCamino camino) {
         setVisitado(true);
@@ -196,6 +264,11 @@ public class TVertice implements IVertice {
         return tieneCiclo;
     }
 
+    /**
+     *
+     * @param camino
+     * @return
+     */
     @Override
     public boolean tieneCiclo(LinkedList<Comparable> camino) {
         setVisitado(true);

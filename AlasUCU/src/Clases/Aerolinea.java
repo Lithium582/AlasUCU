@@ -46,4 +46,9 @@ public class Aerolinea {
         this.ID = pID;
         this.nombre = pNombre;
     }
+    
+    @Override
+    public String toString(){
+        return "Aerolínea " + this.ID + " - " + this.nombre;
+    }
 }

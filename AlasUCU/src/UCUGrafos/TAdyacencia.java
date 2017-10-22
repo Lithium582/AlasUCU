@@ -6,8 +6,6 @@ import java.util.LinkedList;
 /**
  * 
  * @author Lithium582
- * @param <V> Tipo de dato del Vértice
- * @param <A> Tipo de dato de la Adyacencia (De las relaciones entre los vértices)
  */
 
 public class TAdyacencia implements IAdyacencia {
@@ -43,6 +41,11 @@ public class TAdyacencia implements IAdyacencia {
         return b; //Retorno true si la adición funcionó
     }
 
+    /**
+     *
+     * @param pVertice
+     * @param pRelaciones
+     */
     public TAdyacencia(IVertice pVertice, LinkedList<IVuelo> pRelaciones) {
         this.vertice = pVertice;
         this.relaciones = pRelaciones;

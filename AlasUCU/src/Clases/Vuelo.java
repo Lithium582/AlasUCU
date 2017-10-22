@@ -74,7 +74,7 @@ public class Vuelo implements IVuelo {
     
     /**
      *
-     * @param nuevoCosto
+     * @param pNuevoCosto
      */
     @Override
     public void setCosto(float pNuevoCosto){

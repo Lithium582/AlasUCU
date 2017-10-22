@@ -9,12 +9,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Lithium582
+ */
 public class ManejadorArchivosGenerico {
 
     /**
      * @param nombreCompletoArchivo
      * @param listaLineasArchivo lista con las lineas del archivo
-     * @throws IOException
      */
     public static void escribirArchivo(String nombreCompletoArchivo,
             String[] listaLineasArchivo) {
@@ -36,12 +39,24 @@ public class ManejadorArchivosGenerico {
         }
     }
 
+    /**
+     *
+     * @param nombreCompletoArchivo
+     * @param ignoreHeader
+     * @return
+     */
     public static String[] leerArchivoRutaRelativa(String nombreCompletoArchivo, boolean ignoreHeader) {
         String path = ManejadorArchivosGenerico.class
                 .getResource(nombreCompletoArchivo).getPath();
         return leerArchivo(path, ignoreHeader);
     }
     
+    /**
+     *
+     * @param nombreCompletoArchivo
+     * @param ignoreHeader
+     * @return
+     */
     public static String[] leerArchivo(String nombreCompletoArchivo, boolean ignoreHeader) {
         FileReader fr;
         ArrayList<String> listaLineasArchivo = new ArrayList<String>();

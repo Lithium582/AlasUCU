@@ -15,15 +15,39 @@ import java.util.LinkedList;
  */
 public interface IArista {
 
+    /**
+     *
+     * @return
+     */
     LinkedList<IVuelo> getRelaciones();
 
+    /**
+     *
+     * @return
+     */
     Comparable getEtiquetaDestino();
 
+    /**
+     *
+     * @return
+     */
     Comparable getEtiquetaOrigen();
     
+    /**
+     *
+     * @param etiquetaDestino
+     */
     void setEtiquetaDestino(Comparable etiquetaDestino);
 
+    /**
+     *
+     * @param etiquetaOrigen
+     */
     void setEtiquetaOrigen(Comparable etiquetaOrigen);
 
+    /**
+     *
+     * @param pRelaciones
+     */
     void setRelaciones(LinkedList<IVuelo> pRelaciones);
 }

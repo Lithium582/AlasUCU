@@ -29,6 +29,7 @@ public interface IAdyacencia {
     /**
      * Agrega una relación a la lista de relaciones de la adyacencia
      * @param pRelacion 
+     * @return  
      */
     boolean agregarRelacion(IVuelo pRelacion);
     

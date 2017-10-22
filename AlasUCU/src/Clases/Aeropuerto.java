@@ -67,6 +67,9 @@ public class Aeropuerto {
         this.pais = "Hawaii";
     }
     
+    public String imprimir(){
+        return "Aeropuerto " + this.ID + " - " + this.nombre;
+    }
     
     @Override
     public String toString(){

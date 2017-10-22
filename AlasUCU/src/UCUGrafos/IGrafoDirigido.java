@@ -21,6 +21,9 @@ public interface IGrafoDirigido {
      * Metodo encargado de eliminar una arista dada por un origen y destino.
      * En caso de no existir la arista, retorna falso. En caso de que las
      * etiquetas sean invalidas (no existe el vertice origen o el destino), retorna falso.
+     * @param nomVerticeOrigen
+     * @param nomVerticeDestino
+     * @return 
      */
     boolean eliminarArista(Comparable nomVerticeOrigen, Comparable nomVerticeDestino);
 
@@ -29,9 +32,13 @@ public interface IGrafoDirigido {
      * existir el vertice, retorna falso. En caso de que la etiqueta sea
      * invalida, retorna false.
      *
+     * @param nombreVertice
+     * @return 
      */
     boolean eliminarVertice(Comparable nombreVertice);
 
+    IVertice buscarVertice(Comparable unaEtiqueta);
+    
     /**
      * Metodo encargado de verificar la existencia de una arista. Las
      * etiquetas pasadas por parametro deben ser validas (o sea, los vértices origen y destino deben existir en el grafo).
@@ -53,16 +60,18 @@ public interface IGrafoDirigido {
     boolean existeVertice(Comparable unaEtiqueta);
 
     /**
-     *ejecuta el algoritmo de Floyd en el grafo, para hallar los caminos mínimos entre todos los pares de vértices. 
-	  * @return una matriz de n x n (n = cantidad de vértices del grafo) con los costos de los caminos mínimos. 
+     *
+     * @param pComp
+     * @return
      */
-    double [][] floyd(Double[][] pC);
-    
     int obtenerPosicionEnElHashMap(Comparable pComp);
     
+    /**
+     *
+     * @param pPosicion
+     * @return
+     */
     Comparable obtenerEtiquetaPorPosicion(int pPosicion);
-    
-    ArrayList<Double[][]> floydPink(Double[][] pC);
     
     /**
      * Metodo encargado de insertar un vertice en el grafo.
@@ -70,34 +79,90 @@ public interface IGrafoDirigido {
      * No pueden ingresarse vertices con la misma etiqueta. La etiqueta
      * especificada como parametro debe ser valida.
      *
-     * @param unaEtiqueta Etiqueta del vertice a ingresar.
+     * @param vertice
      * @return True si se pudo insertar el vertice, false en caso contrario
      */
     boolean insertarVertice(IVertice vertice);
 
+    /**
+     *
+     * @param vertices
+     * @param aristas
+     */
     void cargarGrafo(Collection<IVertice> vertices, Collection<IArista> aristas);
     
-    Comparable obtenerExcentricidad(Comparable etiquetaVertice, double[][] pFloyd);
-
-    boolean contieneCiclos();
-    
+    /**
+     *
+     * @param etiquetaOrigen
+     * @param etiquetaDestino
+     * @param costo
+     * @return
+     */
     boolean insertarArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, Comparable costo);
     
+    /**
+     * 
+     */
+    boolean insertarArista(IArista arista);
+    
+    /**
+     *
+     * @return
+     */
     Collection<Comparable> bpf();
     
+    /**
+     *
+     * @param etiquetaOrigen
+     * @return
+     */
     Collection<Comparable> bpf(Comparable etiquetaOrigen);
     
+    /**
+     *
+     * @param verticeOrigen
+     * @return
+     */
     Collection<Comparable> bpf(TVertice verticeOrigen);
     
+    /**
+     *
+     * @param etiquetaOrigen
+     * @param etiquetaDestino
+     * @param pCantidadEscalas
+     * @param pAerolinea
+     * @return
+     */
     TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, int pCantidadEscalas, Comparable pAerolinea);
     
+    /**
+     *
+     * @param camino
+     * @return
+     */
     boolean tieneCiclo(TCamino camino);
     
+    /**
+     *
+     * @return
+     */
     boolean tieneCiclo();
     
+    /**
+     *
+     * @param etiquetaOrigen
+     * @return
+     */
     boolean tieneCiclo(Comparable etiquetaOrigen);
     
+    /**
+     *
+     * @return
+     */
     public Map<Comparable, IVertice> getVertices();
     
+    /**
+     *
+     */
     void desvisitarVertices();
 }

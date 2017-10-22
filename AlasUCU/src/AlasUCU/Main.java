@@ -5,10 +5,10 @@
  */
 package AlasUCU;
 
-import Clases.AlaUCU;
+import Clases.*;
 import UCUGrafos.*;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 
 /**
@@ -21,90 +21,485 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        AlaUCU alita = AlaUCU.getInstancia();
+        try {
+            AlaUCU alita = AlaUCU.getInstancia();
 
-        String direccionArchivoAeropuertosSiEsLargoAProposito = "src/Archivos/Aeropuertos.csv";
-        String direccionArchivoAeroLineasNoTanLargo = "src/Archivos/Aerolineas.csv";
-        String direccionArchivoVuelosCorto = "src/Archivos/vuelos_produccion.csv";
+            String direccionArchivoAeropuertosSiEsLargoAProposito = "src/Archivos/Aeropuertos.csv";
+            String direccionArchivoAeroLineasNoTanLargo = "src/Archivos/Aerolineas.csv";
+            String direccionArchivoVuelosCorto = "src/Archivos/vuelos_produccion.csv";
 
-        alita.cargarGrafo(direccionArchivoAeropuertosSiEsLargoAProposito, direccionArchivoAeroLineasNoTanLargo, direccionArchivoVuelosCorto);
+            alita.cargarGrafo(direccionArchivoAeropuertosSiEsLargoAProposito, direccionArchivoAeroLineasNoTanLargo, direccionArchivoVuelosCorto);
 
-        /*Collection<Comparable> unaListaDePrueba = alita.bpf("LAX");
+            Integer op = -1;
+            Boolean b = false;
 
-        for(Comparable comp : unaListaDePrueba){
-            System.out.println(comp.toString());
-        }*/
-        
-        TCaminos muchosCaminitos = alita.todosLosCaminos("LAX", "SLC", 4, "AA");
-        /*TCaminos muchosCaminitos2 = alita.todosLosCaminos("LAX", "SLC", 4, "WN");
-        TCaminos muchosCaminitos3 = alita.todosLosCaminos("LAX", "SLC", 4, "7H");
-        TCaminos muchosCaminitos4 = alita.todosLosCaminos("LAX", "SLC", 4, "AS");
-        TCaminos muchosCaminitos5 = alita.todosLosCaminos("LAX", "SLC", 4, "US");
-        TCaminos muchosCaminitos6 = alita.todosLosCaminos("LAX", "SLC", 4, "UA");
-        TCaminos muchosCaminitos7 = alita.todosLosCaminos("LAX", "SLC", 4, "KL");
-        TCaminos muchosCaminitos8 = alita.todosLosCaminos("LAX", "SLC", 4, "DL");
-        TCaminos muchosCaminitos9 = alita.todosLosCaminos("LAX", "SLC", 4, "AM");*/
-        
-        
-        //TCaminos muchosCaminitos = alita.todosLosCaminos("04G", "09J", 2,"BB");
+            while (op != 0) {
+                try {
+                    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                    if (b) {
+                        System.out.println(" ----------------------------------------------- ");
+                        System.out.println(" ------------ ENTER para continuar ------------- ");
+                        System.out.println(" ----------------------------------------------- ");
+                        br.readLine();
+                    } else {
+                        b = !b;
+                    }
 
-        muchosCaminitos.imprimir();
-        System.out.println(muchosCaminitos.getCaminos().size());
-        muchosCaminitos.getCaminoMasCorto().imprimirEtiquetas();
-        /*System.out.println(muchosCaminitos2.getCaminos().size());
-        System.out.println(muchosCaminitos3.getCaminos().size());
-        System.out.println(muchosCaminitos4.getCaminos().size());
-        System.out.println(muchosCaminitos5.getCaminos().size());
-        System.out.println(muchosCaminitos6.getCaminos().size());
-        System.out.println(muchosCaminitos7.getCaminos().size());
-        System.out.println(muchosCaminitos8.getCaminos().size());
-        System.out.println(muchosCaminitos9.getCaminos().size());*/
-        /*int a = 0;
+                    System.out.println("\n --------------------------------------------- ");
+                    System.out.println(" ----------- Bienvenido a Alas UCU ------------- ");
+                    System.out.println(" ---------- La mejor forma de volar ------------ ");
+                    System.out.println(" ------ Ingrese una opción para continuar: ----- ");
+                    System.out.println(" ----------------------------------------------- ");
+                    System.out.println(" ------------- Cargar Archivos CSV ------------- ");
+                    System.out.println("1 --> Cargar Datos");
+                    System.out.println(" ----------------- Aerolíneas ------------------ ");
+                    System.out.println("2 --> Nueva Aerolínea");
+                    System.out.println("3 --> Buscar Aerolínea");
+                    System.out.println(" ----------------- Vuelos ----------------- ");
+                    System.out.println("4 --> Nuevo Vuelo");
+                    System.out.println("5 --> Buscar Vuelos");
+                    System.out.println(" ----------------- Aeropuertos ----------------- ");
+                    System.out.println("6 --> Nuevo Aeropuerto");
+                    System.out.println("7 --> Buscar Aeropuerto");
+                    System.out.println("8 --> Eliminar Aeropuerto");
+                    System.out.println(" ------------------ Búsquedas ------------------ ");
+                    System.out.println("9 --> Buscar");
+                    System.out.println("0 - SALIR");
+                    System.out.print("Ingrese una opción \n");
 
-        int posicion1 = alita.obtenerPosicionEnElHashMap("04G");
-        int posicion2 = alita.obtenerPosicionEnElHashMap("09J");
-        //ArrayList<Double[][]> unArray = alita.obtenerMatrices("04G");
-        ArrayList<Double[][]> unArray = alita.obtenerMatrices("AA");
+                    try {
+                        op = Integer.parseInt(br.readLine());
+                    } catch (Exception ex) {
+                        op = -1;
+                        System.out.println("Opción incorrecta");
+                    }
 
-        //La primera es Floyd
-        Double[][] matrizDePinkFloyd = unArray.get(0);
-        Double[][] matrizPe = unArray.get(1);
-        Double costo = matrizDePinkFloyd[posicion1][posicion2];
+                    switch (op) {
+                        case 1: {
+                            try {
+                                System.out.println("Ingrese el archivo que quiere cargar");
+                                System.out.println("1 - Archivo de aerolíneas");
+                                System.out.println("2 - Archivo de aeropuertos");
+                                System.out.println("3 - Archivo de vuelos");
+                                System.out.println("4 - Todos los archivos");
+                                Integer subOP = Integer.parseInt(br.readLine());
 
-        //UtilGrafos.imprimirMatrizCsv(matrizDePinkFloyd, alita.getGrafo().getVertices());
-        //UtilGrafos.imprimirMatrizCsv(matrizPe, alita.getGrafo().getVertices());
+                                String direccionAerolineas = "";
+                                String direccionAeropuertos = "";
+                                String direccionVuelos = "";
 
-        if (matrizDePinkFloyd[posicion1][posicion2] < Double.MAX_VALUE && matrizDePinkFloyd[posicion1][posicion2] != -1D) {
-            String costoFinalDelPinkFloydDeLaVida = matrizDePinkFloyd[posicion1][posicion2].toString();
+                                switch (subOP) {
+                                    case 1: {
+                                        System.out.println("Cargando archivo de aerolíneas...");
 
-            boolean algo = true;
-            int integerDeSobra = posicion2;
+                                        System.out.println("Ingrese la dirección del archivo");
+                                        System.out.println("\t0 para cargar el archivo por defecto 'src/Aerolineas.csv'");
+                                        direccionAerolineas = br.readLine().trim();
+                                        if (direccionAerolineas.equals("0")) {
+                                            direccionAerolineas = "src/Archivos/Aerolineas.csv";
+                                        }
+                                        alita.cargarGrafo("", direccionAerolineas, "");
 
-            Comparable aeroOrigen = alita.obtenerEtiquetaPorPosicion(posicion1);
-            Comparable aeroDestino = alita.obtenerEtiquetaPorPosicion(posicion2);
-            String resultado = aeroOrigen.toString();
+                                        break;
+                                    }
+                                    case 2: {
+                                        System.out.println("Cargando archivo de aeropuertos...");
 
-            while (algo) {
-                integerDeSobra = matrizPe[posicion1][integerDeSobra].intValue();
-                if (integerDeSobra == -1) {
-                    algo = false;
-                } else {
-                    Comparable resultadoDeSobra = alita.obtenerEtiquetaPorPosicion(integerDeSobra);
-                    resultado += ",\n" + resultadoDeSobra.toString();
+                                        System.out.println("Ingrese la dirección del archivo");
+                                        System.out.println("\t0 para cargar el archivo por defecto 'src/Aeropuertos.csv'");
+                                        direccionAeropuertos = br.readLine().trim();
+                                        if (direccionAeropuertos.equals("0")) {
+                                            direccionAeropuertos = "src/Archivos/Aeropuertos.csv";
+                                        }
+                                        alita.cargarGrafo(direccionAeropuertos, "", "");
+
+                                        break;
+                                    }
+                                    case 3: {
+                                        System.out.println("Cargando archivo de vuelos...");
+
+                                        System.out.println("Ingrese la dirección del archivo");
+                                        System.out.println("\t0 para cargar el archivo por defecto 'src/vuelos_produccion.csv'");
+                                        direccionVuelos = br.readLine().trim();
+                                        if (direccionVuelos.equals("0")) {
+                                            direccionVuelos = "src/Archivos/vuelos_produccion.csv";
+                                        }
+                                        alita.cargarGrafo("", "", direccionVuelos);
+
+                                        break;
+                                    }
+                                    case 4: {
+                                        System.out.println("Cargando archivo de vuelos...");
+
+                                        System.out.println("Ingrese la dirección del archivo de aeropuertos");
+                                        System.out.println("\t0 para cargar los archivos por defecto");
+
+                                        direccionAeropuertos = br.readLine().trim();
+
+                                        if (direccionAeropuertos.equals("0")) {
+                                            direccionAeropuertos = "src/Archivos/Aeropuertos.csv";
+                                            direccionAerolineas = "src/Archivos/Aerolineas.csv";
+                                            direccionVuelos = "src/Archivos/vuelos_produccion.csv";
+
+                                            alita.cargarGrafo(direccionAeropuertos, direccionAerolineas, direccionVuelos);
+                                        } else {
+                                            System.out.println("Ingrese la dirección del archivo de aerolíneas");
+                                            direccionAerolineas = br.readLine().trim();
+
+                                            System.out.println("Ingrese la dirección del archivo de vuelos");
+                                            direccionVuelos = br.readLine().trim();
+
+                                            alita.cargarGrafo(direccionAeropuertos, direccionAerolineas, direccionVuelos);
+                                        }
+
+                                        break;
+                                    }
+                                }
+                            } catch (Exception ex) {
+                                System.out.println("Opción incorrecta");
+                            }
+                            break;
+                        }
+                        case 2: {
+                            System.out.println("Ingresar nueva aerolínea");
+                            System.out.println("Ingrese el código de la aerolínea (2 caracteres de largo)");
+                            String aeroCode = br.readLine();
+
+                            if (aeroCode.length() == 2) {
+                                Aerolinea objAeroBuscado = alita.buscarAerolinea(aeroCode);
+                                if (objAeroBuscado != null) {
+                                    System.out.println("La aerolínea " + objAeroBuscado.getNombre() + " ingresada ya existe");
+                                } else {
+                                    System.out.println("Ingrese el nombre de la aerolínea");
+                                    String aeroNombre = br.readLine();
+
+                                    Aerolinea objAerolinea = new Aerolinea(aeroCode, aeroNombre);
+
+                                    boolean res = alita.nuevaAerolinea(objAerolinea);
+
+                                    if (res) {
+                                        System.out.println("Aerolínea insertada con éxito!");
+                                    } else {
+                                        System.out.println("Atención. Ha habido un problema con la inserción\nIntente más tarde");
+                                    }
+                                }
+                            } else {
+                                System.out.println("Código inválido. Debe tener dos caracteres");
+                            }
+
+                            break;
+                        }
+                        case 3: {
+                            System.out.println("Buscar una aerolínea");
+                            System.out.println("Ingrese el código de la aerolínea");
+                            String aeroCode = br.readLine();
+
+                            Aerolinea objAeroBuscado = alita.buscarAerolinea(aeroCode);
+                            if (objAeroBuscado == null) {
+                                System.out.println("La aerolínea \"" + aeroCode + "\" no existe");
+                            } else {
+                                System.out.println(objAeroBuscado.toString());
+                            }
+
+                            break;
+                        }
+                        case 4: {
+                            System.out.println("Ingresar un nuevo vuelo");
+                            System.out.println("Ingrese el aeropuerto de origen");
+                            String origen = br.readLine();
+
+                            Aeropuerto aeroPuertoOrigen = alita.buscarAeropuerto(origen);
+
+                            if (aeroPuertoOrigen == null) {
+                                System.out.println("El aeropuerto no está registrado");
+                            } else {
+                                System.out.println("Ingrese el aeropuerto de destino");
+                                String destino = br.readLine();
+
+                                Aeropuerto aeroPuertoDestino = alita.buscarAeropuerto(destino);
+
+                                if (aeroPuertoDestino == null) {
+                                    System.out.println("El aeropuerto no está registrado");
+                                } else {
+                                    System.out.println("Origen: " + aeroPuertoOrigen.imprimir());
+                                    System.out.println("Destino: " + aeroPuertoDestino.imprimir());
+
+                                    LinkedList<Aerolinea> aerolineas = alita.getAerolineas();
+                                    Aerolinea objAerolineaElegida = null;
+                                    int costoViaje = -1;
+
+                                    int opcionAerolinea = -1;
+
+                                    while (opcionAerolinea != 0) {
+                                        System.out.println("\nAerolíneas disponibles:");
+                                        System.out.println("-------------------------------------");
+
+                                        int i = 0;
+                                        for (Aerolinea objAeroFor : aerolineas) {
+                                            i++;
+                                            System.out.println(String.valueOf(i) + " - " + objAeroFor.getID() + " --> " + objAeroFor.getNombre());
+                                        }
+
+                                        System.out.println("Seleccione la aerolínea que realizará el vuelo");
+                                        String opcionUsuario = br.readLine();
+
+                                        try {
+                                            opcionAerolinea = Integer.parseInt(opcionUsuario);
+
+                                            if (opcionAerolinea < 0) {
+                                                System.out.println("Su opción es inválida");
+                                                opcionAerolinea = i + 1;
+                                            }
+                                        } catch (Exception ex) {
+                                            System.out.println("Su opción es inválida");
+                                            opcionAerolinea = i + 1;
+                                        }
+
+                                        if (opcionAerolinea <= i && opcionAerolinea > 0) {
+                                            objAerolineaElegida = aerolineas.get(opcionAerolinea - 1);
+                                            opcionAerolinea = 0;
+
+                                            System.out.println("Ingrese el costo del viaje\nCosto mínimo $100");
+
+                                            try {
+                                                costoViaje = Integer.parseInt(br.readLine());
+                                                if(costoViaje < 1){
+                                                    costoViaje = 100;
+                                                }
+                                            } catch (Exception ex) {
+                                                costoViaje = 100;
+                                                System.out.println("Lo ingresado no es un número\nCosto del viaje: $100");
+                                            }
+
+                                        } else if (opcionAerolinea != 0) {
+                                            System.out.println("Su opción es inválida\nIntente nuevamente");
+                                        }
+                                    }
+
+                                    if (objAerolineaElegida != null) {
+                                        IVuelo vuelo = new Vuelo(aeroPuertoOrigen.getID(), aeroPuertoDestino.getID(), Double.parseDouble(String.valueOf(costoViaje)), objAerolineaElegida.getID());
+
+                                        IArista objArista = new TArista(aeroPuertoOrigen.getID(), aeroPuertoDestino.getID(), vuelo);
+
+                                        if (alita.nuevaArista(objArista)) {
+                                            System.out.println("Vuelo insertado satisfactoriamente");
+                                        } else {
+                                            System.out.println("No se ha podido insertar el vuelo. Intente nuevamente");
+                                        }
+                                    }
+                                }
+                            }
+
+                            break;
+                        }
+                        case 5: {
+                            System.out.println("Búsqueda de vuelos entre dos aeropuertos");
+                            System.out.println("Ingrese el aeropuerto de origen");
+                            String origen = br.readLine();
+
+                            Aeropuerto aeroPuertoOrigen = alita.buscarAeropuerto(origen);
+
+                            if (aeroPuertoOrigen == null) {
+                                System.out.println("El aeropuerto no está registrado");
+                            } else {
+                                System.out.println("Ingrese el aeropuerto de destino");
+                                String destino = br.readLine();
+
+                                Aeropuerto aeroPuertoDestino = alita.buscarAeropuerto(destino);
+
+                                if (aeroPuertoDestino == null) {
+                                    System.out.println("El aeropuerto no está registrado");
+                                } else{
+                                    LinkedList<IVuelo> conexiones = alita.buscarVuelos(origen, destino);
+
+                                    if (conexiones != null) {
+                                        for (IVuelo objVuelo : conexiones) {
+                                            Aerolinea aeroVoladora = alita.buscarAerolinea(objVuelo.getAerolinea());
+                                            System.out.println("Aerolínea: " + aeroVoladora.getNombre() + ", Costo $" + objVuelo.getCosto());
+                                        }
+                                    } else {
+                                        System.out.println("No existen vuelos directos entre los aeropuertos ingresados");
+                                    }
+                                }
+                            }
+                            
+                            break;
+                        }
+                        case 6: {
+                            System.out.println("Ingresar nuevo aeropuerto");
+                            System.out.println("Ingrese el código del aeropuerto (3 caracteres de largo)");
+                            String aeroCode = br.readLine();
+
+                            Aeropuerto objAeroBuscado = alita.buscarAeropuerto(aeroCode);
+
+                            if (objAeroBuscado != null) {
+                                System.out.println("El aeropuerto " + objAeroBuscado.getNombre() + " ingresado ya existe");
+                            } else {
+                                System.out.println("Ingrese el nombre del aeropuerto");
+                                String aeroNombre = br.readLine();
+
+                                Aeropuerto objAeropuerto = new Aeropuerto(aeroCode, aeroNombre);
+
+                                boolean res = alita.nuevoAeropuerto(objAeropuerto);
+
+                                if (res) {
+                                    System.out.println("Aeropuerto insertado con éxito!");
+                                } else {
+                                    System.out.println("Atención. Ha habido un problema con la inserción\nIntente más tarde");
+                                }
+                            }
+
+                            break;
+
+                        }
+                        case 7: {
+                            System.out.println("Buscar un aeropuerto");
+                            System.out.println("Ingrese el código del aeropuerto");
+                            String aeroCode = br.readLine();
+
+                            Aeropuerto objAeroBuscado = alita.buscarAeropuerto(aeroCode);
+                            if (objAeroBuscado == null) {
+                                System.out.println("El aeropuerto \"" + aeroCode + "\" no existe");
+                            } else {
+                                System.out.println(objAeroBuscado.imprimir());
+                            }
+
+                            break;
+                        }
+                        case 8: {
+                            System.out.println("Buscar un aeropuerto");
+                            System.out.println("Ingrese el código del aeropuerto");
+                            String aeroCode = br.readLine();
+
+                            Aeropuerto objAeropuerto = alita.buscarAeropuerto(aeroCode);
+
+                            if (objAeropuerto == null) {
+                                System.out.println("El aeropuerto \"" + aeroCode + "\" no existe");
+                            } else {
+                                boolean aeroEliminacion = alita.eliminarAeropuerto(aeroCode);
+
+                                if (aeroEliminacion) {
+                                    System.out.println("Aeropuerto eliminado");
+                                } else {
+                                    System.out.println("No se ha podido eliminar el aeropuerto");
+                                }
+                            }
+
+                            break;
+                        }
+                        case 9: {
+                            System.out.println("Ingrese el aeropuerto de origen");
+                            String origen = br.readLine();
+
+                            Aeropuerto aeroPuertoOrigen = alita.buscarAeropuerto(origen);
+
+                            if (aeroPuertoOrigen == null) {
+                                System.out.println("El aeropuerto no está registrado");
+                            } else {
+                                System.out.println("Ingrese el aeropuerto de destino");
+                                String destino = br.readLine();
+
+                                Aeropuerto aeroPuertoDestino = alita.buscarAeropuerto(destino);
+
+                                if (aeroPuertoDestino == null) {
+                                    System.out.println("El aeropuerto no está registrado");
+                                } else {
+                                    int cantEscalas = -1;
+
+                                    System.out.println("Ingrese la cantidad de escalas, entre 1(uno) y 5(cinco)");
+                                    try {
+                                        cantEscalas = Integer.parseInt(br.readLine());
+
+                                        if (cantEscalas > 5 || cantEscalas < 1) {
+                                            cantEscalas = 4;
+                                        }
+                                    } catch (Exception ex) {
+                                        cantEscalas = 4;
+                                        System.out.println("Lo ingresado no es un número.\nSe tomarán 4 escalas como máximo");
+                                    }
+
+                                    LinkedList<Aerolinea> aerolineas = alita.getAerolineas();
+                                    int opcionAerolinea = -1;
+
+                                    while (opcionAerolinea != 0) {
+                                        System.out.println("Origen: " + aeroPuertoOrigen.getID() + " - " + aeroPuertoOrigen.getNombre());
+                                        System.out.println("Destino: " + aeroPuertoDestino.getID() + " - " + aeroPuertoDestino.getNombre());
+                                        System.out.println("\nAerolíneas disponibles para viajar:");
+                                        System.out.println("-------------------------------------");
+
+                                        int i = 0;
+                                        for (Aerolinea objAeroFor : aerolineas) {
+                                            i++;
+                                            System.out.println(String.valueOf(i) + " - " + objAeroFor.getID() + " --> " + objAeroFor.getNombre());
+                                        }
+
+                                        System.out.println("Seleccione la aerolínea en la que desea viajar");
+                                        String opcionUsuario = br.readLine();
+
+                                        try {
+                                            opcionAerolinea = Integer.parseInt(opcionUsuario);
+
+                                            if (opcionAerolinea < 0) {
+                                                System.out.println("Su opción es inválida");
+                                                opcionAerolinea = i + 1;
+                                            }
+                                        } catch (Exception ex) {
+                                            System.out.println("Su opción es inválida");
+                                            opcionAerolinea = i + 1;
+                                        }
+
+                                        if (opcionAerolinea <= i && opcionAerolinea > 0) {
+                                            Aerolinea objAerolineaElegida = aerolineas.get(opcionAerolinea - 1);
+
+                                            System.out.println("Buscando viajes entre\n" + aeroPuertoOrigen.getNombre() + " y " + aeroPuertoDestino.getNombre() + "\nen la aerolínea " + objAerolineaElegida.getNombre() + " con un máximo de " + cantEscalas + " escalas\n");
+                                            //TCaminos muchosCaminitos = alita.todosLosCaminos("LAX", "SLC", 4, "AA");
+                                            TCaminos muchosCaminitos = alita.todosLosCaminos(origen, destino, cantEscalas, objAerolineaElegida.getID());
+
+                                            System.out.println("El siguiente es el camino más económico entre las ciudades elegidas");
+                                            muchosCaminitos.imprimirCaminoMasCorto();
+
+                                            int cantOpciones = muchosCaminitos.getCaminos().size();
+
+                                            System.out.println("Existen otras " + String.valueOf(cantOpciones - 1) + " posibilidades de vuelo. Ingrese una letra para verlas todas, ENTER para buscar otra aerolínea o 0 (cero) para salir");
+                                            String elUsuarioQuiereVerlos = br.readLine();
+
+                                            if (elUsuarioQuiereVerlos.equals("0")) {
+                                                opcionAerolinea = 0;
+                                                System.out.println("AlasUCU desea que disfrute su viaje");
+                                            } else if (!elUsuarioQuiereVerlos.equals("")) {
+                                                muchosCaminitos.imprimir();
+                                                System.out.println("ENTER para continuar");
+                                                br.readLine();
+                                            }
+                                        } else if (opcionAerolinea != 0) {
+                                            System.out.println("Su opción es inválida\nIntente nuevamente");
+                                        }
+                                    }
+                                }
+                            }
+
+                            break;
+                        }
+                        case 0: {
+                            System.out.println("----------");
+                            System.out.println("| Bái :D |");
+                            System.out.println("----------");
+
+                            break;
+                        }
+                        default: {
+                            System.out.println("Pusiste una opción incorrecta :'(");
+                            break;
+                        }
+                    }
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                    System.out.println("Ha habido un error general. Contacte a su administrador para más detalles");
                 }
             }
 
-            //Holuuuuuuuu
-            
-            resultado += ",\n" + aeroDestino;
-
-            System.out.println("Tenemos viaje!!! " + resultado + "\ny cuesta: " + costoFinalDelPinkFloydDeLaVida);
-
-            int holu = 23;
-        } else{
-            System.out.println("Holu. No estaría habiendo ningún recorrido por esa aerolínea. SORRY, Mildis ::");
-        }*/
-
+        } catch (Exception ex) {
+            System.out.println("El sistema se ha detenido para evitar una explosión de su equipo \n Para más información, contacte al 0993141592");
+        }
     }
-
 }

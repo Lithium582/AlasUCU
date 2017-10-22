@@ -17,18 +17,34 @@ public class TCamino {
         La primera adyacencia conecta al origen con el primer vértice, y así sucesivamente
     */
     
+    /**
+     *
+     * @return
+     */
     public IVertice getOrigen(){
         return this.origen;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Comparable> getOtrosVertices(){
         return this.otrosVertices;
     }
     
+    /**
+     *
+     * @return
+     */
     public LinkedList<IAdyacencia> getOtrasAdyacencias(){
         return this.otrasAdyacencias;
     }
     
+    /**
+     *
+     * @param v
+     */
     public TCamino(IVertice v){
         this.origen = v;
         this.otrosVertices = new ArrayList<Comparable>();
@@ -36,12 +52,18 @@ public class TCamino {
         this.costoTotal = 0D;
     }
     
+    /**
+     *
+     * @param pObjAdyacencia
+     * @param pCosto
+     * @return
+     */
     public boolean agregarAdyacencia(IAdyacencia pObjAdyacencia, Double pCosto){
         boolean resultado = false;
         if(pObjAdyacencia.getVertice() != null){
             Comparable etiquetaDestino = pObjAdyacencia.getEtiqueta();
-            
-            resultado = otrosVertices.add(etiquetaDestino);
+            String unStringAAgregar = pObjAdyacencia.getVertice().getDatos().getNombre();
+            resultado = otrosVertices.add(etiquetaDestino + "(" + unStringAAgregar + ")");
             
             //Si insertó la etiqueta, insertamos la adyacencia
             if(resultado){
@@ -57,6 +79,12 @@ public class TCamino {
     //Tiene sentido esto?
     //Si se elimina cualquier adyacencia en el medio, el camino podría romperse...
     //Salvo que siempre se elmine el último
+
+    /**
+     *
+     * @param pObjAdyacencia
+     * @return
+     */
     public boolean eliminarAdyacencia(IAdyacencia pObjAdyacencia){
         Comparable etiquetaAEliminar = pObjAdyacencia.getEtiqueta();
         
@@ -69,6 +97,10 @@ public class TCamino {
         return false;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean eliminarUltimaAdyacencia(){
         boolean res = false;
         int cantidad = otrosVertices.size();
@@ -78,32 +110,47 @@ public class TCamino {
         return res;
     }
     
-    public void imprimirEtiquetas(){
-        System.out.println( "\n" + origen.getEtiqueta());
-        
-        ArrayList<Double[][]> nuevo = new ArrayList();
-        
-        for(Comparable comp : otrosVertices){
-            System.out.println(comp.toString());
-        }
-        
-        System.out.println(this.costoTotal);
-    }
-    
+    /**
+     *
+     * @return
+     */
     public Double getCosto(){
         return this.costoTotal;
     }
     
+    /**
+     *
+     * @return
+     */
     public String imprimirEtiquetasStr(){
-        String resultado = "\n" + origen.getEtiqueta();
+        String resultado = origen.getEtiqueta().toString() + "(" + this.origen.getDatos().getNombre() + ")";
         
-        for(Comparable comp : otrosVertices){
-            resultado += ", " + comp.toString();
+        for(Comparable comp : otrosVertices) {
+            resultado += " - " + comp.toString();
         }
         
+        resultado += " --> $" + String.valueOf(this.costoTotal);
         return resultado;
     }
     
+    /**
+     *
+     */
+    public void imprimirEtiquetas(){
+        String resultado = origen.getEtiqueta().toString() + "(" + this.origen.getDatos().getNombre() + ")";
+        
+        for(Comparable comp : otrosVertices) {
+            resultado += " - " + comp.toString();
+        }
+        
+        resultado += " --> $" + String.valueOf(this.costoTotal);
+        System.out.println(resultado);
+    }
+    
+    /**
+     *
+     * @return
+     */
     public TCamino copiar(){
         IVertice origenCopia = new TVertice(this.origen.getDatos(), this.origen.getEtiqueta());
         TCamino copia = new TCamino(origenCopia);
