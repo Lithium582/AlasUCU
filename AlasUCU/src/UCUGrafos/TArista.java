@@ -41,8 +41,6 @@ public class TArista implements IArista {
      * @param etiquetaOrigen
      * @param etiquetaDestino
      * @param pRelacion
-     * @param aDestinationTag
-     * @param aRelationship
      */
     public TArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, IVuelo pRelacion) {
         this.etiquetaOrigen = etiquetaOrigen;

@@ -37,6 +37,11 @@ public interface IGrafoDirigido {
      */
     boolean eliminarVertice(Comparable nombreVertice);
 
+    /**
+     *
+     * @param unaEtiqueta
+     * @return
+     */
     IVertice buscarVertice(Comparable unaEtiqueta);
     
     /**
@@ -102,6 +107,8 @@ public interface IGrafoDirigido {
     
     /**
      * 
+     * @param arista
+     * @return 
      */
     boolean insertarArista(IArista arista);
     

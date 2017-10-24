@@ -57,6 +57,7 @@ public class TCaminos {
     
     /**
      *
+     * @return 
      */
     public String imprimiMasCortoSTR(){
         if(this.caminoMasCorto != null){
@@ -89,6 +90,7 @@ public class TCaminos {
     
     /**
      *
+     * @return 
      */
     public String imprimirTodosSTR(){
         String strRetorno = "";

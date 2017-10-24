@@ -56,6 +56,11 @@ public class AlaUCU {
         return this._grafo;
     }
     
+    /**
+     *
+     * @param pCodigo
+     * @return
+     */
     public Aerolinea buscarAerolinea(Comparable<String> pCodigo){
         for(Aerolinea aeroObjeto : this._aerolineas){
             if(aeroObjeto.getID().equals(pCodigo)){
@@ -66,6 +71,11 @@ public class AlaUCU {
         return null;
     }
     
+    /**
+     *
+     * @param pObjAerolinea
+     * @return
+     */
     public boolean nuevaAerolinea(Aerolinea pObjAerolinea){
         if(buscarAerolinea(pObjAerolinea.getID()) != null){
             return false;
@@ -76,6 +86,11 @@ public class AlaUCU {
         }
     }
     
+    /**
+     *
+     * @param pObjAeropuerto
+     * @return
+     */
     public boolean nuevoAeropuerto(Aeropuerto pObjAeropuerto){
         if(this.buscarAeropuerto(pObjAeropuerto.getID()) != null){
             return false;
@@ -86,10 +101,21 @@ public class AlaUCU {
         }
     }
     
+    /**
+     *
+     * @param pObjArista
+     * @return
+     */
     public boolean nuevaArista(IArista pObjArista){
         return this._grafo.insertarArista(pObjArista);
     }
     
+    /**
+     *
+     * @param pAeropuertoOrigen
+     * @param pAeropuertoDestino
+     * @return
+     */
     public LinkedList<IVuelo> buscarVuelos(Comparable<String> pAeropuertoOrigen, Comparable<String> pAeropuertoDestino){
         IVertice aeropuertoBuscado = this._grafo.buscarVertice(pAeropuertoOrigen);
         IAdyacencia objAdyacente = aeropuertoBuscado.buscarAdyacencia(pAeropuertoDestino);
@@ -102,6 +128,11 @@ public class AlaUCU {
         return null;
     }
     
+    /**
+     *
+     * @param pCodigo
+     * @return
+     */
     public Aeropuerto buscarAeropuerto(Comparable pCodigo){
         IVertice objVertice = this._grafo.buscarVertice(pCodigo);
         if(objVertice != null){
@@ -110,6 +141,11 @@ public class AlaUCU {
         return null;
     }
     
+    /**
+     *
+     * @param pCodigo
+     * @return
+     */
     public boolean eliminarAeropuerto(Comparable pCodigo){
         boolean aeroEliminado = this._grafo.eliminarVertice(pCodigo);
         return aeroEliminado;

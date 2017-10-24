@@ -67,6 +67,10 @@ public class Aeropuerto {
         this.pais = "Hawaii";
     }
     
+    /**
+     *
+     * @return
+     */
     public String imprimir(){
         return "Aeropuerto " + this.ID + " - " + this.nombre;
     }
