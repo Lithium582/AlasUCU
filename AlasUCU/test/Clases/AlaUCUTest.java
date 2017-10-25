@@ -5,15 +5,8 @@
  */
 package Clases;
 
-import UCUGrafos.IArista;
-import UCUGrafos.IGrafoDirigido;
-import UCUGrafos.TCaminos;
-import java.util.Collection;
+import UCUGrafos.*;
 import java.util.LinkedList;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -23,266 +16,129 @@ import static org.junit.Assert.*;
  */
 public class AlaUCUTest {
     
+    private AlaUCU alaUnica;
+    private String archivoAeropuertos = "src/Archivos/Aeropuertos-SoloTests.csv";
+    private String archivoVuelos = "src/Archivos/Vuelos-SoloTests.csv";
+    private String archivoAerolineas = "src/Archivos/Aerolineas.csv";
+    
     public AlaUCUTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getInstancia method, of class AlaUCU.
-     */
-    @org.junit.Test
-    public void testGetInstancia() {
-        System.out.println("getInstancia");
-        AlaUCU expResult = null;
-        AlaUCU result = AlaUCU.getInstancia();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAerolineas method, of class AlaUCU.
-     */
-    @org.junit.Test
-    public void testGetAerolineas() {
-        System.out.println("getAerolineas");
-        AlaUCU instance = null;
-        LinkedList<Aerolinea> expResult = null;
-        LinkedList<Aerolinea> result = instance.getAerolineas();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getGrafo method, of class AlaUCU.
-     */
-    @org.junit.Test
-    public void testGetGrafo() {
-        System.out.println("getGrafo");
-        AlaUCU instance = null;
-        IGrafoDirigido expResult = null;
-        IGrafoDirigido result = instance.getGrafo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        this.alaUnica = AlaUCU.getInstancia();
+        
+        this.alaUnica.cargarGrafo(archivoAeropuertos, archivoAerolineas, archivoVuelos);
     }
 
     /**
      * Test of buscarAerolinea method, of class AlaUCU.
      */
-    @org.junit.Test
+    @Test
     public void testBuscarAerolinea() {
-        System.out.println("buscarAerolinea");
-        Comparable<String> pCodigo = null;
-        AlaUCU instance = null;
-        Aerolinea expResult = null;
-        Aerolinea result = instance.buscarAerolinea(pCodigo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Aerolinea aeroObjetoBuscado = this.alaUnica.buscarAerolinea("AA");
+        assertEquals("AA", aeroObjetoBuscado.getID());
+        
+        aeroObjetoBuscado = this.alaUnica.buscarAerolinea("SS");
+        assertEquals(null, aeroObjetoBuscado);
     }
 
     /**
      * Test of nuevaAerolinea method, of class AlaUCU.
      */
-    @org.junit.Test
+    @Test
     public void testNuevaAerolinea() {
-        System.out.println("nuevaAerolinea");
-        Aerolinea pObjAerolinea = null;
-        AlaUCU instance = null;
-        boolean expResult = false;
-        boolean result = instance.nuevaAerolinea(pObjAerolinea);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int kantAerolineas = this.alaUnica.getAerolineas().size();
+        assertEquals(63, kantAerolineas);
+        this.alaUnica.nuevaAerolinea(new Aerolinea("SS", "2WW Airlines"));
+        
+        kantAerolineas = this.alaUnica.getAerolineas().size();
+        assertEquals(64, kantAerolineas);
     }
 
     /**
      * Test of nuevoAeropuerto method, of class AlaUCU.
      */
-    @org.junit.Test
+    @Test
     public void testNuevoAeropuerto() {
-        System.out.println("nuevoAeropuerto");
-        Aeropuerto pObjAeropuerto = null;
-        AlaUCU instance = null;
-        boolean expResult = false;
-        boolean result = instance.nuevoAeropuerto(pObjAeropuerto);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of nuevaArista method, of class AlaUCU.
-     */
-    @org.junit.Test
-    public void testNuevaArista() {
-        System.out.println("nuevaArista");
-        IArista pObjArista = null;
-        AlaUCU instance = null;
-        boolean expResult = false;
-        boolean result = instance.nuevaArista(pObjArista);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int kantAeropuertos = this.alaUnica.getGrafo().getVertices().size();
+        assertEquals(8, kantAeropuertos);
+        
+        this.alaUnica.nuevoAeropuerto(new Aeropuerto("SSS", "2WW Airport"));
+        kantAeropuertos = this.alaUnica.getGrafo().getVertices().size();
+        
+        assertEquals(9, kantAeropuertos);
     }
 
     /**
      * Test of buscarVuelos method, of class AlaUCU.
      */
-    @org.junit.Test
+    @Test
     public void testBuscarVuelos() {
-        System.out.println("buscarVuelos");
-        Comparable<String> pAeropuertoOrigen = null;
-        Comparable<String> pAeropuertoDestino = null;
-        AlaUCU instance = null;
-        LinkedList<IVuelo> expResult = null;
-        LinkedList<IVuelo> result = instance.buscarVuelos(pAeropuertoOrigen, pAeropuertoDestino);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LinkedList<IVuelo> vuelos;
+        vuelos = this.alaUnica.buscarVuelos("04G", "06A");
+        
+        assertEquals(10, vuelos.size());
     }
 
     /**
      * Test of buscarAeropuerto method, of class AlaUCU.
      */
-    @org.junit.Test
+    @Test
     public void testBuscarAeropuerto() {
-        System.out.println("buscarAeropuerto");
-        Comparable pCodigo = null;
-        AlaUCU instance = null;
-        Aeropuerto expResult = null;
-        Aeropuerto result = instance.buscarAeropuerto(pCodigo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Comparable aeroID = this.alaUnica.buscarAeropuerto("17G").getID();
+        assertEquals("17G", aeroID);
+        
+        Aeropuerto aeroObjeto = this.alaUnica.buscarAeropuerto("SSS");
+        assertEquals(null, aeroObjeto);
     }
 
     /**
      * Test of eliminarAeropuerto method, of class AlaUCU.
      */
-    @org.junit.Test
+    @Test
     public void testEliminarAeropuerto() {
-        System.out.println("eliminarAeropuerto");
-        Comparable pCodigo = null;
-        AlaUCU instance = null;
-        boolean expResult = false;
-        boolean result = instance.eliminarAeropuerto(pCodigo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Comparable aeroID = this.alaUnica.buscarAeropuerto("17G").getID();
+        assertEquals("17G", aeroID);
+        
+        this.alaUnica.eliminarAeropuerto("17G");
+        Aeropuerto aeroObjeto = this.alaUnica.buscarAeropuerto("17G");
+        assertEquals(null, aeroObjeto);
+        
+        assertEquals(false, this.alaUnica.eliminarAeropuerto("17G"));
     }
 
     /**
      * Test of cargarGrafo method, of class AlaUCU.
      */
-    @org.junit.Test
+    @Test
     public void testCargarGrafo() {
-        System.out.println("cargarGrafo");
-        String pArchivoAeropuertos = "";
-        String pArchivoAerolineas = "";
-        String pArchivoVuelos = "";
-        AlaUCU instance = null;
-        instance.cargarGrafo(pArchivoAeropuertos, pArchivoAerolineas, pArchivoVuelos);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of bpf method, of class AlaUCU.
-     */
-    @org.junit.Test
-    public void testBpf() {
-        System.out.println("bpf");
-        Comparable etiquetaOrigen = null;
-        AlaUCU instance = null;
-        Collection<Comparable> expResult = null;
-        Collection<Comparable> result = instance.bpf(etiquetaOrigen);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        AlaUCU unAlaUCUDePaloma = AlaUCU.getInstancia();
+        
+        String nuevoArchivoAeropuerto = "src/Archivos/Aeropuertos-SoloTests.csv";
+        String nuevoArchivoVuelos = "src/Archivos/vuelos-SoloTests.csv";
+        String nuevoArchivoAerolineas = "src/Archivos/Aerolineas.csv";
+        
+        boolean cargado = unAlaUCUDePaloma.cargarGrafo(nuevoArchivoAeropuerto, nuevoArchivoAerolineas, nuevoArchivoVuelos);
+        
+        assertEquals(true, cargado);
+        assertEquals(8, unAlaUCUDePaloma.getGrafo().getVertices().size());
+        
+        assertEquals(27, unAlaUCUDePaloma.getAerolineas().size());
     }
 
     /**
      * Test of todosLosCaminos method, of class AlaUCU.
      */
-    @org.junit.Test
+    @Test
     public void testTodosLosCaminos() {
-        System.out.println("todosLosCaminos");
-        Comparable pEtiquetaOrigen = null;
-        Comparable pEtiquetaDestino = null;
-        int pCantidadEscalas = 0;
-        Comparable pAerolinea = null;
-        AlaUCU instance = null;
-        TCaminos expResult = null;
-        TCaminos result = instance.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino, pCantidadEscalas, pAerolinea);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        TCaminos todosLosCaminos;
+        todosLosCaminos = this.alaUnica.todosLosCaminos("04G", "09J", 4, "AA");
+        assertEquals(2, todosLosCaminos.getCaminos().size());
 
-    /**
-     * Test of obtenerTodosLosCaminos method, of class AlaUCU.
-     */
-    @org.junit.Test
-    public void testObtenerTodosLosCaminos() {
-        System.out.println("obtenerTodosLosCaminos");
-        Comparable pEtiquetaOrigen = null;
-        Comparable pEtiquetaDestino = null;
-        int pCantidadEscalas = 0;
-        Comparable pAerolinea = null;
-        AlaUCU instance = null;
-        LinkedList<String> expResult = null;
-        LinkedList<String> result = instance.obtenerTodosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino, pCantidadEscalas, pAerolinea);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        todosLosCaminos = this.alaUnica.todosLosCaminos("04G", "09J", 4, "AA");
+        assertEquals(2, todosLosCaminos.getCaminos().size());
 
-    /**
-     * Test of obtenerPosicionEnElHashMap method, of class AlaUCU.
-     */
-    @org.junit.Test
-    public void testObtenerPosicionEnElHashMap() {
-        System.out.println("obtenerPosicionEnElHashMap");
-        Comparable pComp = null;
-        AlaUCU instance = null;
-        int expResult = 0;
-        int result = instance.obtenerPosicionEnElHashMap(pComp);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        todosLosCaminos = this.alaUnica.todosLosCaminos("0W3", "09J", 4, "AA");
+        assertEquals(0, todosLosCaminos.getCaminos().size());
 
-    /**
-     * Test of obtenerEtiquetaPorPosicion method, of class AlaUCU.
-     */
-    @org.junit.Test
-    public void testObtenerEtiquetaPorPosicion() {
-        System.out.println("obtenerEtiquetaPorPosicion");
-        int pPosicion = 0;
-        AlaUCU instance = null;
-        Comparable expResult = null;
-        Comparable result = instance.obtenerEtiquetaPorPosicion(pPosicion);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        todosLosCaminos = this.alaUnica.todosLosCaminos("0W3", "09J", 4, "SS");
+        assertEquals(0, todosLosCaminos.getCaminos().size());
     }
-    
 }

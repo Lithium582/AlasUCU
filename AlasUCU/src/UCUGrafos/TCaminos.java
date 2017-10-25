@@ -17,23 +17,23 @@ public class TCaminos {
     private TCamino caminoMasCorto;
     
     /**
-     *
-     * @return
+     * Método que retorna todos los caminos
+     * @return Lista de caminos
      */
     public LinkedList<TCamino> getCaminos(){
         return this.caminos;
     }
     
     /**
-     *
-     * @return
+     * Método que retorna el camino más corto
+     * @return Instancia de TCamino indicando el camino más corto
      */
     public TCamino getCaminoMasCorto(){
         return this.caminoMasCorto;
     }
     
     /**
-     *
+     * Costructor de TCaminos
      */
     public TCaminos(){
         this.caminos = new LinkedList<TCamino>();
@@ -41,8 +41,8 @@ public class TCaminos {
     }
     
     /**
-     *
-     * @param pCamino
+     * Método que inserta un nuevo camino a la lista
+     * @param pCamino Objeto Camino a ser insertado
      */
     public void agregarCamino(TCamino pCamino) {
         this.caminos.add(pCamino);
@@ -56,8 +56,8 @@ public class TCaminos {
     }
     
     /**
-     *
-     * @return 
+     * Método que retorna la información del camino más corto
+     * @return  String con las etiquetas del camino más corto 
      */
     public String imprimiMasCortoSTR(){
         if(this.caminoMasCorto != null){
@@ -69,7 +69,7 @@ public class TCaminos {
     }
     
     /**
-     * 
+     * Método que imprimie directamente el camino más corto
      */
     public void imprimirCaminoMasCorto(){
         if(this.caminoMasCorto != null){
@@ -80,7 +80,7 @@ public class TCaminos {
     }
     
     /**
-     *
+     * Método que imprime todos los caminos
      */
     public void imprimir(){
         this.caminos.forEach((camino) -> {
@@ -89,8 +89,8 @@ public class TCaminos {
     }
     
     /**
-     *
-     * @return 
+     * Método que retorna todos los caminos 
+     * @return String con las etiquetas que representan a los caminos
      */
     public String imprimirTodosSTR(){
         String strRetorno = "";

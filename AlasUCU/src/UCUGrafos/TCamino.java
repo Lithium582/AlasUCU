@@ -9,25 +9,21 @@ import java.util.LinkedList;
  */
 public class TCamino {
     private IVertice origen;
-    //public LinkedList<Comparable> otrosVertices; //Lista de Etiquetas de los vértices
     private ArrayList<Comparable> otrosVertices;
     private LinkedList<IAdyacencia> otrasAdyacencias; //Lista de la adyacencia que conecta el vértice anterior en la lista con el actual
     private Double costoTotal;
-    /*
-        La primera adyacencia conecta al origen con el primer vértice, y así sucesivamente
-    */
     
     /**
-     *
-     * @return
+     * Método que retorna el primer vértice del camino
+     * @return Vértice desde el que parte el camino
      */
     public IVertice getOrigen(){
         return this.origen;
     }
     
     /**
-     *
-     * @return
+     * Método que retrona todas las etiquetas que componen el camino
+     * @return ArrayList con las etiquetas
      */
     public ArrayList<Comparable> getOtrosVertices(){
         return this.otrosVertices;
@@ -42,8 +38,8 @@ public class TCamino {
     }
     
     /**
-     *
-     * @param v
+     * Constructor de TCamino
+     * @param v Vértice de origen
      */
     public TCamino(IVertice v){
         this.origen = v;
@@ -53,10 +49,10 @@ public class TCamino {
     }
     
     /**
-     *
-     * @param pObjAdyacencia
-     * @param pCosto
-     * @return
+     * Método que inserta una nueva adyacencia
+     * @param pObjAdyacencia Objeto adyacencia a insertar
+     * @param pCosto Costo asociado a la adyacencia
+     * @return Booleano indicando si la inserción fue exitosa
      */
     public boolean agregarAdyacencia(IAdyacencia pObjAdyacencia, Double pCosto){
         boolean resultado = false;
@@ -76,30 +72,9 @@ public class TCamino {
         return resultado;
     }
     
-    //Tiene sentido esto?
-    //Si se elimina cualquier adyacencia en el medio, el camino podría romperse...
-    //Salvo que siempre se elmine el último
-
     /**
-     *
-     * @param pObjAdyacencia
-     * @return
-     */
-    public boolean eliminarAdyacencia(IAdyacencia pObjAdyacencia){
-        Comparable etiquetaAEliminar = pObjAdyacencia.getEtiqueta();
-        
-        if(otrosVertices.contains(etiquetaAEliminar)){
-            int indice = otrosVertices.indexOf(etiquetaAEliminar);
-            otrosVertices.remove(indice);
-            otrasAdyacencias.remove(indice);
-        }
-        
-        return false;
-    }
-    
-    /**
-     *
-     * @return
+     * Método que elimina la última adyacencia agregada
+     * @return Booleano indicando si pudo eliminarse la adyacencia
      */
     public boolean eliminarUltimaAdyacencia(){
         boolean res = false;
@@ -111,16 +86,16 @@ public class TCamino {
     }
     
     /**
-     *
-     * @return
+     * Método que retorna el costo total del camino
+     * @return Double indicando el costo del camino
      */
     public Double getCosto(){
         return this.costoTotal;
     }
     
     /**
-     *
-     * @return
+     * Método que retorna un String con todas las etiquetas en orden
+     * @return String indicando el camino desde el origen hasta el último elemento en orden
      */
     public String imprimirEtiquetasStr(){
         String resultado = origen.getEtiqueta().toString() + "(" + this.origen.getDatos().getNombre() + ")";
@@ -134,7 +109,7 @@ public class TCamino {
     }
     
     /**
-     *
+     * Método que imprime directamente las etiquetas del camino
      */
     public void imprimirEtiquetas(){
         String resultado = origen.getEtiqueta().toString() + "(" + this.origen.getDatos().getNombre() + ")";
@@ -148,8 +123,8 @@ public class TCamino {
     }
     
     /**
-     *
-     * @return
+     * Método que copia la instancia actual de TCamino
+     * @return TCamino con el mismo estado que this
      */
     public TCamino copiar(){
         IVertice origenCopia = new TVertice(this.origen.getDatos(), this.origen.getEtiqueta());

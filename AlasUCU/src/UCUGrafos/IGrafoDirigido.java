@@ -10,13 +10,6 @@ import java.util.Map;
  * @author Lithium582
  */
 public interface IGrafoDirigido {
-
-    
-    /**
-     * @return Etiqueta del centro del grafo
-     */
-    //Comparable centroDelGrafo();
-
     /**
      * Metodo encargado de eliminar una arista dada por un origen y destino.
      * En caso de no existir la arista, retorna falso. En caso de que las
@@ -38,9 +31,9 @@ public interface IGrafoDirigido {
     boolean eliminarVertice(Comparable nombreVertice);
 
     /**
-     *
-     * @param unaEtiqueta
-     * @return
+     * Retorna el vértice con la etiqueta pasada por parámetro
+     * @param unaEtiqueta Comparable representando un código de aeropuerto
+     * @return TVertice con el código recibido o null si no se encuentra
      */
     IVertice buscarVertice(Comparable unaEtiqueta);
     
@@ -50,7 +43,7 @@ public interface IGrafoDirigido {
      *
      * @return True si existe la arista, false en caso contrario
      */
-    //boolean existeArista(Comparable etiquetaOrigen, Comparable etiquetaDestino);
+    boolean existeArista(Comparable etiquetaOrigen, Comparable etiquetaDestino);
 
     /**
      * Metodo encargado de verificar la existencia de un vertice dentro del
@@ -65,16 +58,16 @@ public interface IGrafoDirigido {
     boolean existeVertice(Comparable unaEtiqueta);
 
     /**
-     *
-     * @param pComp
-     * @return
+     * Retorna la posición en el hashMap de una clave o -1 si no se encuentra
+     * @param pComp Código que se está buscando en el hashMap
+     * @return Posición de la clave en el hash o -1 si no se encuentra en ella
      */
     int obtenerPosicionEnElHashMap(Comparable pComp);
     
     /**
-     *
-     * @param pPosicion
-     * @return
+     * Retorna la clave para una posición determinada en el hashMap
+     * @param pPosicion Posición buscada en el hashMap
+     * @return La clave que se encuentra en la posición o cero si no existe
      */
     Comparable obtenerEtiquetaPorPosicion(int pPosicion);
     
@@ -90,86 +83,87 @@ public interface IGrafoDirigido {
     boolean insertarVertice(IVertice vertice);
 
     /**
-     *
-     * @param vertices
+     * Método que inserta un nuevo vértice a partir de su etiqueta y dato
+     * @param unaEtiqueta Comparable con el dato de la etiqueta (el ID del Aeropuerto)
+     * @param pObjeto Instancia de Aeropuerto
+     * @return Booleano indicando si la inserción fue satisfactoria
+     */
+    boolean insertarVertice(Comparable unaEtiqueta, Aeropuerto pObjeto);
+    
+    /**
+     * Método que carga un nuevo grafo a partir de una colección de vértices y otra de aristas
+     * @param vertices Los vértices
      * @param aristas
      */
     void cargarGrafo(Collection<IVertice> vertices, Collection<IArista> aristas);
     
     /**
-     *
-     * @param etiquetaOrigen
-     * @param etiquetaDestino
-     * @param costo
-     * @return
+     * Método que inserta una arista en el grafo a partir de los datos que la componen
+     * @param etiquetaOrigen Comparable con el código del aeropuerto del que parte la arista
+     * @param etiquetaDestino Comparable con el código del aeropuerto al que llega la arista
+     * @param costo Double con el costo de la arista
+     * @return Booleano indicando si la arista se insertó correctamente
      */
     boolean insertarArista(Comparable etiquetaOrigen, Comparable etiquetaDestino, Comparable costo);
     
     /**
-     * 
-     * @param arista
-     * @return 
+     *  Método que inserta una arista en el grafo
+     * @param arista Objeto TArista a insertar
+     * @return Booleano indicando si la arista se insertó correctamente
      */
     boolean insertarArista(IArista arista);
     
     /**
-     *
-     * @return
+     * Método que retorna todos los vértices del grafo, resultado de un recorrido en profundidad
+     * @return Colección con todos los vértices
      */
     Collection<Comparable> bpf();
     
     /**
-     *
-     * @param etiquetaOrigen
-     * @return
+     * Método que retorna todos los vértices del grafo, resultado de un recorrido en profundidad
+     * 
+     * @return Colección con todos los vértices
      */
     Collection<Comparable> bpf(Comparable etiquetaOrigen);
     
     /**
-     *
-     * @param verticeOrigen
-     * @return
+     * Método que retorna todos los vértices del grafo, resultado de un recorrido en profundidad
+     * 
+     * @return Colección con todos los vértices
      */
     Collection<Comparable> bpf(TVertice verticeOrigen);
     
     /**
-     *
-     * @param etiquetaOrigen
-     * @param etiquetaDestino
-     * @param pCantidadEscalas
-     * @param pAerolinea
-     * @return
+     * Método que retorna todos los caminos posibles entre dos vértices, usando una determinada aerolínea
+     * y con un máximo determinado de escalas
+     * @param etiquetaOrigen Comparable con el ID del Aeropuerto Origen
+     * @param etiquetaDestino Comparable con el ID del Aeropuerto Destino
+     * @param pCantidadEscalas Integer cantidad máxima de escalas
+     * @param pAerolinea Comparable con el ID de la Aerolínea
+     * @return Instancia de TCaminos conteniendo todos los caminos posibles
      */
     TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, int pCantidadEscalas, Comparable pAerolinea);
     
     /**
-     *
-     * @param camino
-     * @return
-     */
-    boolean tieneCiclo(TCamino camino);
-    
-    /**
-     *
-     * @return
+     * Método que determina si el grafo tiene un ciclo
+     * @return Booleano indicando si el grafo tiene o no un ciclo
      */
     boolean tieneCiclo();
     
     /**
-     *
-     * @param etiquetaOrigen
-     * @return
+     * Método que retorna todas las etiquetas ordenadas
+     * @return Array con todas las etiquetas del grafo
      */
-    boolean tieneCiclo(Comparable etiquetaOrigen);
+    Object[] getEtiquetasOrdenado();
     
     /**
-     *
-     * @return
+     * Método que retorna todos los vértices del grafo
+     * @return Map con todos los vértices y sus adyacencias
      */
     public Map<Comparable, IVertice> getVertices();
     
     /**
-     *
+     * Método que marca todos los vértices como desvisitados
      */
     void desvisitarVertices();
 }

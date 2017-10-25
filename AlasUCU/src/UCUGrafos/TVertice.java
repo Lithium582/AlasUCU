@@ -16,28 +16,20 @@ public class TVertice implements IVertice {
     private boolean esActivo;
     private Aeropuerto datos;
 
-    /**
-     *
-     * @return
-     */
     @Override
     public Comparable getEtiqueta() {
         return etiqueta;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public LinkedList<IAdyacencia> getAdyacentes() {
         return adyacentes;
     }
 
     /**
-     *
-     * @param pDato
-     * @param pEtiqueta
+     * Constructor de TVertice
+     * @param pDato Objeto Aeropuerto
+     * @param pEtiqueta Etiqueta ID de Aeropuerto
      */
     public TVertice(Aeropuerto pDato, Comparable pEtiqueta) {
         this.etiqueta = pEtiqueta;
@@ -47,47 +39,26 @@ public class TVertice implements IVertice {
         this.esActivo = true;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public boolean getVisitado() {
         return this.visitado;
     }
 
-    /**
-     *
-     * @param valor
-     */
     @Override
     public void setVisitado(boolean valor) {
         this.visitado = valor;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public boolean getActivo() {
         return this.esActivo;
     }
 
-    /**
-     *
-     * @param pActivo
-     */
     @Override
     public void setActivo(boolean pActivo) {
         this.esActivo = pActivo;
     }
 
-    /**
-     *
-     * @param verticeDestino
-     * @return
-     */
     @Override
     public IAdyacencia buscarAdyacencia(IVertice verticeDestino) {
         if (verticeDestino != null) {
@@ -96,12 +67,6 @@ public class TVertice implements IVertice {
         return null;
     }
 
-    /**
-     *
-     * @param pVerticeDestino
-     * @param pListaRelaciones
-     * @return
-     */
     @Override
     public boolean insertarAdyacencia(IVertice pVerticeDestino, LinkedList<IVuelo> pListaRelaciones) {
         IAdyacencia objAdyacenciaBuscada = this.buscarAdyacencia(pVerticeDestino.getEtiqueta());
@@ -111,14 +76,8 @@ public class TVertice implements IVertice {
         } else {
             return objAdyacenciaBuscada.getRelaciones().addAll(pListaRelaciones);
         }
-        //return false;
     }
 
-    /**
-     *
-     * @param nomVerticeDestino
-     * @return
-     */
     @Override
     public boolean eliminarAdyacencia(Comparable nomVerticeDestino) {
         IAdyacencia ady = buscarAdyacencia(nomVerticeDestino);
@@ -129,10 +88,6 @@ public class TVertice implements IVertice {
         return false;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public IVertice primerAdyacente() {
         if (this.adyacentes.getFirst() != null) {
@@ -141,11 +96,6 @@ public class TVertice implements IVertice {
         return null;
     }
 
-    /**
-     *
-     * @param etiquetaDestino
-     * @return
-     */
     @Override
     public IAdyacencia buscarAdyacencia(Comparable etiquetaDestino) {
         for (IAdyacencia adyacencia : adyacentes) {
@@ -156,19 +106,11 @@ public class TVertice implements IVertice {
         return null;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public Aeropuerto getDatos() {
         return datos;
     }
 
-    /**
-     *
-     * @param visitados
-     */
     @Override
     public void bpf(Collection<Comparable> visitados) {
         visitado = true;
@@ -180,19 +122,6 @@ public class TVertice implements IVertice {
         }
     }
 
-    /**
-     * Dado un vértice destino, una estructura del tipo TCamino "caminoPrevio"
-     * donde ir adjuntando los vértices incorporados al camino y actualizando en
-     * forma acorde el costo total, y una estructura TCaminos "losCaminos" en la
-     * que agregar un camino cada vez que se llega al destino
-     *
-     * @param etiquetaDestino
-     * @param caminoPrevio
-     * @param losCaminos
-     * @param pCantidadEscalas
-     * @param pAerolinea
-     * @return 
-     */
     @Override
     public TCaminos todosLosCaminos(Comparable etiquetaDestino, TCamino caminoPrevio, TCaminos losCaminos, int pCantidadEscalas, Comparable pAerolinea) {
         //Seteamos con TRÚE
@@ -233,11 +162,6 @@ public class TVertice implements IVertice {
         return losCaminos;
     }
 
-    /**
-     *
-     * @param camino
-     * @return
-     */
     @Override
     public boolean tieneCiclo(TCamino camino) {
         setVisitado(true);
@@ -264,11 +188,6 @@ public class TVertice implements IVertice {
         return tieneCiclo;
     }
 
-    /**
-     *
-     * @param camino
-     * @return
-     */
     @Override
     public boolean tieneCiclo(LinkedList<Comparable> camino) {
         setVisitado(true);

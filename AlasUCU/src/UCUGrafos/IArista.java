@@ -16,38 +16,38 @@ import java.util.LinkedList;
 public interface IArista {
 
     /**
-     *
-     * @return
+     * Retorna las relaciones vinculadas a la Arista
+     * @return Lista enlazada de vuelos
      */
     LinkedList<IVuelo> getRelaciones();
 
     /**
-     *
-     * @return
+     * Retorna un comparable representando al aeropuerto destino
+     * @return Comparable con el código del aeropuerto destino
      */
     Comparable getEtiquetaDestino();
 
     /**
-     *
-     * @return
+     * Retorna un comparable representando al aeropuerto origen
+     * @return Comparable con el código del aeropuerto origen
      */
     Comparable getEtiquetaOrigen();
     
     /**
-     *
-     * @param etiquetaDestino
+     * Ingresa un nuevo código de aeropuerto destino
+     * @param etiquetaDestino Nuevo aeropuerto destino
      */
     void setEtiquetaDestino(Comparable etiquetaDestino);
 
     /**
-     *
-     * @param etiquetaOrigen
+     * Ingresa un nuevo código de aeropuerto de origen
+     * @param etiquetaOrigen Nuevo aeropuerto origen
      */
     void setEtiquetaOrigen(Comparable etiquetaOrigen);
 
     /**
-     *
-     * @param pRelaciones
+     * Ingresa los vuelos que conectan los aeropuertos origen y destino
+     * @param pRelaciones Lista de vuelos
      */
     void setRelaciones(LinkedList<IVuelo> pRelaciones);
 }

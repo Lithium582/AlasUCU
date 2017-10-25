@@ -21,11 +21,11 @@ public class Vuelo implements IVuelo {
     private double costo;
 
     /**
-     *
-     * @param pOrigen
-     * @param pDestino
-     * @param pCosto
-     * @param pAerolinea
+     * Constructor de la clase Vuelo
+     * @param pOrigen Aeropuerto de origen
+     * @param pDestino Aeropuerto destino
+     * @param pCosto Costo del viaje
+     * @param pAerolinea Aerolínea encargada de realizar el viaje
      */
     public Vuelo(Comparable<String> pOrigen, Comparable<String> pDestino, double pCosto, Comparable<String> pAerolinea) {
         this.ID = idVuelo++;
@@ -35,47 +35,27 @@ public class Vuelo implements IVuelo {
         this.costo = pCosto;
         this.aerolinea = pAerolinea;
     }
-
-    /**
-     *
-     * @return
-     */
+    
     @Override
     public Comparable<Integer> getID() {
         return this.ID;
     }
-
-    /**
-     *
-     * @return
-     */
+    
     @Override
     public Comparable<String> getOrigen() {
         return this.origen;
     }
     
-    /**
-     *
-     * @return
-     */
     @Override
     public Comparable<String> getDestino() {
         return this.destino;
     }
     
-    /**
-     *
-     * @return
-     */
     @Override
     public double getCosto(){
         return this.costo;
     }
     
-    /**
-     *
-     * @param pNuevoCosto
-     */
     @Override
     public void setCosto(float pNuevoCosto){
         this.costo = pNuevoCosto;

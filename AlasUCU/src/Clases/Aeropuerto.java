@@ -35,7 +35,7 @@ public class Aeropuerto {
      * Nos devuelve el nombre del aeropuerto.
      * @param pNombre Nombre nuevo del Aeropuerto
      */
-    public void getNombre(String pNombre) {
+    public void setNombre(String pNombre) {
         this.nombre = pNombre;
     }
 
@@ -68,8 +68,8 @@ public class Aeropuerto {
     }
     
     /**
-     *
-     * @return
+     * Retorna una cadena con los datos del aeropuerto
+     * @return Información del Aeropuerto
      */
     public String imprimir(){
         return "Aeropuerto " + this.ID + " - " + this.nombre;

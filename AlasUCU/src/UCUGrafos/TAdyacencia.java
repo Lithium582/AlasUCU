@@ -42,9 +42,9 @@ public class TAdyacencia implements IAdyacencia {
     }
 
     /**
-     *
-     * @param pVertice
-     * @param pRelaciones
+     * Constructor de TAdyacencia
+     * @param pVertice Vértice destino de la adyacencia
+     * @param pRelaciones LinkedList de vuelos que conectan los vértices
      */
     public TAdyacencia(IVertice pVertice, LinkedList<IVuelo> pRelaciones) {
         this.vertice = pVertice;

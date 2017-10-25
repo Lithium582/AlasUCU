@@ -4,12 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import UCUGrafos.*;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * No, no me equivoqué. Es Ala porque es una sola ?)
@@ -23,14 +19,16 @@ public class AlaUCU {
     private LinkedList<Aerolinea> _aerolineas;
     // </editor-fold>
     
+    // <editor-fold defaultstate="extended" desc="Atributos">
     private AlaUCU(){
         this._grafo = new TGrafoDirigido();
-        this._aerolineas = new LinkedList<Aerolinea>();
+        this._aerolineas = new LinkedList();
     }
+    // </editor-fold>
     
     /**
-     *
-     * @return
+     * Retorna la única instancia creada a partir de esta clase
+     * @return Instancia de la clase AlaUCU
      */
     public static AlaUCU getInstancia(){
         if(_instancia == null){
@@ -41,25 +39,26 @@ public class AlaUCU {
     }
     
     /**
-     *
-     * @return
+     * Retorna todas las aerolíneas creadas
+     * @return Lista con las aerolíneas registradas
      */
     public LinkedList<Aerolinea> getAerolineas(){
         return _aerolineas;
     }
     
     /**
-     *
-     * @return
+     * Retorna el grafo usado para el sistema
+     * @return Grafo Dirigido con la información de aeropuertos y vuelos
      */
     public IGrafoDirigido getGrafo(){
         return this._grafo;
     }
     
     /**
-     *
-     * @param pCodigo
-     * @return
+     * Retorna la aerolínea buscando por el código recibido por parámetro o null
+     * si no la encuentra
+     * @param pCodigo Código de la aerolínea buscada
+     * @return Aerolínea con el código recibido por parámetro
      */
     public Aerolinea buscarAerolinea(Comparable<String> pCodigo){
         for(Aerolinea aeroObjeto : this._aerolineas){
@@ -72,9 +71,9 @@ public class AlaUCU {
     }
     
     /**
-     *
-     * @param pObjAerolinea
-     * @return
+     * Inserta una nueva aerolínea y retorna un booleano confirmando la inserción
+     * @param pObjAerolinea Aerolínea que se quiere insertar en la colección
+     * @return Valor booleano confirmando la inserción
      */
     public boolean nuevaAerolinea(Aerolinea pObjAerolinea){
         if(buscarAerolinea(pObjAerolinea.getID()) != null){
@@ -87,9 +86,9 @@ public class AlaUCU {
     }
     
     /**
-     *
-     * @param pObjAeropuerto
-     * @return
+     * Inserta un nuevo aeropuerto y retorna un booleano confirmando la inserción
+     * @param pObjAeropuerto Aeropuerto que se quiere insertar en la colección
+     * @return Valor booleano confirmando la inserción
      */
     public boolean nuevoAeropuerto(Aeropuerto pObjAeropuerto){
         if(this.buscarAeropuerto(pObjAeropuerto.getID()) != null){
@@ -102,23 +101,27 @@ public class AlaUCU {
     }
     
     /**
-     *
-     * @param pObjArista
-     * @return
+     * Inserta una nueva arista y retorna un booleano confirmando la inserción
+     * @param pObjArista Arista que se quiere insertar en la colección
+     * @return Valor booleano confirmando la inserción
      */
     public boolean nuevaArista(IArista pObjArista){
         return this._grafo.insertarArista(pObjArista);
     }
     
     /**
-     *
-     * @param pAeropuertoOrigen
-     * @param pAeropuertoDestino
-     * @return
+     * Retorna una lista con todos los vuelos directos existentes entre dos aeropuertos
+     * @param pAeropuertoOrigen Código del aeropuerto de origen
+     * @param pAeropuertoDestino Código del aeropuerto destino
+     * @return Lista con todos los vuelos directos existentes
      */
     public LinkedList<IVuelo> buscarVuelos(Comparable<String> pAeropuertoOrigen, Comparable<String> pAeropuertoDestino){
         IVertice aeropuertoBuscado = this._grafo.buscarVertice(pAeropuertoOrigen);
-        IAdyacencia objAdyacente = aeropuertoBuscado.buscarAdyacencia(pAeropuertoDestino);
+        IAdyacencia objAdyacente = null;
+        
+        if(aeropuertoBuscado != null){
+            objAdyacente = aeropuertoBuscado.buscarAdyacencia(pAeropuertoDestino);
+        }
         
         if(objAdyacente != null){
             LinkedList<IVuelo> listaRetorno = objAdyacente.getRelaciones();
@@ -129,9 +132,9 @@ public class AlaUCU {
     }
     
     /**
-     *
-     * @param pCodigo
-     * @return
+     * Busca un aeropuerto por código según lo recibido por parámetro
+     * @param pCodigo Código del aeropuerto que se está buscando
+     * @return Aeropuerto encontrado o null si no se encuentra
      */
     public Aeropuerto buscarAeropuerto(Comparable pCodigo){
         IVertice objVertice = this._grafo.buscarVertice(pCodigo);
@@ -142,9 +145,9 @@ public class AlaUCU {
     }
     
     /**
-     *
-     * @param pCodigo
-     * @return
+     * Elimina un aeropuerto de la colección
+     * @param pCodigo Código del aeropuerto que se pretende elminar
+     * @return Booleano confirmando la eliminación
      */
     public boolean eliminarAeropuerto(Comparable pCodigo){
         boolean aeroEliminado = this._grafo.eliminarVertice(pCodigo);
@@ -190,56 +193,6 @@ public class AlaUCU {
         return strRetorno;
     }
     
-    private Double[][] obtenerMatrizCostos(Comparable<String> pAerolinea) {
-        Map<Comparable, IVertice> vertices = this._grafo.getVertices();
-        int cantidadVertices = vertices.size();
-        Double[][] matrizCostos = new Double[cantidadVertices][cantidadVertices];
-
-        for (int i = 0; i < matrizCostos.length; i++) {
-            for (int j = 0; j < matrizCostos.length; j++) {
-                if (i == j) {
-                    matrizCostos[i][j] = -1D;
-                } else {
-                    matrizCostos[i][j] = Double.MAX_VALUE;
-                }
-            }
-        }
-
-        Set<Comparable> etiquetasVertices = vertices.keySet();
-        Comparable[] VerticesIArr = etiquetasVertices.toArray(new Comparable[cantidadVertices]);
-        Comparable[] VerticesJArr = etiquetasVertices.toArray(new Comparable[cantidadVertices]);
-
-        //Recorre
-        for (int i = 0; i < cantidadVertices; i++){
-            IVertice VerticeI = vertices.get(VerticesIArr[i]);
-            
-            for (int j = 0; j < cantidadVertices; j++){
-                IVertice VerticeJ = vertices.get(VerticesJArr[j]);
-
-                if (!VerticeI.getEtiqueta().equals(VerticeJ.getEtiqueta())) {
-                    IAdyacencia objAdyacencia = VerticeI.buscarAdyacencia(VerticeJ);
-                    double costoMinimo = Double.MAX_VALUE;
-                    
-                    if(objAdyacencia != null){
-                        LinkedList<IVuelo> vuelos = objAdyacencia.getRelaciones();
-                        
-                        for(IVuelo objVueloActual : vuelos){
-                            //if(objVueloActual.getAerolinea().compareTo(pAerolinea.toString()) > 0){
-                            if(objVueloActual.getAerolinea().equals(pAerolinea.toString())){
-                                if(objVueloActual.getCosto() < costoMinimo){
-                                    costoMinimo = objVueloActual.getCosto();
-                                }
-                            }
-                        }
-                    }
-                    
-                    matrizCostos[i][j] = costoMinimo;
-                }
-            }
-        }
-        return matrizCostos;
-    }
-    
     /**
      * Metodo que nos permite cargar el grafo a partir de tres archivos: Uno
      * conteniendo los aeropuertos en formato "ID,Nombre". Otro con los vuelos
@@ -250,15 +203,17 @@ public class AlaUCU {
      * @param pArchivoVuelos Nombre del archivo de vuelos
      * @param pArchivoAerolineas Nombre del archivo de aerolíneas
      */
-    public void cargarGrafo(String pArchivoAeropuertos, String pArchivoAerolineas, String pArchivoVuelos) {
+    public boolean cargarGrafo(String pArchivoAeropuertos, String pArchivoAerolineas, String pArchivoVuelos) {
         //Leemos los archivos, obteniendo así todos los vértices y aristas.
         String[] arrayAeropuertos = ManejadorArchivosGenerico.leerArchivo(pArchivoAeropuertos, false);
         String[] arrayVuelos = ManejadorArchivosGenerico.leerArchivo(pArchivoVuelos, false);
         String[] aeroArray = ManejadorArchivosGenerico.leerArchivo(pArchivoAerolineas, false);
+        boolean resultado = false;
 
         Collection<IVertice> losVertices = new LinkedList<IVertice>();
         Collection<IArista> lasAristas = new LinkedList<IArista>();
 
+        resultado = aeroArray.length > 0;
         for (String actual : aeroArray) {
             String[] lineaArchivo = actual.split(",");
             if (lineaArchivo[0].trim().length() == 2) {
@@ -267,6 +222,7 @@ public class AlaUCU {
             }
         }
 
+        resultado = resultado || arrayAeropuertos.length > 0;
         //Cargamos los vertices en el grafo
         for (String actual : arrayAeropuertos) {
             String[] lineaArchivo = actual.split(",");
@@ -280,8 +236,8 @@ public class AlaUCU {
             }
         }
 
+        resultado = resultado || arrayVuelos.length > 0;
         //Cargamos las aristas en el grafo
-        //origen,destino,costo,FECHA HORA salida,Fecha hora llegada
         for (String actual : arrayVuelos) {
             String[] line = actual.split(",");
             if ((line[0].trim().length() == 2) && (line[1].trim().length() == 3)
@@ -300,107 +256,37 @@ public class AlaUCU {
         }
         
         this._grafo.cargarGrafo(losVertices, lasAristas);
+        
+        return resultado;
     }
     
-    /**
-     *
-     * @param etiquetaOrigen
-     * @return
-     */
-    public Collection<Comparable> bpf(Comparable etiquetaOrigen){
-        return this._grafo.bpf(etiquetaOrigen);
-    }
     
     /**
-     *
-     * @param pEtiquetaOrigen
-     * @param pEtiquetaDestino
-     * @param pCantidadEscalas
-     * @param pAerolinea
-     * @return
+     * Método que retorna una instancia de la clase TCaminos conteniendo todos los caminos posibles entre
+     * dos aeropuertos, así como una instancia de la clase TCamino que tiene el camino de menor costo ingresado
+     * @param pEtiquetaOrigen Aeropuerto desde el que se desea partir
+     * @param pEtiquetaDestino Aeropuerto al que se desea llegar
+     * @param pCantidadEscalas Cantidad de escalas máxima
+     * @param pAerolinea Aerolínea en la que se desea viajar
+     * @return Instancia de TCaminos con todos los caminos posibles
      */
     public TCaminos todosLosCaminos(Comparable pEtiquetaOrigen, Comparable pEtiquetaDestino, int pCantidadEscalas, Comparable pAerolinea){
         return this._grafo.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino,pCantidadEscalas,pAerolinea);
     }
     
     /**
-     *
-     * @param pEtiquetaOrigen
-     * @param pEtiquetaDestino
-     * @param pCantidadEscalas
-     * @param pAerolinea
-     * @return
-     */
-    public LinkedList<String> obtenerTodosLosCaminos(Comparable pEtiquetaOrigen, Comparable pEtiquetaDestino, int pCantidadEscalas, Comparable pAerolinea){
-        TCaminos todosLosCaminos = this._grafo.todosLosCaminos(pEtiquetaOrigen, pEtiquetaDestino,pCantidadEscalas,pAerolinea);
-        LinkedList<String> caminosResultado = new LinkedList<String>();
-        int i = 0;
-        
-        for(TCamino camino : todosLosCaminos.getCaminos()){
-            String caminoSTR = camino.getOrigen().getEtiqueta().toString();
-            Map<Comparable,String> vuelosPorAerolinea = null;
-            //Interno
-            Map<Comparable,Double> vuelosPorAerolinea2 = null;
-            
-            for(IAdyacencia adyacencia : camino.getOtrasAdyacencias()){
-                caminoSTR += " - " + adyacencia.getEtiqueta();
-                vuelosPorAerolinea2 = new HashMap<>();
-                
-                for(IVuelo objVuelo : adyacencia.getRelaciones()){
-                    Double costo = vuelosPorAerolinea2.get(objVuelo.getAerolinea());
-                    
-                    //No se habían registrado vuelos de la aerolínea hasta el momento
-                    if(costo == null){
-                        vuelosPorAerolinea2.put(objVuelo.getAerolinea(),objVuelo.getCosto());
-                    } else{
-                        if(costo.compareTo(objVuelo.getCosto()) > 0){
-                            vuelosPorAerolinea2.replace(pEtiquetaOrigen, costo);
-                        }
-                    }
-                }
-                
-                if(vuelosPorAerolinea.size() == 0){
-                    for(Comparable c : vuelosPorAerolinea2.keySet()){
-                        caminoSTR += "(" +  vuelosPorAerolinea2.get(c).toString() + ")";
-                        vuelosPorAerolinea.put(c, caminoSTR);
-                    }
-                    //vuelosPorAerolinea = vuelosPorAerolinea2;
-                } else{
-                    //Si no hay vuelos registrados entre dos ciudades, el camino no es viable
-                    //Retorno null
-                    if(vuelosPorAerolinea2.size() > 0){
-                        for(Comparable c : vuelosPorAerolinea.keySet()){
-                            //String
-                        }
-                    } else {
-                        return null;
-                    }
-
-                }
-                
-            }
-            
-            //Jugar con el map al final
-            caminosResultado.add(caminoSTR);
-            i++;
-        }
-        
-        return caminosResultado;
-    }
-    
-    /**
-     *
-     * @param pComp
-     * @return
+     * Retorna la posición en el hashMap de una clave o -1 si no se encuentra
+     * @param pComp Código que se está buscando en el hashMap
+     * @return Posición de la clave en el hash o -1 si no se encuentra en ella
      */
     public int obtenerPosicionEnElHashMap(Comparable pComp){
         return this._grafo.obtenerPosicionEnElHashMap(pComp);
     }
     
     /**
-     *
-     * @param pPosicion
-     * @return
+     * Retorna la clave para una posición determinada en el hashMap
+     * @param pPosicion Posición buscada en el hashMap
+     * @return La clave que se encuentra en la posición o cero si no existe
      */
     public Comparable obtenerEtiquetaPorPosicion(int pPosicion){
         return this._grafo.obtenerEtiquetaPorPosicion(pPosicion);

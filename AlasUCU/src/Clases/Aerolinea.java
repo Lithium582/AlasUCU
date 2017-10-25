@@ -14,7 +14,7 @@ public class Aerolinea {
     private String nombre;
 
     /**
-     * Nos devuelve el identificador de la aerolínea
+     * Devuelve el identificador de la aerolínea
      * @return ID del aeropuerto.
      */
     public Comparable<String> getID(){
@@ -22,7 +22,7 @@ public class Aerolinea {
     }
     
     /**
-     * Nos devuelve el nombre del aeropuerto.
+     * Devuelve el nombre de la aerolínea.
      * @return Nombre
      */
     public String getNombre() {
@@ -30,15 +30,15 @@ public class Aerolinea {
     }
     
     /**
-     * Nos devuelve el nombre del aeropuerto.
-     * @param pNombre Nombre nuevo del Aeropuerto
+     * Devuelve el nombre de la aerolínea.
+     * @param pNombre Nombre nuevo del Aerolínea
      */
-    public void getNombre(String pNombre) {
+    public void setNombre(String pNombre) {
         this.nombre = pNombre;
     }
     
     /**
-     * Constructor del aeropuerto.
+     * Constructor de la aerolínea.
      * @param pID Identificador de la aerolínea
      * @param pNombre Nombre
      */
