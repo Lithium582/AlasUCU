@@ -45,11 +45,11 @@ public class AlaUCUTest {
     @Test
     public void testNuevaAerolinea() {
         int kantAerolineas = this.alaUnica.getAerolineas().size();
-        assertEquals(63, kantAerolineas);
+        assertEquals(9, kantAerolineas);
         this.alaUnica.nuevaAerolinea(new Aerolinea("SS", "2WW Airlines"));
         
         kantAerolineas = this.alaUnica.getAerolineas().size();
-        assertEquals(64, kantAerolineas);
+        assertEquals(10, kantAerolineas);
     }
 
     /**
@@ -120,7 +120,7 @@ public class AlaUCUTest {
         assertEquals(true, cargado);
         assertEquals(8, unAlaUCUDePaloma.getGrafo().getVertices().size());
         
-        assertEquals(27, unAlaUCUDePaloma.getAerolineas().size());
+        assertEquals(9, unAlaUCUDePaloma.getAerolineas().size());
     }
 
     /**

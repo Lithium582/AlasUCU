@@ -44,7 +44,7 @@ public class Main {
                         b = !b;
                     }
 
-                    System.out.println("\n --------------------------------------------- ");
+                    System.out.println(" ----------------------------------------------- ");
                     System.out.println(" ----------- Bienvenido a Alas UCU ------------- ");
                     System.out.println(" ---------- La mejor forma de volar ------------ ");
                     System.out.println(" ------ Ingrese una opción para continuar: ----- ");
@@ -54,7 +54,7 @@ public class Main {
                     System.out.println(" ----------------- Aerolíneas ------------------ ");
                     System.out.println("2 --> Nueva Aerolínea");
                     System.out.println("3 --> Buscar Aerolínea");
-                    System.out.println(" ----------------- Vuelos ----------------- ");
+                    System.out.println(" -------------------- Vuelos ------------------- ");
                     System.out.println("4 --> Nuevo Vuelo");
                     System.out.println("5 --> Buscar Vuelos");
                     System.out.println(" ----------------- Aeropuertos ----------------- ");
@@ -518,9 +518,9 @@ public class Main {
                             break;
                         }
                         case 0: {
-                            System.out.println("----------");
-                            System.out.println("| Bái :D |");
-                            System.out.println("----------");
+                            System.out.println(" ----------------------------------------------- ");
+                            System.out.println("|                    Bái :D                     |");
+                            System.out.println(" ----------------------------------------------- ");
 
                             break;
                         }

@@ -218,7 +218,7 @@ public class AlaUCU {
             String[] lineaArchivo = actual.split(",");
             if (lineaArchivo[0].trim().length() == 2) {
                 Aerolinea aeroLinea = new Aerolinea(lineaArchivo[0].trim(), lineaArchivo[1].trim());
-                this._aerolineas.add(aeroLinea);
+                this.nuevaAerolinea(aeroLinea);
             }
         }
 
